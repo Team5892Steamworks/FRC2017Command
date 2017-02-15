@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 /**
  *
  */
-public class TurnTowardsBoiler extends Command {
+public class TurnTowardsGearSpike extends Command {
 	NetworkTable table;
 	
 	final double KP = 0.2;
@@ -24,9 +24,9 @@ public class TurnTowardsBoiler extends Command {
 	
 	boolean shootAfter;
 	
-	public TurnTowardsBoiler(boolean doShootAfter) {
+	public TurnTowardsGearSpike(boolean doShootAfter) {
 		// Use requires() here to declare subsystem dependencies
-		//requires(Robot.whateverSubsystemTheWheelsAreOn);
+		requires(Robot.drive);
 		shootAfter = doShootAfter;
 	}
 
@@ -44,11 +44,10 @@ public class TurnTowardsBoiler extends Command {
 		double error = desiredX - actualValue;
 		integral = integral + (error*25);
 		double derivative = (error - error_prior) * 25;
-		@SuppressWarnings("unused")
 		double output = KP*error + KI*integral + KD*derivative;
 		error_prior = error;
 		
-		
+		Robot.drive.mecanumDrive(0, 0, output);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
