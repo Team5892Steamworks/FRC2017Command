@@ -6,7 +6,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+<<<<<<< HEAD
 import org.usfirst.frc.team5892.robot.commands.agitator;
+=======
+import org.usfirst.frc.team5892.robot.commands.intake;
+>>>>>>> 399f70a425e45e6870310bfd8d005626f333cee2
 import org.usfirst.frc.team5892.robot.commands.shooter;
 
 /**
@@ -50,6 +54,10 @@ public class OI {
 	
 	public OI(){
 		shooter.whileHeld(new shooter());
+<<<<<<< HEAD
 		agitate.whileHeld(new agitator());
+=======
+		intake.whileActive(new intake());
+>>>>>>> 399f70a425e45e6870310bfd8d005626f333cee2
 	}
 }
