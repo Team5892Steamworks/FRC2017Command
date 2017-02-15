@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.commands.intake;
 import org.usfirst.frc.team5892.robot.commands.shooter;
 
 /**
@@ -48,6 +49,6 @@ public class OI {
 	
 	public OI(){
 		shooter.whileHeld(new shooter());
-		
+		intake.whileActive(new intake());
 	}
 }
