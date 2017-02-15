@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.commands.agitator;
 import org.usfirst.frc.team5892.robot.commands.shooter;
 
 /**
@@ -45,9 +46,10 @@ public class OI {
 	
 	public Button intake = new JoystickButton(copilot, 1);
 	public Button shooter = new JoystickButton(copilot, 2);
+	public Button agitate = new JoystickButton(copilot, 5);
 	
 	public OI(){
 		shooter.whileHeld(new shooter());
-		
+		agitate.whileHeld(new agitator());
 	}
 }

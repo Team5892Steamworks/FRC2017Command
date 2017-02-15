@@ -7,26 +7,22 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class shooter extends Command {
-	Victor flywheel = new Victor(1);
-	Victor intake = new Victor(4);
+public class agitator extends Command {
+	Victor motor = new Victor(0);
 	
-	public shooter() {
+	public agitator() {
 		// Use requires() here to declare subsystem dependencies
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		flywheel.set(SmartDashboard.getNumber("Flywheel Speed", 0.55));
-		Timer.delay(1);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		intake.set(1);
-		flywheel.set(SmartDashboard.getNumber("Flywheel Speed", 0.55));
+		motor.set(SmartDashboard.getNumber("Agitator Speed", 0.5));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
