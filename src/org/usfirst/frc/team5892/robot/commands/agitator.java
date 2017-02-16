@@ -26,11 +26,7 @@ public class agitator extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-<<<<<<< HEAD
 		motor.set(-0.5);
-=======
-		
->>>>>>> 97f85d66e6960a8278e6c92eec9783fdab28ff39
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -49,5 +45,6 @@ public class agitator extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		motor.set(0);
 	}
 }

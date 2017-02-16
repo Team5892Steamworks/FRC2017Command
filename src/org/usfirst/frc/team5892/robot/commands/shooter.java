@@ -46,5 +46,7 @@ public class shooter extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		feeder.set(0);
+		flywheel.set(0);
 	}
 }
