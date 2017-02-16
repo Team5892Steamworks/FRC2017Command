@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class shooter extends Command {
 	Victor flywheel = new Victor(1);
-	Victor intake = new Victor(4);
+	Victor feeder = new Victor(4);
 	
 	public shooter() {
 		// Use requires() here to declare subsystem dependencies
@@ -18,15 +18,15 @@ public class shooter extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		flywheel.set(SmartDashboard.getNumber("Flywheel Speed", 0.55));
+		flywheel.set(-.7);
 		Timer.delay(1);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		intake.set(1);
-		flywheel.set(SmartDashboard.getNumber("Flywheel Speed", 0.55));
+		feeder.set(1);
+		flywheel.set(-.73);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -38,6 +38,8 @@ public class shooter extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		feeder.set(0);
+		flywheel.set(0);
 	}
 
 	// Called when another command which requires one or more of the same

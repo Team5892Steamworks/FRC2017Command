@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class mecanumDrive extends Command {
 	public mecanumDrive() {
 		// Use requires() here to declare subsystem dependencies
+		requires(Robot.drive);
 	}
 
 	// Called just before this Command runs the first time
@@ -20,8 +21,8 @@ public class mecanumDrive extends Command {
 		double x;
 		double y;
 		double twist;
-		if(Robot.oi.pilot.getRawAxis(0) >= .18){
-			x = Robot.oi.pilot.getRawAxis(0);
+		if(Robot.oi.pilot.getX() >= .18){
+			x = Robot.oi.pilot.getX();
 		}else{
 			x = 0;
 		}
