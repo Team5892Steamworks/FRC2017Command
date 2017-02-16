@@ -8,10 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5892.robot.commands.agitator;
 import org.usfirst.frc.team5892.robot.commands.intake;
+<<<<<<< HEAD
 
 import org.usfirst.frc.team5892.robot.commands.agitator;
 
 import org.usfirst.frc.team5892.robot.commands.intake;
+=======
+>>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 import org.usfirst.frc.team5892.robot.commands.shooter;
 
 /**
@@ -54,16 +57,28 @@ public class OI {
 	public Button agitate = new JoystickButton(copilot, 5);
 	
 	public OI(){
+<<<<<<< HEAD
+=======
+
+>>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 		shooter.whileActive(new shooter());
 		
 		agitate.whileActive(new agitator());
 
 		intake.whileActive(new intake());
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 		shooter.whileHeld(new shooter());
 
 		agitate.whileHeld(new agitator());
 
 		intake.whileActive(new intake());
+<<<<<<< HEAD
+=======
+
+>>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 	}
 }

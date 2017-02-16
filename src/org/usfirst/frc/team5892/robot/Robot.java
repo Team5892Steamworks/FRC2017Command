@@ -25,8 +25,13 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		chooser.addDefault("Default Auto", new ExampleCommand());
+		drive = new Drive();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+<<<<<<< HEAD
+=======
+		//Agita;
+>>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 	}
 
 	@Override

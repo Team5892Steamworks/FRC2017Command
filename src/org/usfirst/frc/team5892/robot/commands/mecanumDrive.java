@@ -22,17 +22,17 @@ public class mecanumDrive extends Command {
 		double x;
 		double y;
 		double twist;
-		if(Robot.oi.pilot.getX() >= .18){
+		if(Math.abs(Robot.oi.pilot.getX()) >= .18){
 			x = Robot.oi.pilot.getX();
 		}else{
 			x = 0;
 		}
-		if(Robot.oi.pilot.getRawAxis(1) >= .18){
+		if(Math.abs(Robot.oi.pilot.getRawAxis(1)) >= .18){
 			y = Robot.oi.pilot.getRawAxis(1);
 		}else{
 			y = 0;
 		}
-		if(Robot.oi.pilot.getRawAxis(4) >= .18){
+		if(Math.abs(Robot.oi.pilot.getRawAxis(4)) >= .18){
 			twist = Robot.oi.pilot.getRawAxis(4);
 		}else{
 			twist = 0;
