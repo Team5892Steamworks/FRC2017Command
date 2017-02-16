@@ -18,6 +18,7 @@ public class mecanumDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		/*
 		double x;
 		double y;
 		double twist;
@@ -36,7 +37,8 @@ public class mecanumDrive extends Command {
 		}else{
 			twist = 0;
 		}
-		Robot.drive.mecanumDrive(x, y, twist);
+		*/
+		Robot.drive.mecanumDrive(Robot.oi.pilot.getRawAxis(0), Robot.oi.pilot.getRawAxis(1), Robot.oi.pilot.getRawAxis(4));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
