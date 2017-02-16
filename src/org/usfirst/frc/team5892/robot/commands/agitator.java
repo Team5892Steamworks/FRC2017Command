@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class agitator extends Command {
 	Victor motor = new Victor(0);
 	
+	static boolean forwards = true;
+	
 	public agitator() {
 		// Use requires() here to declare subsystem dependencies
 	}
@@ -17,12 +19,18 @@ public class agitator extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		motor.set(forwards ? 0.5 : -0.5);
+		forwards = !forwards;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+<<<<<<< HEAD
 		motor.set(-0.5);
+=======
+		
+>>>>>>> 97f85d66e6960a8278e6c92eec9783fdab28ff39
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
