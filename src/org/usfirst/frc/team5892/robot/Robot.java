@@ -26,12 +26,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
-		chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
+		//chooser.addDefault("Default Auto", new ExampleCommand());
+		//chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
 		drive = new Drive();
 		agitator = new Agitator();
 		//chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+		//SmartDashboard.putData("Auto mode", chooser);
 	}
 	@Override
 	public void disabledInit() {
