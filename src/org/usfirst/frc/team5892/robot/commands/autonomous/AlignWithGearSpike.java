@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5892.robot.commands;
+package org.usfirst.frc.team5892.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 /**
  *
  */
-public class TurnTowardsGearSpike extends Command {
+public class AlignWithGearSpike extends Command {
 	NetworkTable table;
 	
 	final double KP = 0.2;
@@ -20,14 +20,11 @@ public class TurnTowardsGearSpike extends Command {
 	double error_prior;
 	double integral;
 	
-	double turnSpeed;
+	double turnSpeed; 
 	
-	boolean shootAfter;
-	
-	public TurnTowardsGearSpike(boolean doShootAfter) {
+	public AlignWithGearSpike() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drive);
-		shootAfter = doShootAfter;
 	}
 
 	// Called just before this Command runs the first time
@@ -60,9 +57,7 @@ public class TurnTowardsGearSpike extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		if (shootAfter) {
-			// fire the machine gun pew pew pew
-		}
+		
 	}
 
 	// Called when another command which requires one or more of the same
