@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 public class AlignWithGearSpike extends Command {
 	NetworkTable table;
 	
+	final double threshold = 20;
+	
 	final double KP = 0.2;
 	final double KI = 0.2;
 	final double KD = 0.2;
@@ -44,14 +46,14 @@ public class AlignWithGearSpike extends Command {
 		double output = KP*error + KI*integral + KD*derivative;
 		error_prior = error;
 		
-		Robot.drive.mecanumDrive(0, 0, output);
+		Robot.drive.mecanumDrive(0, output, 0);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return table.getNumber("xpos1", -2) > desiredX - 20 ||
-			   table.getNumber("xpos1", -2) < desiredX + 20;
+		return table.getNumber("xpos1", -2) > desiredX - threshold ||
+			   table.getNumber("xpos1", -2) < desiredX + threshold;
 	}
 
 	// Called once after isFinished returns true
