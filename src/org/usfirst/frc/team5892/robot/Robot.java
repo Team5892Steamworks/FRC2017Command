@@ -9,11 +9,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
-<<<<<<< HEAD
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
-=======
 import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
->>>>>>> 54f317ead94db7e23f995111967e277eb1305b0e
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
 
@@ -33,7 +30,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
 		drive = new Drive();
 		agitator = new Agitator();
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		//chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 	@Override
