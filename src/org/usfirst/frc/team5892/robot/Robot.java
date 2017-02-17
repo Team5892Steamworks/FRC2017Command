@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
 
@@ -17,7 +18,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	public static Drive drive;
-
+	public static Agitator agitator;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -26,24 +27,17 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		drive = new Drive();
+		agitator = new Agitator();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-<<<<<<< HEAD
-=======
-		//Agita;
->>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 	}
-
 	@Override
 	public void disabledInit() {
-
 	}
-
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
-
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
@@ -61,7 +55,6 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
-
 	@Override
 	public void teleopInit() {
 		if (autonomousCommand != null)
@@ -71,7 +64,6 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 	}
-
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();

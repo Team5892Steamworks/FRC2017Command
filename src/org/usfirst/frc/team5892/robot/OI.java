@@ -8,13 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5892.robot.commands.agitator;
 import org.usfirst.frc.team5892.robot.commands.intake;
-<<<<<<< HEAD
 
 import org.usfirst.frc.team5892.robot.commands.agitator;
 
 import org.usfirst.frc.team5892.robot.commands.intake;
-=======
->>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 import org.usfirst.frc.team5892.robot.commands.shooter;
 
 /**
@@ -52,33 +49,21 @@ public class OI {
 	public Joystick pilot = new Joystick(1);
 	public Joystick copilot = new Joystick(2);
 	
-	public Button intake = new JoystickButton(copilot, 1);
+	public Button intake = new JoystickButton(pilot, 6);
 	public Button shooter = new JoystickButton(copilot, 2);
-	public Button agitate = new JoystickButton(copilot, 5);
+	//public Button agitate = new JoystickButton(copilot, 1);
 	
 	public OI(){
-<<<<<<< HEAD
-=======
 
->>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 		shooter.whileActive(new shooter());
 		
-		agitate.whileActive(new agitator());
-
 		intake.whileActive(new intake());
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
-		shooter.whileHeld(new shooter());
+/*		shooter.whileHeld(new shooter());
 
 		agitate.whileHeld(new agitator());
 
-		intake.whileActive(new intake());
-<<<<<<< HEAD
-=======
+		intake.whileActive(new intake()); */
 
->>>>>>> 70328244eb483f13a0d499a2bc044eaa944ee4d9
 	}
 }

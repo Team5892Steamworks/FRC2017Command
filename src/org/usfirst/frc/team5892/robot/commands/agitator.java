@@ -8,25 +8,22 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class agitator extends Command {
-	Victor motor = new Victor(0);
-	
-	static boolean forwards = true;
+	Victor agitator = new Victor(0);
 	
 	public agitator() {
 		// Use requires() here to declare subsystem dependencies
+		requires(Robot.agitator);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		motor.set(forwards ? 0.5 : -0.5);
-		forwards = !forwards;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		motor.set(-0.5);
+		//agitator.set(-.5);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -38,13 +35,13 @@ public class agitator extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		motor.set(0);
+		agitator.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		motor.set(0);
+		agitator.set(0);
 	}
 }
