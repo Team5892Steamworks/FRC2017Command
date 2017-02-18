@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
-import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
 
@@ -18,6 +17,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static RobotMap map;
 	public static Drive drive;
 	public static Agitator agitator;
 	Command autonomousCommand;
@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		map = new RobotMap();
 		//chooser.addDefault("Default Auto", new ExampleCommand());
 		//chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
 		drive = new Drive();
