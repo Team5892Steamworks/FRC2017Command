@@ -53,6 +53,12 @@ public class OI {
 	
 	public Button intake = new JoystickButton(pilot, 6);
 	public Button shooter = new JoystickButton(copilot, 2);
+	
+	//Going to start renaming our button layout
+	public Button a = new JoystickButton(pilot, 6),
+			b = new JoystickButton(copilot, 2);
+	
+	
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
 	public OI(){
