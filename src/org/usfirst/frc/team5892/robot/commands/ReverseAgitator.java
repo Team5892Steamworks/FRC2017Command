@@ -1,25 +1,27 @@
 package org.usfirst.frc.team5892.robot.commands;
 
-import org.usfirst.frc.team5892.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-public class mecanumDrive extends Command {
-	public mecanumDrive() {
+import org.usfirst.frc.team5892.robot.Robot;
+
+/**
+ *
+ */
+public class ReverseAgitator extends Command {
+	public ReverseAgitator() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.drive);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		Robot.agitator.reverse();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 : 1;
-		Robot.drive.mecanumDrive(Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(4)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
+		Robot.agitator.reverse();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -38,5 +40,4 @@ public class mecanumDrive extends Command {
 	@Override
 	protected void interrupted() {
 	}
-
 }

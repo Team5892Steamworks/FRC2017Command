@@ -9,9 +9,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
 
 public class Robot extends IterativeRobot {
 
@@ -20,19 +22,31 @@ public class Robot extends IterativeRobot {
 	public static RobotMap map;
 	public static Drive drive;
 	public static Agitator agitator;
+	public static ShooterSpeedSubsystem shooterSpeedSubsystem;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	@Override
 	public void robotInit() {
-		oi = new OI();
+		
+		// Initialize RobotMap
 		map = new RobotMap();
-		//chooser.addDefault("Default Auto", new ExampleCommand());
-		//chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
+		
+		// Initialize subystems
+		agitator = new Agitator(); agitator.enable();
 		drive = new Drive();
-		agitator = new Agitator();
+		shooterSpeedSubsystem = new ShooterSpeedSubsystem();
+		
+		// Initialize OI
+		oi = new OI();
+		
+		// Initialize autonomouses <- totally a word
+		chooser.addDefault("Default Auto", new ExampleCommand());
+		chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
+		SmartDashboard.putData("Auto mode", chooser);
+		
+		
 		//chooser.addObject("My Auto", new MyAutoCommand());
-		//SmartDashboard.putData("Auto mode", chooser);
 	}
 	@Override
 	public void disabledInit() {

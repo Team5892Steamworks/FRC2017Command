@@ -5,12 +5,11 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5892.robot.commands.agitator;
+import org.usfirst.frc.team5892.robot.commands.ReverseAgitator;
 import org.usfirst.frc.team5892.robot.commands.intake;
 
-
-import org.usfirst.frc.team5892.robot.commands.agitator;
 
 import org.usfirst.frc.team5892.robot.commands.intake;
 
@@ -53,10 +52,8 @@ public class OI {
 	
 	public Button intake = new JoystickButton(pilot, 6);
 	public Button shooter = new JoystickButton(copilot, 2);
-	
-	//Going to start renaming our button layout
-	public Button a = new JoystickButton(pilot, 6),
-			b = new JoystickButton(copilot, 2);
+	public Button agitator_rv = new JoystickButton(copilot, 3);
+	public Button agitator_da = new JoystickButton(copilot, 4);
 	
 	
 	//public Button agitate = new JoystickButton(copilot, 1);
@@ -65,6 +62,9 @@ public class OI {
 		shooter.whileActive(new shooter());
 		
 		intake.whileActive(new intake());
+		
+		agitator_rv.whenPressed(new ReverseAgitator());
+		agitator_da.whenPressed(new DisableAgitator());
 		
 /*		shooter.whileHeld(new shooter());
 

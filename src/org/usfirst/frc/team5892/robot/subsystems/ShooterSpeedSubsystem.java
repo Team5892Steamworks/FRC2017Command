@@ -22,7 +22,7 @@ public class ShooterSpeedSubsystem extends PIDSubsystem {
 	public static final double FINAL_SPEED = 0.5;
 	public static final double ZERO_SPEED = 0.0;
 	
-	private Victor motor = new Victor(RobotMap.shooterMotor);
+	private Victor motor = new Victor(RobotMap.flywheel);
 	private Encoder enc = new Encoder(0, 1, false, Encoder.EncodingType.k2X);
 	private AnalogInput encA = new AnalogInput(RobotMap.encoderAnalog);
 	
