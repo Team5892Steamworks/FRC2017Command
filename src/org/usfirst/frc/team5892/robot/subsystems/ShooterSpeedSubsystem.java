@@ -9,9 +9,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 
-/**
- *
- */
+
 public class ShooterSpeedSubsystem extends PIDSubsystem {
 
     // Initialize your subsystem here
@@ -22,13 +20,14 @@ public class ShooterSpeedSubsystem extends PIDSubsystem {
 	public static final double FINAL_SPEED = 0.5;
 	public static final double ZERO_SPEED = 0.0;
 	
-	private Victor motor = new Victor(RobotMap.flywheel);
-	private Encoder enc = new Encoder(0, 1, false, Encoder.EncodingType.k2X);
-	private AnalogInput encA = new AnalogInput(RobotMap.encoderAnalog);
+	private Victor motor;
+	private Encoder enc = new Encoder(7, 8, false, Encoder.EncodingType.k2X);
+	//private AnalogInput encA = new AnalogInput(RobotMap.encoderAnalog);
 	
     public ShooterSpeedSubsystem() {
     	super("ShooterSpeedSubsystem",Kp, Ki, Kd);
     	setSetpoint(FINAL_SPEED);
+    	//motor  = new Victor(RobotMap.flywheel);
     	
     	enable();
         // Use these to get going:
@@ -46,13 +45,14 @@ public class ShooterSpeedSubsystem extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return encA.getVoltage();
+        return enc.getRate();
     }
 
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	motor.set(output);
+    	
+    	motor.pidWrite(output);
     }
 
     //To display encoder values to Smart Dashboard

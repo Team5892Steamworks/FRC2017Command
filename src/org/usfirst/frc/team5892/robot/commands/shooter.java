@@ -2,13 +2,14 @@ package org.usfirst.frc.team5892.robot.commands;
 
 import org.usfirst.frc.team5892.robot.Robot;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class shooter extends Command {
-	Victor flywheel = new Victor(1);
+	Preferences prefs;
+	Victor flywheel = new Victor(5);
 	Victor feeder = new Victor(4);
 	public shooter() {
 		// Use requires() here to declare subsystem dependencies
@@ -17,7 +18,7 @@ public class shooter extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		flywheel.set(-.7);
+		flywheel.set(-0.7);
 		Timer.delay(.7);
 	}
 
@@ -25,7 +26,7 @@ public class shooter extends Command {
 	@Override
 	protected void execute() {
 		feeder.set(.5);
-		flywheel.set(-.7);
+		flywheel.set(-0.7);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

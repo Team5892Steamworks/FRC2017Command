@@ -7,7 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.commands.PControlShoot;
 import org.usfirst.frc.team5892.robot.commands.ReverseAgitator;
+import org.usfirst.frc.team5892.robot.commands.ShootBall;
 import org.usfirst.frc.team5892.robot.commands.intake;
 
 
@@ -59,12 +61,15 @@ public class OI {
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
 	public OI(){
-		shooter.whileActive(new shooter());
+		//shooter.whileActive(new shooter());
+		
+		shooter.whileActive(new PControlShoot());
+		
 		
 		intake.whileActive(new intake());
 		
 		agitator_rv.whenPressed(new ReverseAgitator());
-		agitator_da.whenPressed(new DisableAgitator());
+		agitator_da.whileActive(new DisableAgitator());
 		
 /*		shooter.whileHeld(new shooter());
 

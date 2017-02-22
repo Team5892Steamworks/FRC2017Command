@@ -22,8 +22,8 @@ public class RobotMap {
 	//public static int shooterMotor = 1;
 	public static int encoderAnalog = 1;
 
-	public static int agitator = 4;
+	public static int agitator = 0;
 	public static int intake = 9;
 	public static int flywheel = 1;
-	public static int feeder = 0;
+	public static int feeder = 4;
 }
