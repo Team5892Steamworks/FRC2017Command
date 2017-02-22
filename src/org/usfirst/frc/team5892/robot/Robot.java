@@ -12,10 +12,12 @@ import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
 
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final ShooterSpeedSubsystem shooterSpeedSubsystem = new ShooterSpeedSubsystem();
 	public static OI oi;
 	public static RobotMap map;
 	public static Drive drive;

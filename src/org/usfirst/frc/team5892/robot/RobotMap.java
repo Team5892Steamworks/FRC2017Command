@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Victor;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap {/*
+public class RobotMap {
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;
@@ -17,19 +17,14 @@ public class RobotMap {/*
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
-<<<<<<< HEAD
-	
+	// public static int rangefinderModule = 1;	
 	public static int shooterMotor = 1;
 	public static int encoderAnalog = 1;
-=======
 	public Victor agitator;
 	public Victor flywheel;
 	public Victor feeder;
 	
 	RobotMap() {
 		agitator = new Victor(0);
-	}*/
->>>>>>> 04638caa1fd3d387cbc50990944895f36a26bf22
-	
+	}	
 }
