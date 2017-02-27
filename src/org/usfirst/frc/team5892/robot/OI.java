@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5892.robot.commands.PControlShoot;
+
 import org.usfirst.frc.team5892.robot.commands.ReverseAgitator;
 import org.usfirst.frc.team5892.robot.commands.ShootBall;
 import org.usfirst.frc.team5892.robot.commands.intake;
@@ -63,7 +63,7 @@ public class OI {
 	public OI(){
 		//shooter.whileActive(new shooter());
 		
-		shooter.whileActive(new PControlShoot());
+		//shooter.whileActive(new PControlShoot());
 		
 		
 		intake.whileActive(new intake());
