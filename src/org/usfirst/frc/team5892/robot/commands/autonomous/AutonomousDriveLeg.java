@@ -1,36 +1,49 @@
-package org.usfirst.frc.team5892.robot.commands;
-
-import org.usfirst.frc.team5892.robot.Robot;
+package org.usfirst.frc.team5892.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class mecanumDrive extends Command {
-	public mecanumDrive() {
+import org.usfirst.frc.team5892.robot.Robot;
+
+/**
+ *
+ */
+public class AutonomousDriveLeg extends Command {
+	
+	double xAxis;
+	double yAxis;
+	double twist;
+	
+	public AutonomousDriveLeg(double xAxis_, double yAxis_, double twist_, double duration) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drive);
+		xAxis = xAxis_;
+		yAxis = yAxis_;
+		twist = twist_;
+		setTimeout(duration);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		Robot.drive.mecanumDrive(xAxis, yAxis, twist);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 : 1;
-		Robot.drive.mecanumDrive(Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(4)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return isTimedOut();
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		Robot.drive.mecanumDrive(0, 0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
@@ -38,5 +51,4 @@ public class mecanumDrive extends Command {
 	@Override
 	protected void interrupted() {
 	}
-
 }
