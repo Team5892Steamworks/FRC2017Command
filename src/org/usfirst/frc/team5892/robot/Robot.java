@@ -13,17 +13,18 @@ import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAu
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
+import org.usfirst.frc.team5892.robot.subsystems.Shooter;
+//import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
 
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	//public static final ShooterSpeedSubsystem shooterSpeedSubsystem = new ShooterSpeedSubsystem();
+	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); 
+
 	public static OI oi;
 	public static RobotMap map;
 	public static Drive drive;
 	public static Agitator agitator;
-	public static ShooterSpeedSubsystem shooterSpeedSubsystem;
+	public static Shooter shooterSpeedSubsystem;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -36,7 +37,8 @@ public class Robot extends IterativeRobot {
 		// Initialize subystems
 		agitator = new Agitator(); agitator.enable();
 		drive = new Drive();
-		shooterSpeedSubsystem = new ShooterSpeedSubsystem();
+		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
+		shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		
 		// Initialize OI
 		oi = new OI();

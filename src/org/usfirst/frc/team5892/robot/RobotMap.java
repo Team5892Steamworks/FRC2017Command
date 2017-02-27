@@ -17,14 +17,13 @@ public class RobotMap {
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;	
-	public static int shooterMotor = 1;
-	public static int encoderAnalog = 1;
-	public Victor agitator;
-	public Victor flywheel;
-	public Victor feeder;
+	// public static int rangefinderModule = 1;
 	
-	RobotMap() {
-		agitator = new Victor(0);
-	}	
+	//public static int shooterMotor = 1;
+	public static int encoderAnalog = 1;
+
+	public static int agitator = 0;
+	public static int intake = 9;
+	public static int flywheel = 1;
+	public static int feeder = 4;
 }

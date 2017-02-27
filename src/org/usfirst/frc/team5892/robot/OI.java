@@ -5,12 +5,13 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
-//import org.usfirst.frc.team5892.robot.commands.agitator;
+
+import org.usfirst.frc.team5892.robot.commands.ReverseAgitator;
+import org.usfirst.frc.team5892.robot.commands.ShootBall;
 import org.usfirst.frc.team5892.robot.commands.intake;
 
-
-//import org.usfirst.frc.team5892.robot.commands.agitator;
 
 import org.usfirst.frc.team5892.robot.commands.intake;
 
@@ -49,50 +50,32 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	public Joystick pilot = new Joystick(1);
-	public Button X = new JoystickButton(pilot,1),
-				  A = new JoystickButton(pilot,2),
-				  B = new JoystickButton(pilot,3),
-				  Y = new JoystickButton(pilot,4),
-				  LB = new JoystickButton(pilot,5),
-				  RB = new JoystickButton(pilot,6),
-			      LT = new JoystickButton(pilot,7),
-			      RT = new JoystickButton(pilot,8),
-				  BACK = new JoystickButton(pilot,9),
-				  START = new JoystickButton(pilot,10);
-		
 	public Joystick copilot = new Joystick(2);
-	public Button cX = new JoystickButton(copilot,1),
-					cA = new JoystickButton(copilot,2),
-					cB = new JoystickButton(copilot,3),
-					cY = new JoystickButton(copilot,4),
-					cLB = new JoystickButton(copilot,5),
-					cRB = new JoystickButton(copilot,6),
-					cLT = new JoystickButton(copilot,7),
-					cRT = new JoystickButton(copilot,8),
-					cBACK = new JoystickButton(copilot,9),
-					cSTART = new JoystickButton(copilot,10);
-			
 	
 	public Button intake = new JoystickButton(pilot, 6);
 	public Button shooter = new JoystickButton(copilot, 2);
-	
-	//Going to start renaming our button layout
-	public Button a = new JoystickButton(pilot, 6),
-			b = new JoystickButton(copilot, 2);
+	public Button agitator_rv = new JoystickButton(copilot, 3);
+	public Button agitator_da = new JoystickButton(copilot, 4);
 	
 	
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
 	public OI(){
-		shooter.whileActive(new shooter());
+		//shooter.whileActive(new shooter());
+		
+		//shooter.whileActive(new PControlShoot());
+		
 		
 		intake.whileActive(new intake());
 		
-	shooter.whileHeld(new shooter());
+		agitator_rv.whenPressed(new ReverseAgitator());
+		agitator_da.whileActive(new DisableAgitator());
+		
+/*		shooter.whileHeld(new shooter());
 
-		//agitate.whileHeld(new agitator());
+		agitate.whileHeld(new agitator());
 
-		intake.whileActive(new intake()); 
+		intake.whileActive(new intake()); */
 
 
 	}

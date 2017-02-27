@@ -38,7 +38,6 @@ public class DisableAgitator extends Command {
 	@Override
 	protected void end() {
 		Robot.agitator.enable();
-		if (prev == AgitatorState.REVERSED) Robot.agitator.reverse();
 	}
 
 	// Called when another command which requires one or more of the same
@@ -46,6 +45,5 @@ public class DisableAgitator extends Command {
 	@Override
 	protected void interrupted() {
 		Robot.agitator.enable();
-		if (prev == AgitatorState.REVERSED) Robot.agitator.reverse();
 	}
 }

@@ -4,9 +4,6 @@ import org.usfirst.frc.team5892.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class ShootBall extends Command {
 
 	private double setpoint;
