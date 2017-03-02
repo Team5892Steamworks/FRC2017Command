@@ -8,9 +8,11 @@ import org.usfirst.frc.team5892.robot.Robot;
  *
  */
 public class AutonomousWaitLeg extends Command {
-	public AutonomousWaitLeg(double time) {
+	
+	double time;
+	public AutonomousWaitLeg(double time_) {
 		// Use requires() here to declare subsystem dependencies
-		setTimeout(time);
+		time = time_;
 	}
 
 	// Called just before this Command runs the first time
@@ -26,7 +28,7 @@ public class AutonomousWaitLeg extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return isTimedOut();
+		return timeSinceInitialized() >= time;
 	}
 
 	// Called once after isFinished returns true

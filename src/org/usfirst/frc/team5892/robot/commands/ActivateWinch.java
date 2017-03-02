@@ -1,14 +1,21 @@
 package org.usfirst.frc.team5892.robot.commands;
 
-
-import org.usfirst.frc.team5892.robot.Robot;
-
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class mecanumDrive extends Command {
-	public mecanumDrive() {
+import org.usfirst.frc.team5892.robot.Robot;
+import org.usfirst.frc.team5892.robot.RobotMap;
+
+/**
+ *
+ */
+public class ActivateWinch extends Command {
+	
+	private static Victor winch = new Victor(RobotMap.winch);
+	private double power;
+	public ActivateWinch(double power_) {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.drive);
+		power = power_;
 	}
 
 	// Called just before this Command runs the first time
@@ -19,8 +26,7 @@ public class mecanumDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 : 1;
-		Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(0)*mult, -Robot.oi.pilot.getRawAxis(4)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
+		winch.set(power);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -32,12 +38,13 @@ public class mecanumDrive extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		winch.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		winch.set(0);
 	}
-
 }

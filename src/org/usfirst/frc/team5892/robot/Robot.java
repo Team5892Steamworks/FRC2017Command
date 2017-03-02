@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team5892.robot;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.ScoreGearAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous._360NoScopeAuto;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
@@ -19,6 +22,7 @@ import org.usfirst.frc.team5892.robot.subsystems.Shooter;
 
 public class Robot extends IterativeRobot {
 
+	public static final boolean INCLUDE_LULZ_AUTONOMI = true;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); 
 
 	public static OI oi;
@@ -44,14 +48,20 @@ public class Robot extends IterativeRobot {
 		// Initialize OI
 		oi = new OI();
 		
-		// Initialize autonomouses <- totally a word
+		// Initialize autonomi <- totally a word
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
+		chooser.addObject("Score a Gear (WIP)", new ScoreGearAuto());
+		if (INCLUDE_LULZ_AUTONOMI) {
+			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
+		}
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		// Initialize CameraServer
-		CameraServer.getInstance().startAutomaticCapture();
-		
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+        camera.setResolution(320, 240);
+        CameraServer.getInstance().getVideo();
+        CameraServer.getInstance().putVideo("Blur", 320, 240);
 		
 		//chooser.addObject("My Auto", new MyAutoCommand());
 	}
