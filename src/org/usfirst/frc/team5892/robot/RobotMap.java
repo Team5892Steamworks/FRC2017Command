@@ -26,4 +26,5 @@ public class RobotMap {
 	public static int intake = 9;
 	public static int flywheel = 1;
 	public static int feeder = 4;
+	public static int winch = 5;
 }

@@ -18,7 +18,7 @@ public class Drive extends Subsystem {
 	 *     - PWM 8 - Connected to front right drive motor
 	 *     - PWM 2 - Connected to rear right drive motor
 	 */
-	RobotDrive m_robotDrive = new RobotDrive(3, 7, 8, 2);
+	RobotDrive m_robotDrive = new RobotDrive(3, 7, 2, 8);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
