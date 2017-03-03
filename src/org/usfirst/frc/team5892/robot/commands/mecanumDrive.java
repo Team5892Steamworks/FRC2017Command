@@ -20,7 +20,7 @@ public class mecanumDrive extends Command {
 	@Override
 	protected void execute() {
 		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 : 1;
-		Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(0)*mult, -Robot.oi.pilot.getRawAxis(4)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
+		Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(4)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

@@ -58,7 +58,7 @@ public class OI {
 	public Button agitator_rv = new JoystickButton(copilot, 3);
 	public Button agitator_da = new JoystickButton(copilot, 4);
 	
-	public Button winch_pos = new JoystickButton(copilot, 5);
+	//public Button winch_pos = new JoystickButton(copilot, 5);
 	public Button winch_neg = new JoystickButton(copilot, 6);
 	
 	//public Button agitate = new JoystickButton(copilot, 1);
@@ -74,8 +74,8 @@ public class OI {
 		agitator_rv.whenPressed(new ReverseAgitator());
 		agitator_da.whileActive(new DisableAgitator());
 		
-		winch_pos.whileActive(new ActivateWinch(0.2));
-		winch_neg.whileActive(new ActivateWinch(-.2));
+		//winch_pos.whileActive(new ActivateWinch(0.8));
+		winch_neg.whileActive(new ActivateWinch(-.8));
 		
 /*		shooter.whileHeld(new shooter());
 
