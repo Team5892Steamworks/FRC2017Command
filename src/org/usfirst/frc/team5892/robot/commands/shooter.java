@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 
+@Deprecated
 public class shooter extends Command {
 	Preferences prefs;
 	Victor flywheel = new Victor(5);

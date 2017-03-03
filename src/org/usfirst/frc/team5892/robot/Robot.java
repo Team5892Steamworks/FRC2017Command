@@ -23,7 +23,7 @@ import org.usfirst.frc.team5892.robot.subsystems.Shooter;
 
 public class Robot extends IterativeRobot {
 
-	public static final boolean INCLUDE_LULZ_AUTONOMI = true;
+	public static final boolean INCLUDE_LULZ_AUTONOMI = false;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); 
 
 	public static OI oi;
