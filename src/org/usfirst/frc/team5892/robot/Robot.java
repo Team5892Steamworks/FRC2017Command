@@ -14,6 +14,7 @@ import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.ScoreGearAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous._360NoScopeAuto;
+import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
@@ -22,7 +23,7 @@ import org.usfirst.frc.team5892.robot.subsystems.Shooter;
 
 public class Robot extends IterativeRobot {
 
-	public static final boolean INCLUDE_LULZ_AUTONOMI = true;
+	public static final boolean INCLUDE_LULZ_AUTONOMI = false;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); 
 
 	public static OI oi;
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static Agitator agitator;
 	public static Shooter shooterSpeedSubsystem;
+	public static Accelerometer accelerometer;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 

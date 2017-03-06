@@ -68,14 +68,14 @@ public class OI {
 		
 		//shooter.whileActive(new PControlShoot());
 		
-		
+		//shooter.whileActive(new ShootBall(40000));
 		intake.whileActive(new intake());
 		
 		agitator_rv.whenPressed(new ReverseAgitator());
 		agitator_da.whileActive(new DisableAgitator());
 		
-		winch_pos.whileActive(new ActivateWinch(0.2));
-		winch_neg.whileActive(new ActivateWinch(-.2));
+		winch_pos.whileActive(new ActivateWinch(0.5));
+		winch_neg.whileActive(new ActivateWinch(-.8));
 		
 /*		shooter.whileHeld(new shooter());
 

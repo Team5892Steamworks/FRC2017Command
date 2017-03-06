@@ -1,16 +1,27 @@
 package org.usfirst.frc.team5892.robot.commands;
 
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5892.robot.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-public class mecanumDrive extends Command {
-	public mecanumDrive() {
+/**
+ *
+ */
+public class AccelerometerUpdate extends Command {
+	
+	BuiltInAccelerometer acc = new BuiltInAccelerometer();
+	final double fps = 32.17404855643044;
+	public AccelerometerUpdate() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.drive);
+		requires(Robot.accelerometer);
 	}
 
+
+	
+	
+	
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
@@ -19,14 +30,17 @@ public class mecanumDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 : 1;
-		Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(4)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
+		double x = acc.getX() * fps;
+		double z = acc.getZ() * fps;
+		SmartDashboard.putNumber("Accelerometer X", x);
+		SmartDashboard.putNumber("Accelerometer Z", z);
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	// Called once after isFinished returns true
@@ -39,5 +53,4 @@ public class mecanumDrive extends Command {
 	@Override
 	protected void interrupted() {
 	}
-
 }
