@@ -3,9 +3,11 @@ package org.usfirst.frc.team5892.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
+import org.usfirst.frc.team5892.robot.commands.DecreaseDriveBase;
 import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 
@@ -17,6 +19,8 @@ import org.usfirst.frc.team5892.robot.commands.intake;
 import org.usfirst.frc.team5892.robot.commands.intake;
 
 import org.usfirst.frc.team5892.robot.commands.shooter;
+import org.usfirst.frc.team5892.robot.triggers.BatteryVoltageTrigger;
+import org.usfirst.frc.team5892.robot.triggers.POVTrigger;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -58,8 +62,12 @@ public class OI {
 	public Button agitator_rv = new JoystickButton(copilot, 3);
 	public Button agitator_da = new JoystickButton(copilot, 4);
 	
-	public Button winch_pos = new JoystickButton(copilot, 5);
-	public Button winch_neg = new JoystickButton(copilot, 6);
+	public Button winch_rev = new JoystickButton(copilot, 5);
+	public Button winch_fwd = new JoystickButton(copilot, 6);
+	
+	public Trigger dpad_up = new POVTrigger(copilot, 0);
+	
+	public Trigger batt_low = new BatteryVoltageTrigger(7.2);
 	
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
@@ -74,8 +82,10 @@ public class OI {
 		agitator_rv.whenPressed(new ReverseAgitator());
 		agitator_da.whileActive(new DisableAgitator());
 		
-		winch_pos.whileActive(new ActivateWinch(0.5));
-		winch_neg.whileActive(new ActivateWinch(-.8));
+		winch_rev.whileActive(new ActivateWinch(0.5));
+		winch_fwd.whileActive(new ActivateWinch(-.8));
+		
+		batt_low.whileActive(new DecreaseDriveBase(0.02));
 		
 /*		shooter.whileHeld(new shooter());
 

@@ -4,6 +4,7 @@ package org.usfirst.frc.team5892.robot.commands;
 import org.usfirst.frc.team5892.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class mecanumDrive extends Command {
 	public mecanumDrive() {
@@ -19,7 +20,9 @@ public class mecanumDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 : 1;
+		double base = Robot.drive.get_base();
+		SmartDashboard.putNumber("Drive Base Multiplier", base);
+		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 * base : base;
 		Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(4)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
 	}
 
