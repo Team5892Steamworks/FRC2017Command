@@ -19,6 +19,7 @@ public class Drive extends Subsystem {
 	 *     - PWM 2 - Connected to rear right drive motor
 	 */
 	RobotDrive m_robotDrive = new RobotDrive(3, 7, 2, 8);
+	double base = 1;
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -27,6 +28,14 @@ public class Drive extends Subsystem {
     }
     public void mecanumDrive(double xAxis, double yAxis, double twist){
     	m_robotDrive.mecanumDrive_Cartesian(xAxis, yAxis, twist,0);
+    }
+    
+    public void set_base(double base_) {
+    	base = base_;
+    }
+    
+    public double get_base() {
+    	return base;
     }
 }
 
