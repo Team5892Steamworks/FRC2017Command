@@ -67,7 +67,7 @@ public class OI {
 	
 	public Trigger dpad_up = new POVTrigger(copilot, 0);
 	
-	public Trigger batt_low = new BatteryVoltageTrigger(7.2);
+	//public Trigger batt_low = new BatteryVoltageTrigger(7.2);
 	
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
@@ -85,7 +85,7 @@ public class OI {
 		winch_rev.whileActive(new ActivateWinch(0.5));
 		winch_fwd.whileActive(new ActivateWinch(-.8));
 		
-		batt_low.whileActive(new DecreaseDriveBase(0.02));
+		//batt_low.whileActive(new DecreaseDriveBase(0.02));
 		
 /*		shooter.whileHeld(new shooter());
 
