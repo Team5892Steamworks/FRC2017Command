@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooterSpeedSubsystem;
 	public static Accelerometer accelerometer;
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser<Command> chooser;
 
 	@Override
 	public void robotInit() {
@@ -51,13 +51,14 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		
 		// Initialize autonomi <- totally a word
+		chooser = new SendableChooser<>();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
 		chooser.addObject("Score a Gear (WIP)", new ScoreGearAuto());
 		if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}
-		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Autonomous mode", chooser);
 		
 		// Initialize CameraServer
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -66,6 +67,7 @@ public class Robot extends IterativeRobot {
         CameraServer.getInstance().putVideo("Blur", 160, 120);
 		
 		//chooser.addObject("My Auto", new MyAutoCommand());
+        //SmartDashboard.putData(Scheduler.getInstance());
 	}
 	@Override
 	public void disabledInit() {
