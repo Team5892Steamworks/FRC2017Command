@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5892.robot.subsystems;
 
+import org.usfirst.frc.team5892.robot.Robot;
 import org.usfirst.frc.team5892.robot.commands.mecanumDrive;
 
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -18,7 +19,10 @@ public class Drive extends Subsystem {
 	 *     - PWM 8 - Connected to front right drive motor
 	 *     - PWM 2 - Connected to rear right drive motor
 	 */
-	RobotDrive m_robotDrive = new RobotDrive(3, 7, 2, 8);
+	RobotDrive m_robotDrive = new RobotDrive(Robot.map.driveTrain[0],
+			Robot.map.driveTrain[1],
+			Robot.map.driveTrain[2],
+			Robot.map.driveTrain[3]);
 	double base = 1;
 	
     public void initDefaultCommand() {
@@ -27,7 +31,7 @@ public class Drive extends Subsystem {
     	setDefaultCommand(new mecanumDrive());
     }
     public void mecanumDrive(double xAxis, double yAxis, double twist){
-    	m_robotDrive.mecanumDrive_Cartesian(xAxis, yAxis, twist,0);
+    	m_robotDrive.mecanumDrive_Cartesian(xAxis, yAxis, twist, 0);
     }
     
     public void set_base(double base_) {

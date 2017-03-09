@@ -11,9 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous.ScoreGearAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous._360NoScopeAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.*;
 import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
@@ -23,14 +21,14 @@ import org.usfirst.frc.team5892.robot.subsystems.Shooter;
 
 public class Robot extends IterativeRobot {
 
-	public static final boolean INCLUDE_LULZ_AUTONOMI = false;
+	//public static final boolean INCLUDE_LULZ_AUTONOMI = false;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); 
 
 	public static OI oi;
-	public static RobotMap map;
+	public static RobotMapA map;
 	public static Drive drive;
 	public static Agitator agitator;
-	public static Shooter shooterSpeedSubsystem;
+	//public static Shooter shooterSpeedSubsystem;
 	public static Accelerometer accelerometer;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
@@ -39,25 +37,27 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		
 		// Initialize RobotMap
-		map = new RobotMap();
+		map = new CompetitionBot();
 		
-		// Initialize subystems
+		// Initialize subsystems
 		agitator = new Agitator(); agitator.enable();
 		drive = new Drive();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
-		shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
+		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		
 		// Initialize OI
 		oi = new OI();
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
-		chooser.addDefault("Default Auto", new ExampleCommand());
-		chooser.addObject("Drive Forwards and Spin", new DriveForwardsAndSpinAuto());
-		chooser.addObject("Score a Gear (WIP)", new ScoreGearAuto());
-		if (INCLUDE_LULZ_AUTONOMI) {
+		chooser.addDefault("Do Nothing", new ExampleCommand());
+		chooser.addObject("Test Movement", new DriveForwardsAndSpinAuto());
+		chooser.addObject("Score a Gear and Sit There", new ScoreGearAuto(false));
+		chooser.addObject("Score a Gear and Get to the Hoppah", new ScoreGearAuto(true));
+		chooser.addObject("Go Forwards", new BoringForwardsAuto());
+		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
-		}
+		}*/
 		SmartDashboard.putData("Autonomous mode", chooser);
 		
 		// Initialize CameraServer

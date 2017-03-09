@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5892.robot.subsystems;
 
 
+import org.usfirst.frc.team5892.robot.Robot;
 import org.usfirst.frc.team5892.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -22,8 +23,9 @@ public class ShooterSpeedSubsystem extends PIDSubsystem {
 	public static final double FINAL_SPEED = 0.5;
 	public static final double ZERO_SPEED = 0.0;
 	
-	private Victor motor = new Victor(RobotMap.flywheel);
+	private Victor motor = new Victor(Robot.map.flywheel);
 	private Encoder enc = new Encoder(0, 1, false, Encoder.EncodingType.k2X);
+	@SuppressWarnings("deprecation")
 	private AnalogInput encA = new AnalogInput(RobotMap.encoderAnalog);
 	
     public ShooterSpeedSubsystem() {

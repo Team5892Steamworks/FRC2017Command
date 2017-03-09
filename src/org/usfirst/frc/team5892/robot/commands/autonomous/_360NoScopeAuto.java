@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5892.robot.commands.autonomous;
+/*package org.usfirst.frc.team5892.robot.commands.autonomous;
 
 import org.usfirst.frc.team5892.robot.commands.ShootBall;
 
@@ -11,3 +11,4 @@ public class _360NoScopeAuto extends CommandGroup {
     	addSequential(new ShootBall(40000));
     }
 }
+*/

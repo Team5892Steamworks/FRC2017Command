@@ -4,14 +4,13 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.Robot;
-import org.usfirst.frc.team5892.robot.RobotMap;
 
 /**
  *
  */
 public class ActivateWinch extends Command {
 	
-	private static Victor winch = new Victor(RobotMap.winch);
+	private static Victor winch = new Victor(Robot.map.winch);
 	private double power;
 	public ActivateWinch(double power_) {
 		// Use requires() here to declare subsystem dependencies

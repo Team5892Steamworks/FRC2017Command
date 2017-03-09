@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5892.robot.subsystems;
 
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -9,7 +11,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class Shooter extends PIDSubsystem {
 
-	Victor shooter = new Victor(1);
+	Victor shooter = new Victor(Robot.map.flywheel);
 	Encoder tach = new Encoder(8, 7);
 	
     public Shooter(double p, double i, double d, double period, double f) {

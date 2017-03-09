@@ -6,19 +6,21 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team5892.robot.commands.ActivateFlashlight;
 import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
 import org.usfirst.frc.team5892.robot.commands.DecreaseDriveBase;
 import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 
 import org.usfirst.frc.team5892.robot.commands.ReverseAgitator;
-import org.usfirst.frc.team5892.robot.commands.ShootBall;
+//import org.usfirst.frc.team5892.robot.commands.ShootBall;
 import org.usfirst.frc.team5892.robot.commands.intake;
 
 
 import org.usfirst.frc.team5892.robot.commands.intake;
 
 import org.usfirst.frc.team5892.robot.commands.shooter;
+import org.usfirst.frc.team5892.robot.triggers.AnalogAxisTrigger;
 import org.usfirst.frc.team5892.robot.triggers.BatteryVoltageTrigger;
 import org.usfirst.frc.team5892.robot.triggers.POVTrigger;
 
@@ -66,25 +68,29 @@ public class OI {
 	public Button winch_fwd = new JoystickButton(copilot, 6);
 	
 	public Trigger dpad_up = new POVTrigger(copilot, 0);
+	public Trigger intake_cp = new AnalogAxisTrigger(copilot, 2);
+	public Trigger light = new AnalogAxisTrigger(copilot, 3);
 	
 	//public Trigger batt_low = new BatteryVoltageTrigger(7.2);
 	
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
 	public OI(){
-		//shooter.whileActive(new shooter());
+		shooter.whileActive(new shooter());
 		
 		//shooter.whileActive(new PControlShoot());
 		
 		//shooter.whileActive(new ShootBall(40000));
-		intake.whileActive(new intake());
+		//intake.whileActive(new intake());
+		intake_cp.whileActive(new intake());
 		
-		agitator_rv.whenPressed(new ReverseAgitator());
+		//agitator_rv.whenPressed(new ReverseAgitator());
 		agitator_da.whileActive(new DisableAgitator());
 		
 		winch_rev.whileActive(new ActivateWinch(0.5));
 		winch_fwd.whileActive(new ActivateWinch(-.8));
 		
+		light.whileActive(new ActivateFlashlight());
 		//batt_low.whileActive(new DecreaseDriveBase(0.02));
 		
 /*		shooter.whileHeld(new shooter());

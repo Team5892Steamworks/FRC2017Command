@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5892.robot.subsystems;
 
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -15,7 +17,7 @@ public class Agitator extends Subsystem {
 		REVERSED;
 	}
 	
-	public Victor agitator = new Victor(0);
+	public Victor agitator = new Victor(Robot.map.agitator);
 	public final double power = -0.5;
     private AgitatorState state = AgitatorState.DISABLED;
 	
