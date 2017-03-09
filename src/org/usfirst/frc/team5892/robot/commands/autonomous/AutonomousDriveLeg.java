@@ -31,7 +31,7 @@ public class AutonomousDriveLeg extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
-	protected void execute() {
+	protected final void execute() {
 		Robot.drive.mecanumDrive(xAxis, twist, yAxis);
 	}
 
@@ -43,13 +43,13 @@ public class AutonomousDriveLeg extends Command {
 
 	// Called once after isFinished returns true
 	@Override
-	protected void end() {
+	protected final void end() {
 		Robot.drive.mecanumDrive(0, 0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
-	protected void interrupted() {
+	protected final void interrupted() {
 	}
 }
