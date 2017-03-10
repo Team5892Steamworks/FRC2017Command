@@ -88,7 +88,7 @@ public class OI {
 		agitator_da.whileActive(new DisableAgitator());
 		
 		winch_rev.whileActive(new ActivateWinch(0.5));
-		winch_fwd.whileActive(new ActivateWinch(-.8));
+		winch_fwd.whileActive(new ActivateWinch(-1));
 		
 		light.whileActive(new ActivateFlashlight());
 		//batt_low.whileActive(new DecreaseDriveBase(0.02));

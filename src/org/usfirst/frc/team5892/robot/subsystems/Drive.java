@@ -14,10 +14,10 @@ public class Drive extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	/*
-	 *     - PWM 3 - Connected to front left drive motor
-	 *     - PWM 7 - Connected to rear left drive motor
+	 *     - PWM 7 - Connected to front left drive motor
+	 *     - PWM 2 - Connected to rear left drive motor
 	 *     - PWM 8 - Connected to front right drive motor
-	 *     - PWM 2 - Connected to rear right drive motor
+	 *     - PWM 3 - Connected to rear right drive motor
 	 */
 	RobotDrive m_robotDrive = new RobotDrive(Robot.map.driveTrain[0],
 			Robot.map.driveTrain[1],

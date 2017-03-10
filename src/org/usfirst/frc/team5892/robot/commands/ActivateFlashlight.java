@@ -10,7 +10,7 @@ import org.usfirst.frc.team5892.robot.Robot;
  */
 public class ActivateFlashlight extends Command {
 	
-	Relay light = new Relay(9);
+	//Relay light = new Relay(9);
 	public ActivateFlashlight() {
 		// Use requires() here to declare subsystem dependencies
 		//requires(Robot.exampleSubsystem);
@@ -24,7 +24,7 @@ public class ActivateFlashlight extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		light.set(Relay.Value.kOn);
+		//light.set(Relay.Value.kOn);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -36,13 +36,13 @@ public class ActivateFlashlight extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		light.set(Relay.Value.kOff);
+		//light.set(Relay.Value.kOff);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		light.set(Relay.Value.kOff);
+		//light.set(Relay.Value.kOff);
 	}
 }
