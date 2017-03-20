@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5892.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -10,6 +11,7 @@ import org.usfirst.frc.team5892.robot.commands.ActivateFlashlight;
 import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
 import org.usfirst.frc.team5892.robot.commands.DecreaseDriveBase;
 import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
+import org.usfirst.frc.team5892.robot.commands.EnableAgitator;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 
 import org.usfirst.frc.team5892.robot.commands.ReverseAgitator;
@@ -85,10 +87,10 @@ public class OI {
 		intake_cp.whileActive(new intake());
 		
 		//agitator_rv.whenPressed(new ReverseAgitator());
-		agitator_da.whileActive(new DisableAgitator());
+		agitator_da.whileActive(new EnableAgitator());
 		
-		winch_rev.whileActive(new ActivateWinch(0.5));
-		winch_fwd.whileActive(new ActivateWinch(-1));
+		//winch_rev.whileActive(new ActivateWinch(0.5));
+		winch_fwd.whileActive(new ActivateWinch(1));
 		
 		light.whileActive(new ActivateFlashlight());
 		//batt_low.whileActive(new DecreaseDriveBase(0.02));

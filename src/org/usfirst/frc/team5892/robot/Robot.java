@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot {
 		map = new CompetitionBot();
 		
 		// Initialize subsystems
-		agitator = new Agitator(); agitator.enable();
+		agitator = new Agitator();
 		drive = new Drive();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
@@ -50,15 +50,17 @@ public class Robot extends IterativeRobot {
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
-		chooser.addDefault("Do Nothing", new ExampleCommand());
+		chooser.addObject("Do Nothing", new ExampleCommand());
 		chooser.addObject("Test Movement", new DriveForwardsAndSpinAuto());
-		chooser.addObject("Score a Gear and Sit There", new ScoreGearAuto(false));
-		chooser.addObject("Score a Gear and Get to the Hoppah", new ScoreGearAuto(true));
-		chooser.addObject("Go Forwards", new BoringForwardsAuto());
+		/*chooser.addObject("Score a Gear (Sit from Right)", new ScoreGearAuto(false, ScoreGearAuto.Position.RIGHT));
+		chooser.addObject("Score a Gear (Continue from Right)", new ScoreGearAuto(true, ScoreGearAuto.Position.RIGHT));
+		chooser.addObject("Score a Gear (Sit from Left)", new ScoreGearAuto(false, ScoreGearAuto.Position.LEFT));
+		chooser.addObject("Score a Gear (Continue from Left)", new ScoreGearAuto(true, ScoreGearAuto.Position.LEFT));*/
+		chooser.addDefault("Score Gear from Middle (Playoffs Auton)", new BoringForwardsAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!", chooser);
 		
 		// Initialize CameraServer
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
