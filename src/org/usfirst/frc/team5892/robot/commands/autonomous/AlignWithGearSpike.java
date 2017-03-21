@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 /**
  *
  */
+@Deprecated
 public class AlignWithGearSpike extends Command {
 	NetworkTable table;
 	

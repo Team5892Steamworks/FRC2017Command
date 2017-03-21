@@ -7,7 +7,8 @@ public class ScoreGearAuto extends CommandGroup {
     	double dir = position == Position.RIGHT ? 1 : -1;
     	
     	addSequential(new AutonomousDriveLeg(0, 0.2, 0, 3));       // Move forwards towards gear spike
-    	addSequential(new AutonomousDriveLeg(0, 0, dir*0.3, 0.8));   // Align with gear spike
+    	addSequential(new AutonomousDriveLeg(0, 0, dir*0.3, 0.8));   // Turn towards gear spike
+    	addSequential(new VisionGearAlign()); // where doing it man     where MAKING THIS HAPEN
     	addSequential(new AutonomousDriveLeg(0, 0.2, 0, 3));         // Push gear onto spike
     	
     	if (goForHopper) {

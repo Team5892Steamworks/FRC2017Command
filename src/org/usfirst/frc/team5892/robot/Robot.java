@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		
 		// Initialize RobotMap
-		map = new CompetitionBot();
+		map = new PracticeBot();
 		
 		// Initialize subsystems
 		agitator = new Agitator();
