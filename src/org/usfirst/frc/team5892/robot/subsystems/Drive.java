@@ -25,6 +25,12 @@ public class Drive extends Subsystem {
 			Robot.map.driveTrain[3]);
 	double base = 1;
 	
+	//TODO Remove this constructor before competition
+	public Drive() {
+		m_robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+		m_robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
