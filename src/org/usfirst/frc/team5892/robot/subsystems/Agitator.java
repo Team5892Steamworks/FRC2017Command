@@ -17,7 +17,7 @@ public class Agitator extends Subsystem {
 		REVERSED;
 	}
 	
-	public Victor agitator = new Victor(Robot.map.agitator);
+	public Victor agitator = new Victor(Robot.map.agitator.port);
 	public final double power = -0.5;
     private AgitatorState state = AgitatorState.DISABLED;
 	

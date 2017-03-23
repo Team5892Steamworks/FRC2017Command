@@ -25,7 +25,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); 
 
 	public static OI oi;
-	public static RobotMapA map;
+	public static RobotMapB map;
 	public static Drive drive;
 	public static Agitator agitator;
 	//public static Shooter shooterSpeedSubsystem;
@@ -52,10 +52,10 @@ public class Robot extends IterativeRobot {
 		chooser = new SendableChooser<>();
 		chooser.addObject("Do Nothing", new ExampleCommand());
 		chooser.addObject("Test Movement", new DriveForwardsAndSpinAuto());
-		/*chooser.addObject("Score a Gear (Sit from Right)", new ScoreGearAuto(false, ScoreGearAuto.Position.RIGHT));
+		chooser.addObject("Score a Gear (Sit from Right)", new ScoreGearAuto(false, ScoreGearAuto.Position.RIGHT));
 		chooser.addObject("Score a Gear (Continue from Right)", new ScoreGearAuto(true, ScoreGearAuto.Position.RIGHT));
 		chooser.addObject("Score a Gear (Sit from Left)", new ScoreGearAuto(false, ScoreGearAuto.Position.LEFT));
-		chooser.addObject("Score a Gear (Continue from Left)", new ScoreGearAuto(true, ScoreGearAuto.Position.LEFT));*/
+		chooser.addObject("Score a Gear (Continue from Left)", new ScoreGearAuto(true, ScoreGearAuto.Position.LEFT));
 		chooser.addDefault("Score Gear from Middle (Playoffs Auton)", new BoringForwardsAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());

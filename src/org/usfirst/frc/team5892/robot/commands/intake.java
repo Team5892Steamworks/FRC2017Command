@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class intake extends Command {
-	Victor intake = new Victor(Robot.map.intake);
+	Victor intake = new Victor(Robot.map.intake.port);
 	public intake() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.exampleSubsystem);

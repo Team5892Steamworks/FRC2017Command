@@ -10,7 +10,7 @@ import org.usfirst.frc.team5892.robot.Robot;
  */
 public class ActivateWinch extends Command {
 	
-	private static Victor winch = new Victor(Robot.map.winch);
+	private static Victor winch = new Victor(Robot.map.winch.port);
 	private double power;
 	public ActivateWinch(double power_) {
 		// Use requires() here to declare subsystem dependencies

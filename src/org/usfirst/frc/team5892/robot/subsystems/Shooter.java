@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class Shooter extends PIDSubsystem {
 
-	Victor shooter = new Victor(Robot.map.flywheel);
+	Victor shooter = new Victor(Robot.map.flywheel.port);
 	Encoder tach = new Encoder(8, 7);
 	
     public Shooter(double p, double i, double d, double period, double f) {

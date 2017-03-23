@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
 //@Deprecated
 public class shooter extends Command {
 	//Preferences prefs;
-	static Victor flywheel = new Victor(Robot.map.flywheel);
-	static Victor feeder = new Victor(Robot.map.feeder);
+	static Victor flywheel = new Victor(Robot.map.flywheel.port);
+	static Victor feeder = new Victor(Robot.map.feeder.port);
 	double duration;
 	
 	final double power = -0.7;

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5892.robot;
 
+@Deprecated
 public abstract class RobotMapA {
     public int[] driveTrain;
     public int agitator;

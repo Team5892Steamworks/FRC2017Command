@@ -1,15 +1,15 @@
 package org.usfirst.frc.team5892.robot;
 
-public class PracticeBot extends RobotMapA {
+public class PracticeBot extends RobotMapB {
     public PracticeBot() {
-    	driveTrain = new int[]{2, // front left
-    			               8, // rear left
-    			               3, // front right
-    			               7};// rear right
-    	agitator = 0;
-    	intake = 9;
-    	flywheel = 1;
-    	feeder = 4;
-    	winch = 5;
+    	driveTrain = new MotorMap[]{new MotorMap(2, false), // front left
+    			                    new MotorMap(8, true), // rear left
+    			                    new MotorMap(3, true), // front right
+    			                    new MotorMap(7, false)};// rear right
+    	agitator = new MotorMap(0, false);
+    	intake = new MotorMap(9, false);
+    	flywheel = new MotorMap(1, false);
+    	feeder = new MotorMap(4, false);
+    	winch = new MotorMap(5, false);
     }
 }
