@@ -2,6 +2,7 @@ package org.usfirst.frc.team5892.robot.commands;
 
 
 import org.usfirst.frc.team5892.robot.Robot;
+import org.usfirst.frc.team5892.robot.RobotMapB;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -20,6 +21,16 @@ public class mecanumDrive extends Command {
 	@Override
 	protected void initialize() {
 	}
+	
+	private int port(RobotMapB.ControlSetup config) {
+		if (config == RobotMapB.ControlSetup.xAxis) return 0;
+		else if (config == RobotMapB.ControlSetup.yAxis) return 1;
+		else return 4;
+	}
+	
+	private int inv(RobotMapB.ControlSetup config) {
+		return config.inverted ? -1 : 1;
+	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
@@ -28,7 +39,10 @@ public class mecanumDrive extends Command {
 		SmartDashboard.putNumber("Drive Base Multiplier", base);
 		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 * base : base;
 		// TODO Reverse 4 and 0 before competition and un-negate
-		Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(4)*mult, -Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
+		//Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(4)*mult, -Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
+		Robot.drive.mecanumDrive(Robot.oi.pilot.getRawAxis(port(Robot.map.controlSetup[0])) * inv(Robot.map.controlSetup[0]),
+				                 Robot.oi.pilot.getRawAxis(port(Robot.map.controlSetup[1])) * inv(Robot.map.controlSetup[1]),
+				                 Robot.oi.pilot.getRawAxis(port(Robot.map.controlSetup[2])) * inv(Robot.map.controlSetup[2]));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

@@ -1,10 +1,13 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.Counter;
 
 public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg {
 	
-	Counter leftWheel, rightWheel;
+	static Counter leftWheel = new Counter(Robot.map.encoderLeft);
+	static Counter rightWheel = new Counter(Robot.map.encoderRight);
 	final double leftAtStart, rightAtStart;
 	double leftTarget, rightTarget;
     
@@ -23,7 +26,7 @@ public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg {
 	@Override
 	protected boolean isFinished() {
 		return leftWheel.getDistance() - leftAtStart > leftTarget &&
-				rightWheel.getDistance() - rightAtStart > rightTarget;
+			   rightWheel.getDistance() - rightAtStart > rightTarget;
 	}
     
 }
