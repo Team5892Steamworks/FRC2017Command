@@ -16,6 +16,7 @@ import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5892.robot.subsystems.SDOutputSubsystem;
 import org.usfirst.frc.team5892.robot.subsystems.Shooter;
 //import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
 
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static Agitator agitator;
 	//public static Shooter shooterSpeedSubsystem;
 	public static Accelerometer accelerometer;
+	public static SDOutputSubsystem sdout;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
 
@@ -42,6 +44,7 @@ public class Robot extends IterativeRobot {
 		// Initialize subsystems
 		agitator = new Agitator();
 		drive = new Drive();
+		sdout = new SDOutputSubsystem();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		
@@ -52,15 +55,21 @@ public class Robot extends IterativeRobot {
 		chooser = new SendableChooser<>();
 		chooser.addObject("Do Nothing", new ExampleCommand());
 		chooser.addObject("Test Movement", new DriveForwardsAndSpinAuto());
-		chooser.addObject("Score a Gear (Sit from Right)", new ScoreGearAuto(false, ScoreGearAuto.Position.RIGHT));
-		chooser.addObject("Score a Gear (Continue from Right)", new ScoreGearAuto(true, ScoreGearAuto.Position.RIGHT));
-		chooser.addObject("Score a Gear (Sit from Left)", new ScoreGearAuto(false, ScoreGearAuto.Position.LEFT));
-		chooser.addObject("Score a Gear (Continue from Left)", new ScoreGearAuto(true, ScoreGearAuto.Position.LEFT));
+		//chooser.addObject("Score a Gear (Sit from Right)", new ScoreGearAuto(false, Position.RIGHT));
+		//chooser.addObject("Score a Gear (Continue from Right)", new ScoreGearAuto(true, Position.RIGHT));
+		//chooser.addObject("Score a Gear (Sit from Left)", new ScoreGearAuto(false, Position.LEFT));
+		//chooser.addObject("Score a Gear (Continue from Left)", new ScoreGearAuto(true, Position.LEFT));
+		chooser.addObject("Score Gear with Encoders (Sit from Left)", new EncoderScoreGearAuto(false, Position.LEFT));
+		chooser.addObject("Score Gear with Encoders (Sit from Right)", new EncoderScoreGearAuto(false, Position.RIGHT));
+		chooser.addObject("Score Gear with Encoders (Shoot from Left)", new EncoderScoreGearAuto(true, Position.LEFT));
+		chooser.addObject("Score Gear with Encoders (Shoot from Right)", new EncoderScoreGearAuto(true, Position.RIGHT));
 		chooser.addDefault("Score Gear from Middle (Playoffs Auton)", new BoringForwardsAuto());
+		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
+//		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!!!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!!", chooser);
 		
 		// Initialize CameraServer
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();

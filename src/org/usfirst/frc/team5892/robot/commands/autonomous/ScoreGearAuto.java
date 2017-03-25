@@ -21,11 +21,6 @@ public class ScoreGearAuto extends CommandGroup {
         /*addSequential(new AutonomousDriveLeg(0, 0, -.3, 0.75));   // Turn forwards
         addSequential(new AutonomousDriveLeg(0, 0.4, 0, 3));   // Move across line
 */    }
-    
-    public enum Position {
-    	LEFT,
-    	RIGHT;
-    }
     /*public void doTheThing() {
     	while (hasBatteries() && seesTable()) moveTowardsTableReallyFast();
     }*/

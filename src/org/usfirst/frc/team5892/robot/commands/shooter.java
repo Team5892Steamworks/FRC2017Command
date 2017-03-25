@@ -14,7 +14,7 @@ public class shooter extends Command {
 	static Victor feeder = new Victor(Robot.map.feeder.port);
 	double duration;
 	
-	final double power = -0.7;
+	final double power = -1;
 	
 	public shooter() {
 		duration = -1;
