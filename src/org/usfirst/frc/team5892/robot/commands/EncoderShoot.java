@@ -11,7 +11,7 @@ import org.usfirst.frc.team5892.robot.Robot;
  */
 public class EncoderShoot extends Command {
 	static final double kP = 0.9;
-	double lastSpeed, target;
+	double lastSpeed, lastPower, targetSpeed;
 	double duration = -1;
 	static Victor flywheel = new Victor(Robot.map.flywheel.port);
 	static Victor feeder = new Victor(Robot.map.feeder.port);
@@ -20,7 +20,7 @@ public class EncoderShoot extends Command {
 	public EncoderShoot(double speed) {
 		// Use requires() here to declare subsystem dependencies
 		//requires(Robot.exampleSubsystem);
-		target = speed;
+		targetSpeed = speed;
 	}
 	
 	public EncoderShoot(double speed, double duration_) {
@@ -37,13 +37,23 @@ public class EncoderShoot extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		flywheel.set(1);
-		lastSpeed = encoder.get();
+		flywheel.set(Robot.map.flywheel.inverted ? -1 : 1);
+		lastPower = 1;
+		//lastSpeed = encoder.get();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		double speed = getEncoder();
+		double spdP = targetSpeed / speed;
+		double power = lastPower + kP * (spdP * lastPower - lastPower);
+		if (power > 1) power = 1;
+		if (power < .1) power = .1;
+		lastPower = power;
+		flywheel.set(power * (Robot.map.flywheel.inverted ? -1 : 1));
+		
+		if (speed > 0.8 * targetSpeed || timeSinceInitialized() > 1) feeder.set(Robot.map.flywheel.inverted ? -1 : 1);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
