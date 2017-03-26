@@ -59,17 +59,21 @@ public class EncoderShoot extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return duration > 0 && timeSinceInitialized() >= duration;
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		flywheel.set(0);
+		feeder.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		flywheel.set(0);
+		feeder.set(0);
 	}
 }
