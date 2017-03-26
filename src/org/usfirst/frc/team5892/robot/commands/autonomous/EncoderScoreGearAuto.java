@@ -7,7 +7,7 @@ public class EncoderScoreGearAuto extends EncoderAuto {
     	double dir = position == Position.RIGHT ? 1 : -1;
     	
     	addSequential(new EncoderAutonomousDriveLeg(0, 0.2, 0, distToBaseline + linearInch(20)));
-    	addSequential(new EncoderAutonomousDriveLeg(0, 0, dir*0.4, 75));
+    	addSequential(new EncoderAutonomousDriveLeg(0, 0, dir*0.4, 80));
     	//addSequential(new VisionGearAlign());
     	addSequential(new EncoderAutonomousDriveLeg(0, 0.2, 0, linearInch(24)));
     	

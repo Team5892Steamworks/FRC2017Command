@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 /**
  *
  */
+@Deprecated
 public class ShooterSpeedSubsystem extends PIDSubsystem {
 
     // Initialize your subsystem here
