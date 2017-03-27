@@ -28,7 +28,7 @@ public class shooter extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		flywheel.set(-0.7);
+		flywheel.set(power);
 		Timer.delay(.7);
 	}
 
@@ -36,7 +36,7 @@ public class shooter extends Command {
 	@Override
 	protected void execute() {
 		feeder.set(.5);
-		flywheel.set(-0.7);
+		flywheel.set(power);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
