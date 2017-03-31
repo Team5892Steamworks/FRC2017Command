@@ -12,6 +12,7 @@ import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
 import org.usfirst.frc.team5892.robot.commands.DecreaseDriveBase;
 import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
 import org.usfirst.frc.team5892.robot.commands.EnableAgitator;
+import org.usfirst.frc.team5892.robot.commands.EncoderShoot;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 
 import org.usfirst.frc.team5892.robot.commands.ReverseAgitator;
@@ -78,7 +79,7 @@ public class OI {
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
 	public OI(){
-		shooter.whileActive(new shooter());
+		shooter.whileActive(new EncoderShoot(40000));
 		
 		//shooter.whileActive(new PControlShoot());
 		

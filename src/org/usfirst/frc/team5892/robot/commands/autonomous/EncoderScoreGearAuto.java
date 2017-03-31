@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
-
+import org.usfirst.frc.team5892.robot.commands.EncoderShoot;
 
 public class EncoderScoreGearAuto extends EncoderAuto {
     public EncoderScoreGearAuto(boolean goForHopper, Position position) {
@@ -18,7 +18,7 @@ public class EncoderScoreGearAuto extends EncoderAuto {
     		addSequential(new EncoderAutonomousDriveLeg(-.8, 0, 0, 500));                                  // Activate hopper
     		addSequential(new AutonomousWaitLeg(2));
     		addSequential(new EncoderAutonomousDriveLeg(0, 0, dir*0.4, 7.5));                      // Align with boiler
-    		//addSequential(new whateverICalledTheShootCommand(someNumber, whatever));              // Open fire
+    		addSequential(new EncoderShoot(40000));                                                // Open fire
     	}
     }
     /*
