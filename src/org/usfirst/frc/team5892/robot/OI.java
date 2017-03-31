@@ -64,14 +64,14 @@ public class OI {
 	public Button intake = new JoystickButton(pilot, 6);
 	public Button shooter = new JoystickButton(copilot, 2);
 	public Button agitator_rv = new JoystickButton(copilot, 3);
-	public Button agitator_da = new JoystickButton(copilot, 4);
+	public Trigger agitator_da = new AnalogAxisTrigger(copilot, 3);
 	
 	public Button winch_rev = new JoystickButton(copilot, 5);
 	public Button winch_fwd = new JoystickButton(copilot, 6);
 	
 	public Trigger dpad_up = new POVTrigger(copilot, 0);
 	public Trigger intake_cp = new AnalogAxisTrigger(copilot, 2);
-	public Trigger light = new AnalogAxisTrigger(copilot, 3);
+	//public Trigger light = new AnalogAxisTrigger(copilot, 3);
 	
 	//public Trigger batt_low = new BatteryVoltageTrigger(7.2);
 	
@@ -92,7 +92,7 @@ public class OI {
 		//winch_rev.whileActive(new ActivateWinch(0.5));
 		winch_fwd.whileActive(new ActivateWinch(1));
 		
-		light.whileActive(new ActivateFlashlight());
+		//light.whileActive(new ActivateFlashlight());
 		//batt_low.whileActive(new DecreaseDriveBase(0.02));
 		
 /*		shooter.whileHeld(new shooter());

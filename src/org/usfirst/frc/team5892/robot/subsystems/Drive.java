@@ -4,6 +4,7 @@ import org.usfirst.frc.team5892.robot.Robot;
 import org.usfirst.frc.team5892.robot.commands.mecanumDrive;
 
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -43,6 +44,20 @@ public class Drive extends Subsystem {
     
     public void tankDrive(double left, double right) {
     	m_robotDrive.tankDrive(left, right);
+    }
+    
+    public void mecanumDriveSafe(double xAxis, double yAxis, double twist) {
+    	m_robotDrive.mecanumDrive_Cartesian(powerClip(xAxis), powerClip(yAxis), powerClip(twist), 0);
+    }
+    
+    public void tankDriveSafe(double left, double right) {
+    	m_robotDrive.tankDrive(powerClip(left), powerClip(right));
+    }
+    
+    public static double powerClip(double power) {
+    	if (power > 1) return 1;
+    	if (power < -1) return -1;
+    	return power;
     }
     
     public void set_base(double base_) {

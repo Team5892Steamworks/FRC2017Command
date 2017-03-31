@@ -63,8 +63,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear with Encoders (Sit from Right)", new EncoderScoreGearAuto(false, Position.RIGHT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Left)", new EncoderScoreGearAuto(true, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Right)", new EncoderScoreGearAuto(true, Position.RIGHT));
-		chooser.addObject("Score Gear from Middle (Experimental)", new EncoderDriveStraightAuto());
-		chooser.addObject("Score Gear from Middle (Playoffs Auton)", new BoringForwardsAuto());
+		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new EncoderDriveStraightAuto());
+		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 //		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {

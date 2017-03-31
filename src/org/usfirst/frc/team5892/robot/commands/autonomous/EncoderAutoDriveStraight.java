@@ -36,8 +36,8 @@ public class EncoderAutoDriveStraight extends Command implements EncoderAccess {
 	protected void execute() {
 		double left = leftWheel.get();
 		double right = rightWheel.get();
-		if (left > right) Robot.drive.tankDrive(power * right / left, power);
-		else if (right < left) Robot.drive.tankDrive(power, power * left / right);
+		if (left > right) Robot.drive.tankDriveSafe(power * right / left, power);
+		else if (right < left) Robot.drive.tankDriveSafe(power, power * left / right);
 		else Robot.drive.tankDrive(power, power);
 	}
 
