@@ -1,33 +1,27 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
-import org.usfirst.frc.team5892.robot.Robot;
-
-import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg {
+public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg implements EncoderAccess {
 	
-	public static Counter leftWheel = new Counter(Robot.map.encoderLeft);
-	public static Counter rightWheel = new Counter(Robot.map.encoderRight);
-	double leftAtStart, rightAtStart;
 	double leftTarget, rightTarget;
+	double timeout = -1;
     
 	public EncoderAutonomousDriveLeg(double xAxis_, double yAxis_, double twist_, double target) {		
 		super(xAxis_, yAxis_, twist_, -1);
-		leftAtStart = leftWheel.get(); rightAtStart = rightWheel.get();
 		leftTarget = target; rightTarget = target;
 	}
 	
-	public EncoderAutonomousDriveLeg(double xAxis_, double yAxis_, double twist_, double leftTarget_, double rightTarget_) {
+	public EncoderAutonomousDriveLeg(double xAxis_, double yAxis_, double twist_, double target, double timeout_) {
 		super(xAxis_, yAxis_, twist_, -1);
-		leftTarget = leftTarget_; rightTarget = rightTarget_;
+		leftTarget = target; rightTarget = target;
+		timeout = timeout_;
 	}
 	
 	@Override
 	protected void initialize() {
 		super.initialize();
 		leftWheel.reset(); rightWheel.reset();
-		leftAtStart = leftWheel.get(); rightAtStart = rightWheel.get();
 	}
 	
 	@Override
@@ -39,8 +33,9 @@ public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg {
 	
 	@Override
 	protected boolean isFinished() {
-		return leftWheel.get() - leftAtStart > leftTarget &&
-			   rightWheel.get() - rightAtStart > rightTarget;
+		return (leftWheel.get() > leftTarget &&
+			    rightWheel.get() > rightTarget) ||
+			   (timeout > 0 && timeSinceInitialized() > timeout);
 	}
     
 }

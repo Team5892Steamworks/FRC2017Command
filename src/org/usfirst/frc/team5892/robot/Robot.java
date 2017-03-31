@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		
 		// Initialize RobotMap
-		map = new PracticeBot();
+		map = new CompetitionBot();
 		
 		// Initialize subsystems
 		agitator = new Agitator();
@@ -59,11 +59,12 @@ public class Robot extends IterativeRobot {
 		//chooser.addObject("Score a Gear (Continue from Right)", new ScoreGearAuto(true, Position.RIGHT));
 		//chooser.addObject("Score a Gear (Sit from Left)", new ScoreGearAuto(false, Position.LEFT));
 		//chooser.addObject("Score a Gear (Continue from Left)", new ScoreGearAuto(true, Position.LEFT));
-		chooser.addObject("Score Gear with Encoders (Sit from Left)", new EncoderScoreGearAuto(false, Position.LEFT));
+		chooser.addDefault("Score Gear with Encoders (Sit from Left)", new EncoderScoreGearAuto(false, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Sit from Right)", new EncoderScoreGearAuto(false, Position.RIGHT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Left)", new EncoderScoreGearAuto(true, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Right)", new EncoderScoreGearAuto(true, Position.RIGHT));
-		chooser.addDefault("Score Gear from Middle (Playoffs Auton)", new BoringForwardsAuto());
+		chooser.addObject("Score Gear from Middle (Experimental)", new EncoderDriveStraightAuto());
+		chooser.addObject("Score Gear from Middle (Playoffs Auton)", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 //		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {

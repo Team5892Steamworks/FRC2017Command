@@ -1,10 +1,7 @@
 package org.usfirst.frc.team5892.robot.subsystems;
 
-import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderAutonomousDriveLeg;
-
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *

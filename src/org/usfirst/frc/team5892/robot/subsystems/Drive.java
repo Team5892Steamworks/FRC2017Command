@@ -41,6 +41,10 @@ public class Drive extends Subsystem {
     	m_robotDrive.mecanumDrive_Cartesian(xAxis, yAxis, twist, 0);
     }
     
+    public void tankDrive(double left, double right) {
+    	m_robotDrive.tankDrive(left, right);
+    }
+    
     public void set_base(double base_) {
     	base = base_;
     }
