@@ -6,8 +6,8 @@ public class EncoderScoreGearAuto extends EncoderAuto {
     public EncoderScoreGearAuto(boolean goForHopper, Position position) {
     	double dir = position == Position.RIGHT ? 1 : -1;
     	
-    	addSequential(new EncoderAutonomousDriveLeg(0, 0.5, 0, distToBaseline + linearInch(22))); // Move forwards
-    	addSequential(new EncoderAutonomousDriveLeg(0, 0, dir*0.4, 82));                          // Turn
+    	addSequential(new EncoderAutonomousDriveLeg(0, 0.3, 0, distToBaseline + linearInch(15))); // Move forwards
+    	addSequential(new EncoderAutonomousDriveLeg(0, 0, dir*0.4, 80));                          // Turn
     	//addSequential(new VisionGearAlign());                                                   // Align      
     	addSequential(new EncoderAutonomousDriveLeg(0, 0.2, 0, linearInch(24), 3));               // Move onto spike
     	
