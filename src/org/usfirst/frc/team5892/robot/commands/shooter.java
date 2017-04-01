@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //@Deprecated
 public class shooter extends Command {
@@ -14,7 +15,8 @@ public class shooter extends Command {
 	static Victor feeder = new Victor(Robot.map.feeder.port);
 	double duration;
 	
-	final double power = -1;
+	final double defaultPower = 0.632;
+	double power = defaultPower;
 	
 	public shooter() {
 		duration = -1;
@@ -28,21 +30,28 @@ public class shooter extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		flywheel.set(power);
-		Timer.delay(.7);
+		flywheel.set(-power);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		feeder.set(.5);
-		flywheel.set(power);
+		/*if (duration < 0) {
+			if (Math.abs(Robot.oi.copilot.getRawAxis(1)) > 0.2) power += Robot.oi.copilot.getRawAxis(1);
+			power += Robot.oi.copilot.getRawAxis(1);
+			if (power > 1) power = 1;
+			if (power < 0) power = 0;
+			SmartDashboard.putNumber("Shooter Power", power);
+			flywheel.set(-power);
+		}*/
+		
+		if (timeSinceInitialized() > 0.7) feeder.set(.5);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return duration != -1 && timeSinceInitialized() >= duration;
+		return duration > 0 && timeSinceInitialized() >= duration;
 	}
 
 	// Called once after isFinished returns true

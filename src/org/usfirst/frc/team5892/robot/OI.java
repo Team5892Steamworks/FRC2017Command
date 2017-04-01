@@ -89,7 +89,7 @@ public class OI {
 		//agitator_rv.whenPressed(new ReverseAgitator());
 		agitator_da.whileActive(new EnableAgitator());
 		
-		//winch_rev.whileActive(new ActivateWinch(0.5));
+		winch_rev.whileActive(new ActivateWinch(-1));
 		winch_fwd.whileActive(new ActivateWinch(1));
 		
 		//light.whileActive(new ActivateFlashlight());

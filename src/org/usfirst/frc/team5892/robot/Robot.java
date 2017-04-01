@@ -53,13 +53,13 @@ public class Robot extends IterativeRobot {
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
-		chooser.addObject("Do Nothing", new ExampleCommand());
+		chooser.addDefault("Do Nothing", new ExampleCommand());
 		chooser.addObject("Test Movement", new DriveForwardsAndSpinAuto());
-		//chooser.addObject("Score a Gear (Sit from Right)", new ScoreGearAuto(false, Position.RIGHT));
-		//chooser.addObject("Score a Gear (Continue from Right)", new ScoreGearAuto(true, Position.RIGHT));
-		//chooser.addObject("Score a Gear (Sit from Left)", new ScoreGearAuto(false, Position.LEFT));
-		//chooser.addObject("Score a Gear (Continue from Left)", new ScoreGearAuto(true, Position.LEFT));
-		chooser.addDefault("Score Gear with Encoders (Sit from Left)", new EncoderScoreGearAuto(false, Position.LEFT));
+		/*chooser.addObject("Score a Gear (Sit from Right)", new ScoreGearAuto(false, Position.RIGHT));
+		chooser.addObject("Score a Gear (Continue from Right)", new ScoreGearAuto(true, Position.RIGHT));
+		chooser.addObject("Score a Gear (Sit from Left)", new ScoreGearAuto(false, Position.LEFT));
+		chooser.addObject("Score a Gear (Continue from Left)", new ScoreGearAuto(true, Position.LEFT));*/
+		chooser.addObject("Score Gear with Encoders (Sit from Left)", new EncoderScoreGearAuto(false, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Sit from Right)", new EncoderScoreGearAuto(false, Position.RIGHT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Left)", new EncoderScoreGearAuto(true, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Right)", new EncoderScoreGearAuto(true, Position.RIGHT));
@@ -70,7 +70,7 @@ public class Robot extends IterativeRobot {
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!!!!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!!!!", chooser);
 		
 		// Initialize CameraServer
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
