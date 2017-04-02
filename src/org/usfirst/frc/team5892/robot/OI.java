@@ -67,7 +67,11 @@ public class OI {
 	public Trigger agitator_da = new AnalogAxisTrigger(copilot, 3);
 	
 	public Button winch_rev = new JoystickButton(copilot, 5);
-	public Button winch_fwd = new JoystickButton(copilot, 6);
+	public Button	 winch_fwd = new JoystickButton(copilot, 6);
+	
+	public Button shooter_lo = new JoystickButton(copilot, 1);
+	public Button shooter_hi = new JoystickButton(copilot, 4);
+	public Button shooter_lower = new JoystickButton(copilot, 3);
 	
 	public Trigger dpad_up = new POVTrigger(copilot, 0);
 	public Trigger intake_cp = new AnalogAxisTrigger(copilot, 2);
@@ -78,7 +82,10 @@ public class OI {
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
 	public OI(){
-		shooter.whileActive(new shooter());
+		shooter.whileActive(new shooter(0.7));
+		shooter_lo.whileActive(new shooter(0.6));
+		shooter_hi.whileActive(new shooter(0.75));
+		shooter_lower.whileActive(new shooter(0.5));
 		
 		//shooter.whileActive(new PControlShoot());
 		

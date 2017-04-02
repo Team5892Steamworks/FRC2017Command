@@ -13,19 +13,24 @@ public class shooter extends Command {
 	//Preferences prefs;
 	static Victor flywheel = new Victor(Robot.map.flywheel.port);
 	static Victor feeder = new Victor(Robot.map.feeder.port);
-	double duration;
+	//double duration;
 	
-	final double defaultPower = 0.632;
-	double power = defaultPower;
+	final double defaultPower = 0.7;
+	double power;
 	
 	public shooter() {
-		duration = -1;
+		//duration = -1;
+		power = defaultPower;
 	}
 	
-	public shooter(double duration_) {
+	public shooter(double power_) {
+		power = power_;
+	}
+	
+	/*public shooter(boolean constructor, double duration_) {
 		// Use requires() here to declare subsystem dependencies
 		duration = duration_;
-	}
+	}*/
 
 	// Called just before this Command runs the first time
 	@Override
@@ -51,7 +56,7 @@ public class shooter extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return duration > 0 && timeSinceInitialized() >= duration;
+		return false; //duration > 0 && timeSinceInitialized() >= duration;
 	}
 
 	// Called once after isFinished returns true
