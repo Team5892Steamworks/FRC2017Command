@@ -7,24 +7,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc.team5892.robot.commands.ActivateFlashlight;
-import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
-import org.usfirst.frc.team5892.robot.commands.DecreaseDriveBase;
-import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
-import org.usfirst.frc.team5892.robot.commands.EnableAgitator;
-import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
-
-import org.usfirst.frc.team5892.robot.commands.ReverseAgitator;
-//import org.usfirst.frc.team5892.robot.commands.ShootBall;
-import org.usfirst.frc.team5892.robot.commands.intake;
-
-
-import org.usfirst.frc.team5892.robot.commands.intake;
-
-import org.usfirst.frc.team5892.robot.commands.shooter;
-import org.usfirst.frc.team5892.robot.triggers.AnalogAxisTrigger;
-import org.usfirst.frc.team5892.robot.triggers.BatteryVoltageTrigger;
-import org.usfirst.frc.team5892.robot.triggers.POVTrigger;
+import org.usfirst.frc.team5892.robot.commands.*;
+import org.usfirst.frc.team5892.robot.triggers.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -73,6 +57,9 @@ public class OI {
 	public Trigger intake_cp = new AnalogAxisTrigger(copilot, 2);
 	//public Trigger light = new AnalogAxisTrigger(copilot, 3);
 	
+	public Trigger sec30 = new MatchTimeTrigger(30);
+	public Trigger sec15 = new MatchTimeTrigger(15);
+	
 	//public Trigger batt_low = new BatteryVoltageTrigger(7.2);
 	
 	//public Button agitate = new JoystickButton(copilot, 1);
@@ -91,6 +78,9 @@ public class OI {
 		
 		winch_rev.whileActive(new ActivateWinch(-1));
 		winch_fwd.whileActive(new ActivateWinch(1));
+		
+		sec30.whenActive(new RumbleController(0.2));
+		sec15.whenActive(new MultRumble(2));
 		
 		//light.whileActive(new ActivateFlashlight());
 		//batt_low.whileActive(new DecreaseDriveBase(0.02));
