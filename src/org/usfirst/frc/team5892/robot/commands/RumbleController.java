@@ -12,7 +12,7 @@ public class RumbleController extends Command {
 	
 	double duration = -1;
 	double power = 1;
-	GenericHID.RumbleType type = GenericHID.RumbleType.kLeftRumble;
+	GenericHID.RumbleType type = GenericHID.RumbleType.kRightRumble;
 	
 	public RumbleController() {
 		// Use requires() here to declare subsystem dependencies
