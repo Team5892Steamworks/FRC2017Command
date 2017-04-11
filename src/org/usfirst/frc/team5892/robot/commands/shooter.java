@@ -50,7 +50,7 @@ public class shooter extends Command {
 			flywheel.set(-power);
 		}*/
 		
-		if (timeSinceInitialized() > 0.7) feeder.set(.5);
+		if (timeSinceInitialized() > 0.7) feeder.set(.65);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
