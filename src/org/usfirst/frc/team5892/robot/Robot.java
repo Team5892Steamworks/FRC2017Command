@@ -39,10 +39,10 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		
 		// Initialize RobotMap
-		map = new CompetitionBot();
+		map = new PracticeBot();
 		
 		// Initialize subsystems
-		agitator = new Agitator();
+		agitator = new Agitator(); agitator.enable();
 		drive = new Drive();
 		sdout = new SDOutputSubsystem();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();

@@ -74,7 +74,7 @@ public class OI {
 		intake_cp.whileActive(new intake());
 		
 		//agitator_rv.whenPressed(new ReverseAgitator());
-		agitator_da.whileActive(new EnableAgitator());
+		agitator_da.whileActive(new DisableAgitator());
 		
 		winch_rev.whileActive(new ActivateWinch(-1));
 		winch_fwd.whileActive(new ActivateWinch(1));
