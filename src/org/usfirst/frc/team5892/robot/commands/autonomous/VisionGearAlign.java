@@ -13,7 +13,7 @@ public class VisionGearAlign extends Command {
 	ITable table;
 	static final double CAMERA_X_CENTER = 80;
 	static final double TOLERANCE = 5;
-	static final double STRAFE_SPEED = .2;
+	static final double STRAFE_SPEED = .6;
 	
 	double cpoint = CAMERA_X_CENTER;
 	
@@ -34,14 +34,18 @@ public class VisionGearAlign extends Command {
 		double centerX[] = table.getNumberArray("centerX", new double[]{-2, -2});
 	    if (centerX.length > 2) {
 	    	double area[] = table.getNumberArray("area", new double[]{-2, -2});
+	    	double ys[] = table.getNumberArray("centerY", new double[]{-2, -2});
 	    	double points[] = new double[2];
 	    	double maxArea[] = new double[]{-1, -1};
-	    	for (int i=0;i<area.length;i++) {
-	    		if (area[i] > maxArea[0]) {
-	    			maxArea[1] = maxArea[0]; points[1] = points[0];
-	    			maxArea[0] = area[i]; points[0] = centerX[i];
-	    		} else if (area[i] > maxArea[1]) {
-	    			maxArea[1] = area[i]; points[1] = centerX[i];
+	    	for (int i=0;i<area.length && i<centerX.length && i<ys.length;i++) {
+	    		if (ys[i] < 90) {
+		    		if (area[i] > maxArea[0]) {
+		    			maxArea[1] = maxArea[0]; points[1] = points[0];
+		    			maxArea[0] = area[i];
+		    			points[0] = centerX[i];
+		    		} else if (area[i] > maxArea[1]) {
+		    			maxArea[1] = area[i]; points[1] = centerX[i];
+		    		}
 	    		}
 	    	}
 	    	cpoint = (points[0] + points[1]) / 2;
@@ -55,9 +59,9 @@ public class VisionGearAlign extends Command {
 		//double cpoint = (centerX[0] + centerX[1]) / 2;
 	    
 	    if (cpoint < CAMERA_X_CENTER) {
-	    	Robot.drive.mecanumDrive(-STRAFE_SPEED, 0, 0);
-	    } else if (cpoint > CAMERA_X_CENTER) {
 	    	Robot.drive.mecanumDrive(STRAFE_SPEED, 0, 0);
+	    } else if (cpoint > CAMERA_X_CENTER) {
+	    	Robot.drive.mecanumDrive(-STRAFE_SPEED, 0, 0);
 	    }
 	}
 

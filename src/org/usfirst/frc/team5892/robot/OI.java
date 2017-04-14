@@ -64,6 +64,8 @@ public class OI {
 	public Trigger sec30 = new MatchTimeTrigger(30);
 	public Trigger sec15 = new MatchTimeTrigger(15);
 	
+	public Button arduinoIOTest = new JoystickButton(pilot, 4);
+	
 	//public Trigger batt_low = new BatteryVoltageTrigger(7.2);
 	
 	//public Button agitate = new JoystickButton(copilot, 1);
