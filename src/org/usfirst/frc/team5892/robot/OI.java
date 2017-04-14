@@ -64,6 +64,13 @@ public class OI {
 	public Trigger sec30 = new MatchTimeTrigger(30);
 	public Trigger sec15 = new MatchTimeTrigger(15);
 	
+	public Trigger feeder = new TriggerConglomerator(new Trigger[] {
+			new POVTrigger(copilot, 0), new POVTrigger(copilot, 45),
+			new POVTrigger(copilot, 90), new POVTrigger(copilot, 135),
+			new POVTrigger(copilot, 180), new POVTrigger(copilot, 225),
+			new POVTrigger(copilot, 270), new POVTrigger(copilot, 315)
+	}, TriggerConglomerator.Operator.OR);
+	
 	public Button arduinoIOTest = new JoystickButton(pilot, 4);
 	
 	//public Trigger batt_low = new BatteryVoltageTrigger(7.2);
@@ -90,6 +97,8 @@ public class OI {
 		
 		sec30.whenActive(new RumbleController(0.2));
 		sec15.whenActive(new MultRumble(2));
+		
+		feeder.whileActive(new ActivateFeeder());
 		
 		//light.whileActive(new ActivateFlashlight());
 		//batt_low.whileActive(new DecreaseDriveBase(0.02));

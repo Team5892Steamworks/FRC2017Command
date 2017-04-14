@@ -66,7 +66,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new EncoderDriveStraightAuto());
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
-		chooser.addObject("Try out vision!!!", new VisionGearAlign());
+		chooser.addObject("Try out vision!!!", new VisionBoilerAlign());
 //		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());

@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class shooter extends Command {
 	//Preferences prefs;
 	static Victor flywheel = new Victor(Robot.map.flywheel.port);
-	static Victor feeder = new Victor(Robot.map.feeder.port);
+	//static Victor feeder = new Victor(Robot.map.feeder.port);
 	//double duration;
 	
 	final double defaultPower = 0.7;
@@ -50,7 +50,7 @@ public class shooter extends Command {
 			flywheel.set(-power);
 		}*/
 		
-		if (timeSinceInitialized() > 0.7) feeder.set(.65);
+		//if (timeSinceInitialized() > 2) feeder.set(.65);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -62,7 +62,7 @@ public class shooter extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		feeder.set(0);
+		//feeder.set(0);
 		flywheel.set(0);
 	}
   
@@ -70,7 +70,7 @@ public class shooter extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		feeder.set(0);
+		//feeder.set(0);
 		flywheel.set(0);
 	}
 }

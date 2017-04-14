@@ -9,7 +9,7 @@ import org.usfirst.frc.team5892.robot.Robot;
 /**
  *
  */
-public class VisionGearAlign extends Command {
+public class VisionBoilerAlign extends Command {
 	ITable table;
 	static final double CAMERA_X_CENTER = 80;
 	static final double TOLERANCE = 5;
@@ -17,7 +17,7 @@ public class VisionGearAlign extends Command {
 	
 	double cpoint = CAMERA_X_CENTER;
 	
-	public VisionGearAlign() {
+	public VisionBoilerAlign() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drive);
 		table = NetworkTable.getTable("GRIP").getSubTable("myContoursReport");
@@ -31,13 +31,13 @@ public class VisionGearAlign extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		/*double centerX[] = table.getNumberArray("centerX", new double[]{-2, -2});
+		double centerX[] = table.getNumberArray("centerX", new double[]{-2, -2});
 	    if (centerX.length > 2) {
 	    	double area[] = table.getNumberArray("area", new double[]{-2, -2});
 	    	//double ys[] = table.getNumberArray("centerY", new double[]{-2, -2});
 	    	double points[] = new double[2];
 	    	double maxArea[] = new double[]{-1, -1};
-	    	for (int i=0;i<area.length && i<centerX.length && i<ys.length;i++) {
+	    	for (int i=0;i<area.length && i<centerX.length/* && i<ys.length*/;i++) {
 	    		//if (ys[i] < 90) {
 		    		if (area[i] > maxArea[0]) {
 		    			maxArea[1] = maxArea[0]; points[1] = points[0];
@@ -55,7 +55,7 @@ public class VisionGearAlign extends Command {
 	    	cpoint = centerX[0];
 	    } else {
 	    	cancel();
-	    }*/
+	    }
 		//double cpoint = (centerX[0] + centerX[1]) / 2;
 	    
 	    if (cpoint < CAMERA_X_CENTER) {

@@ -10,7 +10,7 @@ public class PracticeBot extends RobotMapB {
     	agitator = new MotorMap(0, false);
     	intake = new MotorMap(9, false);
     	flywheel = new MotorMap(1, false);
-    	feeder = new MotorMap(4, true);
+    	feeder = new MotorMap(4, false);
     	winch = new MotorMap(5, false);
     	encoderLeft = 1;
     	encoderRight = 2;
