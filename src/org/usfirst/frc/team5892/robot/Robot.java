@@ -66,16 +66,24 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new EncoderDriveStraightAuto());
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
-		chooser.addObject("Try out vision!!!", new VisionBoilerAlign());
+		chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
+		chooser.addObject("Gear spike visoin", new VisionGearAlign());
+		
+		chooser.addObject("Vision boiler shoote test", new VisionShootTestAuto());
 //		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!!!!!!!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!!!!!!!", chooser);
 		
 		// Initialize CameraServer
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-        camera.setResolution(160, 120);
+		UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+        camera1.setResolution(160, 120);
+        camera1.setExposureManual(1);
+        
+        /*UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+        camera2.setResolution(160, 120);*/
+
         CameraServer.getInstance().getVideo();
         CameraServer.getInstance().putVideo("Blur", 160, 120);
 		

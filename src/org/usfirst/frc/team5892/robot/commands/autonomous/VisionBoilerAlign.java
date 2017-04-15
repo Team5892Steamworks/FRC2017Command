@@ -12,15 +12,15 @@ import org.usfirst.frc.team5892.robot.Robot;
 public class VisionBoilerAlign extends Command {
 	ITable table;
 	static final double CAMERA_X_CENTER = 80;
-	static final double TOLERANCE = 5;
-	static final double STRAFE_SPEED = .6;
+	static final double TOLERANCE = .5;
+	static final double TURN_SPEED = .33;
 	
 	double cpoint = CAMERA_X_CENTER;
 	
 	public VisionBoilerAlign() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drive);
-		table = NetworkTable.getTable("GRIP").getSubTable("myContoursReport");
+		table = NetworkTable.getTable("GRIP").getSubTable("boilerContours");
 	}
 
 	// Called just before this Command runs the first time
@@ -59,10 +59,12 @@ public class VisionBoilerAlign extends Command {
 		//double cpoint = (centerX[0] + centerX[1]) / 2;
 	    
 	    if (cpoint < CAMERA_X_CENTER) {
-	    	Robot.drive.mecanumDrive(STRAFE_SPEED, 0, 0);
+	    	Robot.drive.mecanumDrive(0, 0, -TURN_SPEED);
 	    } else if (cpoint > CAMERA_X_CENTER) {
-	    	Robot.drive.mecanumDrive(-STRAFE_SPEED, 0, 0);
+	    	Robot.drive.mecanumDrive(0, 0, TURN_SPEED);
 	    }
+	    
+	    //System.out.println(cpoint);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
