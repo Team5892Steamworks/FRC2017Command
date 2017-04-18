@@ -2,9 +2,7 @@ package org.usfirst.frc.team5892.robot.commands.autonomous;
 
 import org.usfirst.frc.team5892.robot.commands.PrintSomething;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
-
-public class VisionGearAlign extends CommandGroup {
+public class VisionGearAlign extends VisionSequence {
     public VisionGearAlign() {
     	addSequential(new PrintSomething("Strafe 1"));
     	addSequential(new VisionGearAlignStrafe());

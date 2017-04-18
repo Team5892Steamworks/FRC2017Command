@@ -34,6 +34,9 @@ public class Robot extends IterativeRobot {
 	public static SDOutputSubsystem sdout;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
+	
+	public static SendableChooser<Position> posChooser;
+	public static SendableChooser<Command> afterChooser;
 
 	@Override
 	public void robotInit() {
@@ -75,6 +78,16 @@ public class Robot extends IterativeRobot {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
 		SmartDashboard.putData("Autonomous mode!!!!!!!!!", chooser);
+		
+		/*
+		posChooser.addDefault("Left", Position.LEFT);
+		posChooser.addObject("Middle", Position.MIDDLE);
+		posChooser.addObject("Right", Position.RIGHT);
+		SmartDashboard.putData("Auto position", posChooser);
+		
+		afterChooser.addDefault("Do nothing", new ExampleCommand());
+		SmartDashboard.putData("After auto", afterChooser);
+		*/
 		
 		// Initialize CameraServer
 		UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
