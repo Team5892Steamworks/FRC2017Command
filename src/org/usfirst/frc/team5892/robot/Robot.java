@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 		chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
-		chooser.addObject("Gear spike visoin", new VisionGearAlign());
+		chooser.addObject("Gear spike visoin", new VisionGearTestAuto());
 		
 		chooser.addObject("Vision boiler shoote test", new VisionShootTestAuto());
 //		chooser.addObject("Test Encoders", new EncoderAuto());

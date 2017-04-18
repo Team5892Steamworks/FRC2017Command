@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.commands.*;
+import org.usfirst.frc.team5892.robot.commands.autonomous.*;
 import org.usfirst.frc.team5892.robot.triggers.*;
 
 /**
@@ -61,6 +62,8 @@ public class OI {
 	public Trigger intake_cp = new AnalogAxisTrigger(copilot, 2);
 	//public Trigger light = new AnalogAxisTrigger(copilot, 3);
 	
+	public Button gear_align = new JoystickButton(pilot, 4);
+	
 	public Trigger sec30 = new MatchTimeTrigger(30);
 	public Trigger sec15 = new MatchTimeTrigger(15);
 	
@@ -99,6 +102,8 @@ public class OI {
 		sec15.whenActive(new MultRumble(2));
 		
 		feeder.whileActive(new ActivateFeeder());
+		
+		gear_align.whenActive(new VisionGearTestAuto());
 		
 		//light.whileActive(new ActivateFlashlight());
 		//batt_low.whileActive(new DecreaseDriveBase(0.02));
