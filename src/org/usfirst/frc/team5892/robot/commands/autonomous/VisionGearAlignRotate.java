@@ -15,7 +15,7 @@ public class VisionGearAlignRotate extends Command {
 	static final double TOLERANCE = .5;
 	static final double ROTATE_SPEED = .4;
 
-	double dir, diff;
+	double diff;
 
 	public VisionGearAlignRotate() {
 		// Use requires() here to declare subsystem dependencies
@@ -31,6 +31,7 @@ public class VisionGearAlignRotate extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		double dir = 0;
 		try {
 			double area[] = table.getNumberArray("area", new double[] { -2, -2 });
 			double centerX[] = table.getNumberArray("centerX", new double[] { -2, -2 });
@@ -59,7 +60,7 @@ public class VisionGearAlignRotate extends Command {
 					indices = new int[] { 0, 1 };
 				else
 					indices = new int[] { 1, 0 };
-			} else
+			} else;
 			// cancel();
 
 				
