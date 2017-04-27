@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.commands.*;
 import org.usfirst.frc.team5892.robot.commands.autonomous.*;
 import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
@@ -42,10 +42,10 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		
 		// Initialize RobotMap
-		map = new PracticeBot();
+		map = new CompetitionBot();
 		
 		// Initialize subsystems
-		agitator = new Agitator(); agitator.enable();
+		agitator = new Agitator();
 		drive = new Drive();
 		sdout = new SDOutputSubsystem();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
@@ -70,9 +70,9 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 		chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
-		chooser.addObject("Gear spike visoin", new VisionGearTestAuto());
+		chooser.addObject("Gear spike visoin", new GearVisionPIDCommand());
 		
-		chooser.addObject("Vision boiler shoote test", new VisionShootTestAuto());
+		chooser.addObject("Vision boiler shoote test", new VisionRegShootSequence(true));
 //		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
@@ -94,8 +94,9 @@ public class Robot extends IterativeRobot {
         camera1.setResolution(160, 120);
         camera1.setExposureManual(1);
         
-        /*UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
-        camera2.setResolution(160, 120);*/
+        UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+        camera2.setResolution(160, 120);
+        camera2.setExposureManual(1);
 
         CameraServer.getInstance().getVideo();
         CameraServer.getInstance().putVideo("Blur", 160, 120);

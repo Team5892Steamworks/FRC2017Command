@@ -34,7 +34,7 @@ public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg {
 	
 	@Override
 	protected boolean isFinished() {
-		return (EncoderAccess.getLeft() > leftTarget &&
+		return (EncoderAccess.getLeft() > leftTarget ||
 			    EncoderAccess.getRight() > rightTarget) ||
 			   (duration > 0 && timeSinceInitialized() > duration);
 	}

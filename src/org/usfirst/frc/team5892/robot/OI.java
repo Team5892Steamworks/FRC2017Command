@@ -52,17 +52,17 @@ public class OI {
 	public Trigger agitator_da = new AnalogAxisTrigger(copilot, 3);
 	
 	public Button winch_rev = new JoystickButton(copilot, 5);
-	public Button	 winch_fwd = new JoystickButton(copilot, 6);
+	public Button winch_fwd = new JoystickButton(copilot, 6);
 	
 	public Button shooter_lo = new JoystickButton(copilot, 1);
 	public Button shooter_hi = new JoystickButton(copilot, 4);
 	public Button shooter_lower = new JoystickButton(copilot, 3);
 	
 	public Trigger dpad_up = new POVTrigger(copilot, 0);
-	public Trigger intake_cp = new AnalogAxisTrigger(copilot, 2);
+	//public Trigger intake_cp = new AnalogAxisTrigger(copilot, 2);
 	//public Trigger light = new AnalogAxisTrigger(copilot, 3);
 	
-	public Button gear_align = new JoystickButton(pilot, 4);
+	public Trigger boiler_align = new AnalogAxisTrigger(pilot, 3);
 	
 	public Trigger sec30 = new MatchTimeTrigger(30);
 	public Trigger sec15 = new MatchTimeTrigger(15);
@@ -74,7 +74,9 @@ public class OI {
 			new POVTrigger(copilot, 270), new POVTrigger(copilot, 315)
 	}, TriggerConglomerator.Operator.OR);
 	
-	public Button arduinoIOTest = new JoystickButton(pilot, 4);
+	public Trigger vision_shoot_reg = new AnalogAxisTrigger(copilot, 2);
+	
+	//public Button arduinoIOTest = new JoystickButton(pilot, 3);
 	
 	//public Trigger batt_low = new BatteryVoltageTrigger(7.2);
 	
@@ -90,7 +92,7 @@ public class OI {
 		
 		//shooter.whileActive(new ShootBall(40000));
 		//intake.whileActive(new intake());
-		intake_cp.whileActive(new intake());
+		//intake_cp.whileActive(new intake());
 		
 		//agitator_rv.whenPressed(new ReverseAgitator());
 		agitator_da.whileActive(new DisableAgitator());
@@ -103,7 +105,11 @@ public class OI {
 		
 		feeder.whileActive(new ActivateFeeder());
 		
-		gear_align.whenActive(new VisionGearTestAuto());
+		boiler_align.whileActive(new BoilerVisionPIDCommand());
+		
+		vision_shoot_reg.whileActive(new VisionRegShoot());
+		
+		//arduinoIOTest.whileHeld(new BoilerVisionPIDCommand());
 		
 		//light.whileActive(new ActivateFlashlight());
 		//batt_low.whileActive(new DecreaseDriveBase(0.02));

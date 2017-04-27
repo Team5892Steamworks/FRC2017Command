@@ -37,7 +37,7 @@ public class mecanumDrive extends Command {
 	protected void execute() {
 		/*double base = Robot.drive.get_base();
 		SmartDashboard.putNumber("Drive Base Multiplier", base);*/
-		double mult = Robot.oi.pilot.getRawButton(5) ? 0.5 : 1;
+		double mult = Robot.oi.pilot.getRawButton(5) ? 0.65 : 1;
 		// TODO Reverse 4 and 0 before competition and un-negate
 		//Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(4)*mult, -Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
 		Robot.drive.mecanumDrive(Robot.oi.pilot.getRawAxis(port(Robot.map.controlSetup[0])) * inv(Robot.map.controlSetup[0]) * mult,

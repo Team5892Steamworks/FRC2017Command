@@ -65,9 +65,9 @@ public class VisionGearAlignRotate extends Command {
 
 				
 			// area[indices[0]] = 350, area[indices[1]] = 550
-			if ((int) area[indices[0]] > (int) area[indices[1]]) {
+			if (area[indices[0]] > area[indices[1]]) {
 				dir = 1;
-			} else if ((int) area[indices[0]] < (int) area[indices[1]]) { // this condition is true
+			} else if (area[indices[0]] < area[indices[1]]) { // this condition is true
 				dir = -1;
 			} else {
 				dir = 0; // this code is called - why?

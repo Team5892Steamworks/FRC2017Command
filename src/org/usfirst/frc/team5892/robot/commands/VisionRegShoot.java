@@ -1,7 +1,9 @@
-package org.usfirst.frc.team5892.robot.commands.autonomous;
+package org.usfirst.frc.team5892.robot.commands;
 
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 
 import org.usfirst.frc.team5892.robot.Robot;
@@ -9,80 +11,79 @@ import org.usfirst.frc.team5892.robot.Robot;
 /**
  *
  */
-public class VisionBoilerAlign extends Command {
+public class VisionRegShoot extends Command {
+	
+	static final double BASE_POWER = 1;
+	static final double PER_PIXEL = -0.025;
+	
+	double power;
+	
+	static Victor flywheel = shooter.flywheel;
 	ITable table;
-	static final double CAMERA_X_CENTER = 80;
-	static final double TOLERANCE = .5;
-	static final double TURN_SPEED = .3;
 	
-	double cpoint = CAMERA_X_CENTER;
-	
-	public VisionBoilerAlign() {
+	public VisionRegShoot() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.drive);
+		//requires(Robot.exampleSubsystem);
 		table = NetworkTable.getTable("GRIP").getSubTable("boilerContours");
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		
+	    
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double centerX[] = table.getNumberArray("centerX", new double[]{-2, -2});
-	    if (centerX.length > 2) {
+		double ydiff;
+		double centerY[] = table.getNumberArray("centerY", new double[]{-2, -2});
+	    if (centerY.length > 2) {
 	    	double area[] = table.getNumberArray("area", new double[]{-2, -2});
 	    	//double ys[] = table.getNumberArray("centerY", new double[]{-2, -2});
 	    	double points[] = new double[2];
 	    	double maxArea[] = new double[]{-1, -1};
-	    	for (int i=0;i<area.length && i<centerX.length/* && i<ys.length*/;i++) {
+	    	for (int i=0;i<area.length && i<centerY.length/* && i<ys.length*/;i++) {
 	    		//if (ys[i] < 90) {
 		    		if (area[i] > maxArea[0]) {
 		    			maxArea[1] = maxArea[0]; points[1] = points[0];
 		    			maxArea[0] = area[i];
-		    			points[0] = centerX[i];
+		    			points[0] = centerY[i];
 		    		} else if (area[i] > maxArea[1]) {
-		    			maxArea[1] = area[i]; points[1] = centerX[i];
+		    			maxArea[1] = area[i]; points[1] = centerY[i];
 		    		}
 	    		//}
 	    	}
-	    	cpoint = (points[0] + points[1]) / 2;
-	    } else if (centerX.length == 2) {
-	    	cpoint = (centerX[0] + centerX[1]) / 2;
-	    } else if (centerX.length == 1) {
-	    	cpoint = centerX[0];
+	    	ydiff = Math.abs(points[0] - points[1]);
+	    } else if (centerY.length == 2) {
+	    	ydiff = Math.abs(centerY[0] - centerY[1]);
 	    } else {
-	    	//cancel();
-	    }
-		//double cpoint = (centerX[0] + centerX[1]) / 2;
-	    
-	    if (cpoint < CAMERA_X_CENTER) {
-	    	Robot.drive.mecanumDrive(0, 0, -TURN_SPEED);
-	    } else if (cpoint > CAMERA_X_CENTER) {
-	    	Robot.drive.mecanumDrive(0, 0, TURN_SPEED);
+	    	ydiff = 0;
 	    }
 	    
-	    //System.out.println(cpoint);
+	    power = BASE_POWER + ydiff * PER_PIXEL;
+	    SmartDashboard.putNumber("ydiff", ydiff);
+	    SmartDashboard.putNumber("power", power);
+		flywheel.set(-power);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return (cpoint > CAMERA_X_CENTER - TOLERANCE &&
-			   cpoint < CAMERA_X_CENTER + TOLERANCE) ||
-			   Robot.oi.pilot.getRawButton(5);
+		return false;
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		flywheel.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		flywheel.set(0);
 	}
 }

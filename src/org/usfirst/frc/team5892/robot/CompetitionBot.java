@@ -7,6 +7,7 @@ public class CompetitionBot extends RobotMapB {
     			                    new MotorMap(8, false),  // front right
     			                    new MotorMap(2, false)}; // rear right
     	controlSetup = new ControlSetup[]{ControlSetup.xAxis, ControlSetup.yAxis, ControlSetup.twist};
+    	
     	agitator = new MotorMap(0, false);
     	intake = new MotorMap(9, false);
     	flywheel = new MotorMap(1, false);
