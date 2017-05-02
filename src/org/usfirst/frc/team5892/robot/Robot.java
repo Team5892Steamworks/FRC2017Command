@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.SPI;
 
 import org.usfirst.frc.team5892.robot.commands.*;
 import org.usfirst.frc.team5892.robot.commands.autonomous.*;
@@ -18,6 +19,8 @@ import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5892.robot.subsystems.SDOutputSubsystem;
 import org.usfirst.frc.team5892.robot.subsystems.Shooter;
+
+import com.kauailabs.navx.frc.AHRS;
 //import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
 
 public class Robot extends IterativeRobot {
@@ -35,6 +38,8 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
 	
+	public static AHRS ahrs;
+	
 	public static SendableChooser<Position> posChooser;
 	public static SendableChooser<Command> afterChooser;
 
@@ -43,6 +48,11 @@ public class Robot extends IterativeRobot {
 		
 		// Initialize RobotMap
 		map = new CompetitionBot();
+		
+		// Initialize NavX
+		ahrs = new AHRS(SPI.Port.kMXP);
+		
+		// Initialize motors
 		
 		// Initialize subsystems
 		agitator = new Agitator();
@@ -70,14 +80,15 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 		chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
-		chooser.addObject("Gear spike visoin", new GearVisionPIDCommand());
+		chooser.addObject("Gear spike visoin", new VisionGearTestAuto());
+		chooser.addObject("Party", new PartyAuto());
 		
 		chooser.addObject("Vision boiler shoote test", new VisionRegShootSequence(true));
 //		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!!!!!!!!!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!", chooser);
 		
 		/*
 		posChooser.addDefault("Left", Position.LEFT);

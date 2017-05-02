@@ -9,6 +9,7 @@ import org.usfirst.frc.team5892.robot.Robot;
 /**
  *
  */
+@Deprecated
 public class VisionGearAlignRotate extends Command {
 	ITable table;
 	static final double TARGET_DIFF = 0;

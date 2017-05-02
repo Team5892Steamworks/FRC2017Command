@@ -9,6 +9,7 @@ import org.usfirst.frc.team5892.robot.Robot;
 /**
  *
  */
+@Deprecated
 public class VisionGearAlignStrafe extends Command {
 	ITable table;
 	static final double CAMERA_X_CENTER = 80;

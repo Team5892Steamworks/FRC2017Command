@@ -2,6 +2,7 @@ package org.usfirst.frc.team5892.robot.commands.autonomous;
 
 import org.usfirst.frc.team5892.robot.commands.PrintSomething;
 
+@Deprecated
 public class VisionGearAlign extends VisionSequence {
     public VisionGearAlign() {
     	addSequential(new PrintSomething("Strafe 1"));

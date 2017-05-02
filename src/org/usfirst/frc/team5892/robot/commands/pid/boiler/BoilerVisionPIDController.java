@@ -1,8 +1,8 @@
-package org.usfirst.frc.team5892.robot.commands.autonomous;
+package org.usfirst.frc.team5892.robot.commands.pid.boiler;
 
 import edu.wpi.first.wpilibj.PIDController;
 
-public class BoilerVisionPIDController extends PIDController {
+class BoilerVisionPIDController extends PIDController {
 	
 	static final double CAMERA_X_CENTER = 80;
 	static final double TOLERANCE = 2;
