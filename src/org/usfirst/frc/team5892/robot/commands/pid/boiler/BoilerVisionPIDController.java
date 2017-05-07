@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.PIDController;
 
 class BoilerVisionPIDController extends PIDController {
 	
-	static final double CAMERA_X_CENTER = 80;
+	static final double CAMERA_X_CENTER = 90;
 	static final double TOLERANCE = 2;
 	
     static final double Kp = 0.014;

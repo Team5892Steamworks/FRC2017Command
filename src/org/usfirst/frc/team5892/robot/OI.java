@@ -77,6 +77,8 @@ public class OI {
 	
 	public Trigger vision_shoot_reg = new AnalogAxisTrigger(copilot, 2);
 	
+	public Button killall = new JoystickButton(pilot, 2);
+	
 	//public Button arduinoIOTest = new JoystickButton(pilot, 3);
 	
 	//public Trigger batt_low = new BatteryVoltageTrigger(7.2);
@@ -106,9 +108,10 @@ public class OI {
 		
 		feeder.whileActive(new ActivateFeeder());
 		
-		boiler_align.whileActive(new BoilerVisionPIDCommand());
+		boiler_align.whenActive(new VisionGearTestAuto());
 		
 		vision_shoot_reg.whileActive(new VisionRegShoot());
+		killall.whenActive(new CancelAllCommands());
 		
 		//arduinoIOTest.whileHeld(new BoilerVisionPIDCommand());
 		

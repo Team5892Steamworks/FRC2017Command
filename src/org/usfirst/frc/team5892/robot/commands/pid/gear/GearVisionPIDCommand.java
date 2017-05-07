@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5892.robot.commands.pid.gear;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5892.robot.Robot;
@@ -10,30 +11,32 @@ import org.usfirst.frc.team5892.robot.Robot;
 public class GearVisionPIDCommand extends Command {
 	
 	private static GearStrafeVisionPIDController strafeControl;
-	private static GearRotateVisionPIDController rotateControl;
+	Preferences prefs;
 	
-	double strafe;
-	double rotate;
+	/*double strafe;
+	double rotate;*/
 	
 	public GearVisionPIDCommand() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drive);
 		strafeControl = new GearStrafeVisionPIDController(this);
-		rotateControl = new GearRotateVisionPIDController(this);
+		prefs = Preferences.getInstance();
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		rotateControl.setSetpoint(Robot.ahrs.getAngle());
+		strafeControl.setPID(prefs.getDouble("Gear Kp", GearStrafeVisionPIDController.Kp), 
+				             prefs.getDouble("Gear Ki", GearStrafeVisionPIDController.Ki),
+				             prefs.getDouble("Gear Kd", GearStrafeVisionPIDController.Kd));
+		strafeControl.setSetpoint(prefs.getDouble("Gear Setpoint", GearStrafeVisionPIDController.CAMERA_X_CENTER));
 		strafeControl.enable();
-		rotateControl.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.mecanumDrive(strafe, 0, rotate);
+		//Robot.drive.mecanumDrive(strafe, 0, rotate);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -46,7 +49,6 @@ public class GearVisionPIDCommand extends Command {
 	@Override
 	protected void end() {
 		strafeControl.reset();
-		rotateControl.reset();
 	}
 
 	// Called when another command which requires one or more of the same

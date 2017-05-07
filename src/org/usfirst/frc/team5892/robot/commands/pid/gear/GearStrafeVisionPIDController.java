@@ -5,10 +5,10 @@ import edu.wpi.first.wpilibj.PIDController;
 class GearStrafeVisionPIDController extends PIDController {
 	
 	static final double CAMERA_X_CENTER = 80;
-	static final double TOLERANCE = 1;
+	static final double TOLERANCE = .5;
 	
-    static final double Kp = 0.02;
-    static final double Ki = 0.05;
+    static final double Kp = 0.014;
+    static final double Ki = 0.0005;
     static final double Kd = 0.0;
     
     public GearStrafeVisionPIDController(GearVisionPIDCommand parent) {
