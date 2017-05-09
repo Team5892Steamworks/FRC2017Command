@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5892.robot.commands.*;
 import org.usfirst.frc.team5892.robot.commands.autonomous.*;
 import org.usfirst.frc.team5892.robot.commands.pid.boiler.BoilerVisionPIDCommand;
+import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
 import org.usfirst.frc.team5892.robot.triggers.*;
 
 /**
@@ -108,7 +109,7 @@ public class OI {
 		
 		feeder.whileActive(new ActivateFeeder());
 		
-		boiler_align.whenActive(new VisionGearTestAuto());
+		boiler_align.whenActive(new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
 		
 		vision_shoot_reg.whileActive(new VisionRegShoot());
 		killall.whenActive(new CancelAllCommands());
