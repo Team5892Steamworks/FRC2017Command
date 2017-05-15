@@ -87,7 +87,7 @@ public class OI {
 	//public Button agitate = new JoystickButton(copilot, 1);
 	
 	public OI(){
-		shooter.whileActive(new shooter(0.7));
+		shooter.whileActive(new UltrasonicShoot());
 		shooter_lo.whileActive(new shooter(0.6));
 		shooter_hi.whileActive(new shooter(0.75));
 		shooter_lower.whileActive(new shooter(0.5));

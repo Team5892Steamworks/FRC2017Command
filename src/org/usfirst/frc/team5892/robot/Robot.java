@@ -14,12 +14,8 @@ import edu.wpi.first.wpilibj.SPI;
 import org.usfirst.frc.team5892.robot.commands.*;
 import org.usfirst.frc.team5892.robot.commands.autonomous.*;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
-import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
-import org.usfirst.frc.team5892.robot.subsystems.Agitator;
-import org.usfirst.frc.team5892.robot.subsystems.Drive;
-import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5892.robot.subsystems.SDOutputSubsystem;
-import org.usfirst.frc.team5892.robot.subsystems.Shooter;
+import org.usfirst.frc.team5892.robot.subsystems.*;
+import org.usfirst.frc.team5892.robot.subsystems.sensors.SensorArray;
 
 import com.kauailabs.navx.frc.AHRS;
 //import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
@@ -35,7 +31,8 @@ public class Robot extends IterativeRobot {
 	public static Agitator agitator;
 	//public static Shooter shooterSpeedSubsystem;
 	public static Accelerometer accelerometer;
-	public static SDOutputSubsystem sdout;
+	public static SensorArray sensors;
+	//public static SDOutputSubsystem sdout;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
 	
@@ -58,7 +55,8 @@ public class Robot extends IterativeRobot {
 		// Initialize subsystems
 		agitator = new Agitator();
 		drive = new Drive();
-		sdout = new SDOutputSubsystem();
+		sensors = new SensorArray();
+		//sdout = new SDOutputSubsystem();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		

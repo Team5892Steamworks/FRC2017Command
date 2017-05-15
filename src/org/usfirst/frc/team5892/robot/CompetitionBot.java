@@ -15,5 +15,6 @@ public class CompetitionBot extends RobotMapB {
     	winch = new MotorMap(5, false);
     	encoderLeft = 1;
     	encoderRight = 2;
+    	ultrasonic = 0;
     }
 }

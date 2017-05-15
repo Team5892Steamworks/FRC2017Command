@@ -10,6 +10,7 @@ public abstract class RobotMapB {
 	public MotorMap winch;
 	public int encoderLeft;
 	public int encoderRight;
+	public int ultrasonic;
 	
     public class MotorMap {
     	public final int port;
