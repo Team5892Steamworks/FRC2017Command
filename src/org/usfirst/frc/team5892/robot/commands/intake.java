@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class intake extends Command {
-	Victor intake = new Victor(Robot.map.intake.port);
 	public intake() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.exampleSubsystem);
@@ -20,7 +19,7 @@ public class intake extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-	intake.set(-.75);
+	Robot.intake.set(-.75);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -32,13 +31,13 @@ public class intake extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		intake.set(0);
+		Robot.intake.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		intake.set(0);
+		end();
 	}
 }

@@ -18,16 +18,16 @@ public class EncoderStraighten extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		delta = EncoderAccess.getRight() - EncoderAccess.getLeft();
-		target = EncoderAccess.getLeft() + delta / 2;
+		delta = Robot.sensors.encoderRight.getValue() - Robot.sensors.encoderLeft.getValue();
+		target = Robot.sensors.encoderLeft.getValue() + delta / 2;
 		Robot.drive.mecanumDrive(0, 0, twist * (delta > 0 ? 1 : -1));
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		System.out.println((delta > 0 ? "Left: " + EncoderAccess.getLeft() : 
-				                       " Right: " + EncoderAccess.getRight()) +
+		System.out.println((delta > 0 ? "Left: " + Robot.sensors.encoderLeft.getValue() : 
+				                       " Right: " + Robot.sensors.encoderRight.getValue()) +
 				                       " Target: " + target +
 				                       " Finished: " + isFinished());
 	}
@@ -35,8 +35,8 @@ public class EncoderStraighten extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		if (delta > 0) return EncoderAccess.getLeft() >= target;
-		else           return EncoderAccess.getRight() >= target;
+		if (delta > 0) return Robot.sensors.encoderLeft.getValue() >= target;
+		else           return Robot.sensors.encoderRight.getValue() >= target;
 	}
 
 	// Called once after isFinished returns true

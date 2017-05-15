@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5892.robot.subsystems.sensors;
 
-class Sensor {
+public class Sensor {
     String name;
     ValueGetter getter;
 	
@@ -9,7 +9,7 @@ class Sensor {
     	this.getter = getter;
     }
     
-    double getValue() {
+    public double getValue() {
     	return getter.getValue();
     }
 }

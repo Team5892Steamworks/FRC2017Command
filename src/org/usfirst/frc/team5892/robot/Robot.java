@@ -4,6 +4,7 @@ package org.usfirst.frc.team5892.robot;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -17,7 +18,7 @@ import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
 import org.usfirst.frc.team5892.robot.subsystems.*;
 import org.usfirst.frc.team5892.robot.subsystems.sensors.SensorArray;
 
-import com.kauailabs.navx.frc.AHRS;
+//import com.kauailabs.navx.frc.AHRS;
 //import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
 
 public class Robot extends IterativeRobot {
@@ -28,7 +29,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static RobotMapB map;
 	public static Drive drive;
-	public static Agitator agitator;
+	public static Agitator agitator_s;
 	//public static Shooter shooterSpeedSubsystem;
 	public static Accelerometer accelerometer;
 	public static SensorArray sensors;
@@ -36,7 +37,18 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
 	
-	public static AHRS ahrs;
+	public static Victor frontleft;
+	public static Victor backleft;
+	public static Victor frontright;
+	public static Victor backright;
+	
+	public static Victor feeder;
+	public static Victor flywheel;
+	public static Victor winch;
+	public static Victor agitator;
+	public static Victor intake;
+	
+	//public static AHRS ahrs;
 	
 	public static SendableChooser<Position> posChooser;
 	public static SendableChooser<Command> afterChooser;
@@ -48,12 +60,22 @@ public class Robot extends IterativeRobot {
 		map = new CompetitionBot();
 		
 		// Initialize NavX
-		ahrs = new AHRS(SPI.Port.kMXP);
+		//ahrs = new AHRS(SPI.Port.kMXP);
 		
 		// Initialize motors
+		frontleft = new Victor(map.driveTrain[0].port); frontleft.setInverted(map.driveTrain[0].inverted);
+		backleft = new Victor(map.driveTrain[1].port); backleft.setInverted(map.driveTrain[1].inverted);
+		frontright = new Victor(map.driveTrain[2].port); frontright.setInverted(map.driveTrain[2].inverted);
+		backright = new Victor(map.driveTrain[3].port); backright.setInverted(map.driveTrain[3].inverted);
+		
+		feeder = new Victor(map.feeder.port); feeder.setInverted(map.feeder.inverted);
+		flywheel = new Victor(map.flywheel.port); flywheel.setInverted(map.flywheel.inverted);
+		winch = new Victor(map.winch.port); winch.setInverted(map.winch.inverted);
+		agitator = new Victor(map.agitator.port); agitator.setInverted(map.agitator.inverted);
+		intake = new Victor(map.intake.port); intake.setInverted(map.intake.inverted);
 		
 		// Initialize subsystems
-		agitator = new Agitator();
+		agitator_s = new Agitator();
 		drive = new Drive();
 		sensors = new SensorArray();
 		//sdout = new SDOutputSubsystem();

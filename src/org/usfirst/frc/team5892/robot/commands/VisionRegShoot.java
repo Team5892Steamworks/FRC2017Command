@@ -18,7 +18,6 @@ public class VisionRegShoot extends Command {
 	
 	double power;
 	
-	static Victor flywheel = shooter.flywheel;
 	ITable table;
 	
 	public VisionRegShoot() {
@@ -65,7 +64,7 @@ public class VisionRegShoot extends Command {
 	    power = BASE_POWER + ydiff * PER_PIXEL;
 	    SmartDashboard.putNumber("ydiff", ydiff);
 	    SmartDashboard.putNumber("power", power);
-		flywheel.set(-power);
+		Robot.flywheel.set(-power);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -77,13 +76,13 @@ public class VisionRegShoot extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		flywheel.set(0);
+		Robot.flywheel.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		flywheel.set(0);
+		Robot.flywheel.set(0);
 	}
 }

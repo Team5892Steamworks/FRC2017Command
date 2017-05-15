@@ -9,6 +9,7 @@ class SensorOutput extends Command {
 	
 	SensorOutput(Sensor[] sensors) {
 		this.sensors = sensors;
+		setRunWhenDisabled(true);
 	}
 	
 	@Override

@@ -14,14 +14,14 @@ public class ActivateFeeder extends Command {
 	public ActivateFeeder() {
 		// Use requires() here to declare subsystem dependencies
 		//requires(Robot.exampleSubsystem);
-		requires(Robot.agitator);
+		requires(Robot.agitator_s);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		feeder.set(.65);
-		Robot.agitator.enable();
+		Robot.agitator_s.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -39,7 +39,7 @@ public class ActivateFeeder extends Command {
 	@Override
 	protected void end() {
 		feeder.set(0);
-		Robot.agitator.disable();
+		Robot.agitator_s.disable();
 	}
 
 	// Called when another command which requires one or more of the same
@@ -47,6 +47,6 @@ public class ActivateFeeder extends Command {
 	@Override
 	protected void interrupted() {
 		feeder.set(0);
-		Robot.agitator.disable();
+		Robot.agitator_s.disable();
 	}
 }

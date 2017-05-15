@@ -1,15 +1,15 @@
 package org.usfirst.frc.team5892.robot.commands;
 
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class StartFlywheel extends Command {
     
-	static Victor flywheel = shooter.flywheel;
-	
 	@Override
 	protected void initialize() {
-		flywheel.set(-1);
+		Robot.flywheel.set(-1);
 	}
 	
 	@Override

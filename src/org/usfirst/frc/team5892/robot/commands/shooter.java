@@ -10,10 +10,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //@Deprecated
 public class shooter extends Command {
-	//Preferences prefs;
-	static Victor flywheel = new Victor(Robot.map.flywheel.port);
-	//static Victor feeder = new Victor(Robot.map.feeder.port);
-	//double duration;
 	
 	final double defaultPower = 0.7;
 	double power;
@@ -35,7 +31,7 @@ public class shooter extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		flywheel.set(-power);
+		Robot.flywheel.set(-power);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -63,14 +59,13 @@ public class shooter extends Command {
 	@Override
 	protected void end() {
 		//feeder.set(0);
-		flywheel.set(0);
+		Robot.flywheel.set(0);
 	}
   
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		//feeder.set(0);
-		flywheel.set(0);
+		end();
 	}
 }

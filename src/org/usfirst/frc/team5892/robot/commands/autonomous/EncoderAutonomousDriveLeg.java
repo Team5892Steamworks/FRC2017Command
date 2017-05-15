@@ -22,20 +22,20 @@ public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg {
 	@Override
 	protected void initialize() {
 		super.initialize();
-		EncoderAccess.resetBoth();
+		Robot.sensors.resetEncoders();
 	}
 	
 	@Override
 	protected void execute() {
 		super.execute();
-		SmartDashboard.putNumber("Left Encoder", EncoderAccess.getLeft());
-		SmartDashboard.putNumber("Right Encoder", EncoderAccess.getRight());
+		/*SmartDashboard.putNumber("Left Encoder", Robot.sensors);
+		SmartDashboard.putNumber("Right Encoder", EncoderAccess.getRight());*/
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return (EncoderAccess.getLeft() > leftTarget ||
-			    EncoderAccess.getRight() > rightTarget) ||
+		return (Robot.sensors.encoderLeft.getValue() > leftTarget ||
+			    Robot.sensors.encoderRight.getValue() > rightTarget) ||
 			   (duration > 0 && timeSinceInitialized() > duration);
 	}
     

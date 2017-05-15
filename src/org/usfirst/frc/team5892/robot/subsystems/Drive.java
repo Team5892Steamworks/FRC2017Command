@@ -20,18 +20,8 @@ public class Drive extends Subsystem {
 	 *     - PWM 8 - Connected to front right drive motor
 	 *     - PWM 3 - Connected to rear right drive motor
 	 */
-	RobotDrive m_robotDrive = new RobotDrive(Robot.map.driveTrain[0].port,
-			Robot.map.driveTrain[1].port,
-			Robot.map.driveTrain[2].port,
-			Robot.map.driveTrain[3].port);
+	RobotDrive m_robotDrive = new RobotDrive(Robot.frontleft, Robot.backleft, Robot.frontright, Robot.backright);
 	double base = 1;
-	
-	public Drive() {
-		m_robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, Robot.map.driveTrain[0].inverted);
-		m_robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, Robot.map.driveTrain[1].inverted);
-		m_robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, Robot.map.driveTrain[2].inverted);
-		m_robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, Robot.map.driveTrain[3].inverted);
-	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

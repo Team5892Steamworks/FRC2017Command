@@ -10,7 +10,6 @@ import org.usfirst.frc.team5892.robot.Robot;
  */
 public class ActivateWinch extends Command {
 	
-	private static Victor winch = new Victor(Robot.map.winch.port);
 	private double power;
 	public ActivateWinch(double power_) {
 		// Use requires() here to declare subsystem dependencies
@@ -25,7 +24,7 @@ public class ActivateWinch extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		winch.set(power);
+		Robot.winch.set(power);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -37,13 +36,13 @@ public class ActivateWinch extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		winch.set(0);
+		Robot.winch.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		winch.set(0);
+		Robot.winch.set(0);
 	}
 }

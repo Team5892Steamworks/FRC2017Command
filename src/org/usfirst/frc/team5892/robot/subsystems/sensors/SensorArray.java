@@ -9,19 +9,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class SensorArray extends Subsystem {
     
 	Counter r_encoderLeft = new Counter(Robot.map.encoderLeft);
-	Sensor encoderLeft = new Sensor("Left Encoder", r_encoderLeft::get);
+	public Sensor encoderLeft = new Sensor("Left Encoder", r_encoderLeft::get);
 	
 	Counter r_encoderRight = new Counter(Robot.map.encoderRight);
-	Sensor encoderRight = new Sensor("Right Encoder", r_encoderRight::get);
+	public Sensor encoderRight = new Sensor("Right Encoder", r_encoderRight::get);
 	
 	AnalogInput r_ultrasonic = new AnalogInput(Robot.map.ultrasonic);
-	Sensor ultrasonic = new Sensor("Ultrasonic Sensor", r_ultrasonic::getVoltage);
+	public Sensor ultrasonic = new Sensor("Ultrasonic Sensor", r_ultrasonic::getVoltage);
 	
 	Sensor[] allSensors = new Sensor[]{encoderLeft, encoderRight, ultrasonic};
 	
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new SensorOutput(allSensors));
+	}
+	
+	public void resetEncoders() {
+		r_encoderLeft.reset();
+		r_encoderRight.reset();
 	}
 
 }

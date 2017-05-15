@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5892.robot.commands;
 
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -8,8 +10,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class UltrasonicShoot extends Command {
-	
-	public static AnalogInput ultrasonic = new AnalogInput(0);
 	
 	public UltrasonicShoot() {
 		// Use requires() here to declare subsystem dependencies
@@ -23,15 +23,14 @@ public class UltrasonicShoot extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		shooter.flywheel.set(1);
+		Robot.flywheel.set(1);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double voltage = ultrasonic.getVoltage();
-		SmartDashboard.putNumber("Ultrasonic Sensor", voltage);
-		shooter.flywheel.set(voltage);
+		double value = Robot.sensors.ultrasonic.getValue();
+		Robot.flywheel.set(calculate(value));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -43,7 +42,7 @@ public class UltrasonicShoot extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		shooter.flywheel.set(0);
+		Robot.flywheel.set(0);
 	}
 
 	// Called when another command which requires one or more of the same

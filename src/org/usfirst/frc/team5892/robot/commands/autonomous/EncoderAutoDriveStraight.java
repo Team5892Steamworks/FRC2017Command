@@ -27,14 +27,14 @@ public class EncoderAutoDriveStraight extends Command {
 	@Override
 	protected void initialize() {
 		Robot.drive.tankDrive(power, power);
-		EncoderAccess.resetBoth();
+		Robot.sensors.resetEncoders();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double left = EncoderAccess.getLeft();
-		double right = EncoderAccess.getRight();
+		double left = Robot.sensors.encoderLeft.getValue();
+		double right = Robot.sensors.encoderRight.getValue();
 		if (left > right) Robot.drive.tankDriveSafe(power * right / left, power);
 		else if (right < left) Robot.drive.tankDriveSafe(power, power * left / right);
 		else Robot.drive.tankDrive(power, power);
@@ -43,8 +43,8 @@ public class EncoderAutoDriveStraight extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return (EncoderAccess.getLeft() > target &&
-				EncoderAccess.getRight() > target) ||
+		return (Robot.sensors.encoderLeft.getValue() > target &&
+				Robot.sensors.encoderRight.getValue() > target) ||
 			   (duration > 0 && timeSinceInitialized() > duration);
 	}
 
