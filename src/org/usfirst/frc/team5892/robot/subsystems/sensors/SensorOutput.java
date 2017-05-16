@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5892.robot.subsystems.sensors;
 
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -8,6 +10,7 @@ class SensorOutput extends Command {
 	Sensor[] sensors;
 	
 	SensorOutput(Sensor[] sensors) {
+		requires(Robot.sensors);
 		this.sensors = sensors;
 		setRunWhenDisabled(true);
 	}
