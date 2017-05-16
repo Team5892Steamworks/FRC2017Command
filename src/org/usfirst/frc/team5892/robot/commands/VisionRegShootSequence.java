@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5892.robot.commands;
 
-import org.usfirst.frc.team5892.robot.commands.autonomous.*;
+import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousWaitLeg;
+import org.usfirst.frc.team5892.robot.commands.autonomous.ReportYDifference;
+import org.usfirst.frc.team5892.robot.commands.autonomous.VisionSequence;
 import org.usfirst.frc.team5892.robot.commands.pid.boiler.BoilerVisionPIDCommand;
 
 public class VisionRegShootSequence extends VisionSequence {

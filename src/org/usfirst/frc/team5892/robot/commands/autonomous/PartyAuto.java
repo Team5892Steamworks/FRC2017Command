@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
-import org.usfirst.frc.team5892.robot.commands.*;
+import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
+import org.usfirst.frc.team5892.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

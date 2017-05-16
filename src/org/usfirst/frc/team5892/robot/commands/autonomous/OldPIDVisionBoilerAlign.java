@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5892.robot.commands.autonomous;
+/*package org.usfirst.frc.team5892.robot.commands.autonomous;
 
 import org.usfirst.frc.team5892.robot.Robot;
 import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
@@ -37,7 +37,7 @@ public class OldPIDVisionBoilerAlign extends PIDCommand {
 	    	//double ys[] = table.getNumberArray("centerY", new double[]{-2, -2});
 	    	double points[] = new double[2];
 	    	double maxArea[] = new double[]{-1, -1};
-	    	for (int i=0;i<area.length && i<centerX.length/* && i<ys.length*/;i++) {
+	    	for (int i=0;i<area.length && i<centerX.length && i<ys.length;i++) {
 	    		//if (ys[i] < 90) {
 		    		if (area[i] > maxArea[0]) {
 		    			maxArea[1] = maxArea[0]; points[1] = points[0];
@@ -82,3 +82,4 @@ public class OldPIDVisionBoilerAlign extends PIDCommand {
 	}
 
 }
+*/

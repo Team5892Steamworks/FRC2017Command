@@ -1,17 +1,27 @@
 package org.usfirst.frc.team5892.robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
+import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
+import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
+import org.usfirst.frc.team5892.robot.commands.CancelAllCommands;
+import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
+import org.usfirst.frc.team5892.robot.commands.MultRumble;
+import org.usfirst.frc.team5892.robot.commands.RumbleController;
+import org.usfirst.frc.team5892.robot.commands.UltrasonicShoot;
+import org.usfirst.frc.team5892.robot.commands.VisionRegShoot;
+import org.usfirst.frc.team5892.robot.commands.shooter;
+import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousDriveLeg;
+import org.usfirst.frc.team5892.robot.commands.autonomous.InlineCommandGroup;
+import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
+import org.usfirst.frc.team5892.robot.triggers.AnalogAxisTrigger;
+import org.usfirst.frc.team5892.robot.triggers.MatchTimeTrigger;
+import org.usfirst.frc.team5892.robot.triggers.POVTrigger;
+import org.usfirst.frc.team5892.robot.triggers.TriggerConglomerator;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team5892.robot.commands.*;
-import org.usfirst.frc.team5892.robot.commands.autonomous.*;
-import org.usfirst.frc.team5892.robot.commands.pid.boiler.BoilerVisionPIDCommand;
-import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
-import org.usfirst.frc.team5892.robot.triggers.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator

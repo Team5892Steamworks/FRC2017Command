@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 /**
  *
  */
+@Deprecated
 public class ShooterSpeedSubsystem extends PIDSubsystem {
 
     // Initialize your subsystem here
@@ -25,7 +26,6 @@ public class ShooterSpeedSubsystem extends PIDSubsystem {
 	
 	private Victor motor = new Victor(Robot.map.flywheel.port);
 	private Encoder enc = new Encoder(0, 1, false, Encoder.EncodingType.k2X);
-	@SuppressWarnings("deprecation")
 	private AnalogInput encA = new AnalogInput(RobotMap.encoderAnalog);
 	
     public ShooterSpeedSubsystem() {

@@ -1,9 +1,9 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team5892.robot.Robot;
 import org.usfirst.frc.team5892.robot.RobotMapB;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *

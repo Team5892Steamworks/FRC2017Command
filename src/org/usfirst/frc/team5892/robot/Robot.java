@@ -1,6 +1,16 @@
 
 package org.usfirst.frc.team5892.robot;
 
+import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.commands.VisionRegShootSequence;
+import org.usfirst.frc.team5892.robot.commands.autonomous.*;
+import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
+import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
+import org.usfirst.frc.team5892.robot.subsystems.Agitator;
+import org.usfirst.frc.team5892.robot.subsystems.Drive;
+import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5892.robot.subsystems.sensors.SensorArray;
+
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -10,13 +20,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.SPI;
-
-import org.usfirst.frc.team5892.robot.commands.*;
-import org.usfirst.frc.team5892.robot.commands.autonomous.*;
-import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
-import org.usfirst.frc.team5892.robot.subsystems.*;
-import org.usfirst.frc.team5892.robot.subsystems.sensors.SensorArray;
 
 //import com.kauailabs.navx.frc.AHRS;
 //import org.usfirst.frc.team5892.robot.subsystems.ShooterSpeedSubsystem;
@@ -100,7 +103,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new EncoderDriveStraightAuto());
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
-		chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
+		//chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
 		chooser.addObject("Gear spike visoin", new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(7), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
 		chooser.addObject("Party", new PartyAuto());
 		

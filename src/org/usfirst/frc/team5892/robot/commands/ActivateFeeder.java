@@ -1,15 +1,13 @@
 package org.usfirst.frc.team5892.robot.commands;
 
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team5892.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class ActivateFeeder extends Command {
-	public static Victor feeder = new Victor(Robot.map.feeder.port);
 	
 	public ActivateFeeder() {
 		// Use requires() here to declare subsystem dependencies
@@ -20,7 +18,7 @@ public class ActivateFeeder extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		feeder.set(.65);
+		Robot.feeder.set(.65);
 		Robot.agitator_s.enable();
 	}
 
@@ -38,7 +36,7 @@ public class ActivateFeeder extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		feeder.set(0);
+		Robot.feeder.set(0);
 		Robot.agitator_s.disable();
 	}
 
@@ -46,7 +44,7 @@ public class ActivateFeeder extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		feeder.set(0);
+		Robot.feeder.set(0);
 		Robot.agitator_s.disable();
 	}
 }

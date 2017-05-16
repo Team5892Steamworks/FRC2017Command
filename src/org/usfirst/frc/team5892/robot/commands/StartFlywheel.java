@@ -2,7 +2,6 @@ package org.usfirst.frc.team5892.robot.commands;
 
 import org.usfirst.frc.team5892.robot.Robot;
 
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class StartFlywheel extends Command {

@@ -5,6 +5,7 @@ import org.usfirst.frc.team5892.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
+@Deprecated
 public class VisionShootTestAuto extends CommandGroup {
     public VisionShootTestAuto() {
     	addParallel(new shooter());

@@ -5,8 +5,6 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 
-import org.usfirst.frc.team5892.robot.Robot;
-
 /**
  *
  */

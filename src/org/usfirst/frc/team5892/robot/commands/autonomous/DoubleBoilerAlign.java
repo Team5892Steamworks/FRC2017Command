@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
+@Deprecated
 public class DoubleBoilerAlign extends VisionSequence {
     public DoubleBoilerAlign() {
     	addSequential(new VisionBoilerAlign());

@@ -4,7 +4,6 @@ import org.usfirst.frc.team5892.robot.Robot;
 import org.usfirst.frc.team5892.robot.commands.mecanumDrive;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**

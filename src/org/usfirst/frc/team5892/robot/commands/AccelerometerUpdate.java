@@ -1,11 +1,11 @@
 package org.usfirst.frc.team5892.robot.commands;
 
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team5892.robot.Robot;
 
 /**
  *
@@ -15,7 +15,9 @@ public class AccelerometerUpdate extends Command {
 	BuiltInAccelerometer acc = new BuiltInAccelerometer();
 	final double fps = 32.17404855643044;
 	final double mps = 9.80665;
+	@SuppressWarnings("unused")
 	private int speedX = 0;
+	@SuppressWarnings("unused")
 	private int speedZ = 0;
 	private double startTime;
 	private double vI = 0; //initial velocity

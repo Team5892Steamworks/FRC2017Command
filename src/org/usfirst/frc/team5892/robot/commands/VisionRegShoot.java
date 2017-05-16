@@ -1,12 +1,11 @@
 package org.usfirst.frc.team5892.robot.commands;
 
-import edu.wpi.first.wpilibj.Victor;
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
-
-import org.usfirst.frc.team5892.robot.Robot;
 
 /**
  *

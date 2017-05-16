@@ -1,10 +1,10 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
+import org.usfirst.frc.team5892.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.tables.ITable;
-
-import org.usfirst.frc.team5892.robot.Robot;
 
 /**
  *

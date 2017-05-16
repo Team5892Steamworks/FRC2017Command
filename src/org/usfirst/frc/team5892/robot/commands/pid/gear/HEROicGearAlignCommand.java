@@ -1,10 +1,10 @@
 package org.usfirst.frc.team5892.robot.commands.pid.gear;
 
-import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team5892.HEROcode.pid.HEROicPIDController;
 import org.usfirst.frc.team5892.robot.Robot;
+
+import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *

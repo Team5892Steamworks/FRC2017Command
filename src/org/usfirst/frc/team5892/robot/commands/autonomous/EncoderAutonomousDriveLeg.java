@@ -2,9 +2,6 @@ package org.usfirst.frc.team5892.robot.commands.autonomous;
 
 import org.usfirst.frc.team5892.robot.Robot;
 
-import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg {
 	
 	double leftTarget, rightTarget;
