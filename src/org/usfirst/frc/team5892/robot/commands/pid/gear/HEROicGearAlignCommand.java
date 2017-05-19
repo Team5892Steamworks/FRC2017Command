@@ -22,7 +22,7 @@ public class HEROicGearAlignCommand extends Command {
 	static final double Ki = 0.013;
 	static final double Kd = 0.089;
 	
-	static final double CAMERA_X_CENTER = 80;
+	static final double CAMERA_X_CENTER = 40;
 	static final double TOLERANCE = 0.5;
 	
 	double setpoint;

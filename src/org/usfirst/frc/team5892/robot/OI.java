@@ -59,7 +59,7 @@ public class OI {
 	public Button agitator_rv = new JoystickButton(copilot, 3);
 	public Trigger agitator_da = new AnalogAxisTrigger(copilot, 3);
 	
-	public Button winch_rev = new JoystickButton(copilot, 5);
+	public Trigger winch_rev = new AnalogAxisTrigger(copilot, 3);
 	public Button winch_fwd = new JoystickButton(copilot, 6);
 	
 	public Button shooter_lo = new JoystickButton(copilot, 1);
@@ -115,7 +115,7 @@ public class OI {
 		
 		feeder.whileActive(new ActivateFeeder());
 		
-		boiler_align.whenActive(new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
+		//boiler_align.whenActive(new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
 		
 		//vision_shoot_reg.whileActive(new VisionRegShoot());
 		killall.whenActive(new CancelAllCommands());

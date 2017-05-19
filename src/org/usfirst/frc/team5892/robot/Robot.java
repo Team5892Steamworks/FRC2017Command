@@ -100,7 +100,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear with Encoders (Sit from Right)", new EncoderScoreGearAuto(false, Position.RIGHT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Left)", new EncoderScoreGearAuto(true, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Right)", new EncoderScoreGearAuto(true, Position.RIGHT));
-		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new EncoderDriveStraightAuto());
+		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new MiddleGearAuto());
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 		//chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
@@ -133,7 +133,7 @@ public class Robot extends IterativeRobot {
         camera1.setExposureManual(1);
         
         UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
-        camera2.setResolution(160, 120);
+        camera2.setResolution(80, 60);
         camera2.setExposureManual(1);
 
         CameraServer.getInstance().getVideo();
