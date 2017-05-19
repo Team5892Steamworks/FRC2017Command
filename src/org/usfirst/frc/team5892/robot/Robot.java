@@ -10,7 +10,7 @@ import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5892.robot.subsystems.sensors.SensorArray;
+import org.usfirst.frc.team5892.robot.subsystems.sensors.HEROicSensorArray;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	public static Agitator agitator_s;
 	//public static Shooter shooterSpeedSubsystem;
 	public static Accelerometer accelerometer;
-	public static SensorArray sensors;
+	public static HEROicSensorArray sensors;
 	//public static SDOutputSubsystem sdout;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
@@ -81,7 +81,7 @@ public class Robot extends IterativeRobot {
 		// Initialize subsystems
 		agitator_s = new Agitator();
 		drive = new Drive();
-		sensors = new SensorArray();
+		sensors = new HEROicSensorArray();
 		//sdout = new SDOutputSubsystem();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
