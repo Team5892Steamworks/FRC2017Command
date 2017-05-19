@@ -2,6 +2,7 @@ package org.usfirst.frc.team5892.robot.commands.pid.boiler;
 
 import edu.wpi.first.wpilibj.PIDController;
 
+@Deprecated
 class BoilerVisionPIDController extends PIDController {
 	
 	static final double CAMERA_X_CENTER = 90;

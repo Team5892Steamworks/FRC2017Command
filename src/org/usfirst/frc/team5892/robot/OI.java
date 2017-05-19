@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5892.robot;
 
+import org.usfirst.frc.team5892.HEROcode.inline.*;
 import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
 import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
 import org.usfirst.frc.team5892.robot.commands.CancelAllCommands;
@@ -7,7 +8,6 @@ import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
 import org.usfirst.frc.team5892.robot.commands.UltrasonicShoot;
 import org.usfirst.frc.team5892.robot.commands.shooter;
 import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousDriveLeg;
-import org.usfirst.frc.team5892.robot.commands.autonomous.InlineCommandGroup;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
 import org.usfirst.frc.team5892.robot.triggers.AnalogAxisTrigger;
 import org.usfirst.frc.team5892.robot.triggers.POVTrigger;
@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -115,7 +114,9 @@ public class OI {
 		
 		feeder.whileActive(new ActivateFeeder());
 		
-		boiler_align.whenActive(new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
+		boiler_align.whenActive(new InlineCommandGroup(
+				new ICGEntry(new HEROicGearAlignCommand(7), false),
+				new ICGEntry(new AutonomousDriveLeg(0, 0.2, 0, 0.5), false)));
 		
 		//vision_shoot_reg.whileActive(new VisionRegShoot());
 		killall.whenActive(new CancelAllCommands());

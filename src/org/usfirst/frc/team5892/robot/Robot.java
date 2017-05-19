@@ -1,7 +1,8 @@
 
 package org.usfirst.frc.team5892.robot;
 
-import org.usfirst.frc.team5892.HEROcode.inline.ICGEntry;
+import org.usfirst.frc.team5892.HEROcode.inline.*;
+import org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup;
 import org.usfirst.frc.team5892.robot.commands.*;
 import org.usfirst.frc.team5892.robot.commands.autonomous.*;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
@@ -104,10 +105,12 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 		//chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
-		chooser.addObject("Gear spike visoin", new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(7), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
+		chooser.addObject("Gear spike visoin", new InlineCommandGroup(
+				new ICGEntry(new HEROicGearAlignCommand(7), false),
+				new ICGEntry(new AutonomousDriveLeg(0, 0.2, 0, 0.5), false)));
 		chooser.addObject("Party", new PartyAuto());
 		
-		chooser.addObject("Vision boiler shoote test", new org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup(
+		chooser.addObject("Vision boiler shoote test", new InlineCommandGroup(
 				new ICGEntry(new UltrasonicShoot(), true),
 				new ICGEntry(new AutonomousWaitLeg(6), false),
 				new ICGEntry(new ActivateFeeder(), true)));
