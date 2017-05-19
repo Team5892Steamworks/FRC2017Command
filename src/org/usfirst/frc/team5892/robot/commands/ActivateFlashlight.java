@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
+@Deprecated
 public class ActivateFlashlight extends Command {
 	
 	//Relay light = new Relay(9);

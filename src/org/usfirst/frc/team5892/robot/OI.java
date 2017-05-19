@@ -4,16 +4,12 @@ import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
 import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
 import org.usfirst.frc.team5892.robot.commands.CancelAllCommands;
 import org.usfirst.frc.team5892.robot.commands.DisableAgitator;
-import org.usfirst.frc.team5892.robot.commands.MultRumble;
-import org.usfirst.frc.team5892.robot.commands.RumbleController;
 import org.usfirst.frc.team5892.robot.commands.UltrasonicShoot;
-import org.usfirst.frc.team5892.robot.commands.VisionRegShoot;
 import org.usfirst.frc.team5892.robot.commands.shooter;
 import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousDriveLeg;
 import org.usfirst.frc.team5892.robot.commands.autonomous.InlineCommandGroup;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
 import org.usfirst.frc.team5892.robot.triggers.AnalogAxisTrigger;
-import org.usfirst.frc.team5892.robot.triggers.MatchTimeTrigger;
 import org.usfirst.frc.team5892.robot.triggers.POVTrigger;
 import org.usfirst.frc.team5892.robot.triggers.TriggerConglomerator;
 
@@ -76,8 +72,8 @@ public class OI {
 	
 	public Trigger boiler_align = new AnalogAxisTrigger(pilot, 3);
 	
-	public Trigger sec30 = new MatchTimeTrigger(30);
-	public Trigger sec15 = new MatchTimeTrigger(15);
+	/*public Trigger sec30 = new MatchTimeTrigger(30);
+	public Trigger sec15 = new MatchTimeTrigger(15);*/
 	
 	public Trigger feeder = new TriggerConglomerator(new Trigger[] {
 			new POVTrigger(copilot, 0), new POVTrigger(copilot, 45),
@@ -86,7 +82,7 @@ public class OI {
 			new POVTrigger(copilot, 270), new POVTrigger(copilot, 315)
 	}, TriggerConglomerator.Operator.OR);
 	
-	public Trigger vision_shoot_reg = new AnalogAxisTrigger(copilot, 2);
+	//public Trigger vision_shoot_reg = new AnalogAxisTrigger(copilot, 2);
 	
 	public Button killall = new JoystickButton(pilot, 2);
 	
@@ -114,14 +110,14 @@ public class OI {
 		winch_rev.whileActive(new ActivateWinch(-1));
 		winch_fwd.whileActive(new ActivateWinch(1));
 		
-		sec30.whenActive(new RumbleController(0.2));
-		sec15.whenActive(new MultRumble(2));
+		/*sec30.whenActive(new RumbleController(0.2));
+		sec15.whenActive(new MultRumble(2));*/
 		
 		feeder.whileActive(new ActivateFeeder());
 		
 		boiler_align.whenActive(new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
 		
-		vision_shoot_reg.whileActive(new VisionRegShoot());
+		//vision_shoot_reg.whileActive(new VisionRegShoot());
 		killall.whenActive(new CancelAllCommands());
 		
 		//arduinoIOTest.whileHeld(new BoilerVisionPIDCommand());

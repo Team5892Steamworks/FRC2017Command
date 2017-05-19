@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
+@Deprecated
 public class GearVisionPIDCommand extends Command {
 	
 	private static GearStrafeVisionPIDController strafeControl;

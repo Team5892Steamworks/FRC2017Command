@@ -5,6 +5,7 @@ import org.usfirst.frc.team5892.robot.commands.autonomous.ReportYDifference;
 import org.usfirst.frc.team5892.robot.commands.autonomous.VisionSequence;
 import org.usfirst.frc.team5892.robot.commands.pid.boiler.BoilerVisionPIDCommand;
 
+@Deprecated
 public class VisionRegShootSequence extends VisionSequence {
     public VisionRegShootSequence(boolean waitForFlywheel) {
     	addParallel(new BoilerVisionPIDCommand());

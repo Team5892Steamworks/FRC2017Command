@@ -5,6 +5,7 @@ import org.usfirst.frc.team5892.robot.Robot;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+@Deprecated
 class GearStrafeOutput implements PIDOutput {
     
 	GearStrafeOutput() {}

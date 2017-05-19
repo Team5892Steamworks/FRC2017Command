@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 /**
  *
  */
+@Deprecated
 public class Shooter extends PIDSubsystem {
 
 	Victor shooter = new Victor(Robot.map.flywheel.port);

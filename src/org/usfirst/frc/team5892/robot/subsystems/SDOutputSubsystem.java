@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
+@Deprecated
 public class SDOutputSubsystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.

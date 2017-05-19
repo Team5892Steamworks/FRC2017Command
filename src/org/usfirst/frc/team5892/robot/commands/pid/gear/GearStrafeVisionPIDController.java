@@ -2,6 +2,7 @@ package org.usfirst.frc.team5892.robot.commands.pid.gear;
 
 import edu.wpi.first.wpilibj.PIDController;
 
+@Deprecated
 class GearStrafeVisionPIDController extends PIDController {
 	
 	static final double CAMERA_X_CENTER = 80;

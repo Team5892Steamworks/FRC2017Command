@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 
+@Deprecated
 class GearStrafeInput implements PIDSource {
     
 	ITable table;

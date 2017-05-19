@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * The command used to automatically put sensors on the SmartDashboard. I have no idea how it works, and I <em>wrote</em> the dang thing.
+ * The command used to automatically put sensors on the SmartDashboard. I have no idea how it works, and I <em>wrote</em> the dang thing. As far as I'm concerned, java.lang.reflect is powered by wizardry.
  * 
  * @author Kai Page
  */

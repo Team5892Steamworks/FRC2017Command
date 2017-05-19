@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.tables.ITable;
 /**
  *
  */
+@Deprecated
 public class VisionRegShoot extends Command {
 	
 	static final double BASE_POWER = 1;

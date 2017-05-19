@@ -1,8 +1,8 @@
 
 package org.usfirst.frc.team5892.robot;
 
-import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5892.robot.commands.VisionRegShootSequence;
+import org.usfirst.frc.team5892.HEROcode.inline.ICGEntry;
+import org.usfirst.frc.team5892.robot.commands.*;
 import org.usfirst.frc.team5892.robot.commands.autonomous.*;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
 import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
@@ -107,7 +107,10 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Gear spike visoin", new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(7), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
 		chooser.addObject("Party", new PartyAuto());
 		
-		chooser.addObject("Vision boiler shoote test", new VisionRegShootSequence(true));
+		chooser.addObject("Vision boiler shoote test", new org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup(
+				new ICGEntry(new UltrasonicShoot(), true),
+				new ICGEntry(new AutonomousWaitLeg(6), false),
+				new ICGEntry(new ActivateFeeder(), true)));
 //		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
