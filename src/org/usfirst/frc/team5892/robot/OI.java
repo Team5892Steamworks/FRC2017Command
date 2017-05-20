@@ -59,8 +59,8 @@ public class OI {
 	public Button agitator_rv = new JoystickButton(copilot, 3);
 	public Trigger agitator_da = new AnalogAxisTrigger(copilot, 3);
 	
-	public Trigger winch_rev = new AnalogAxisTrigger(copilot, 3);
-	public Button winch_fwd = new JoystickButton(copilot, 6);
+	public Trigger winch_rev = new AnalogAxisTrigger(copilot, 2);
+	public Trigger winch_fwd = new AnalogAxisTrigger(copilot, 3);
 	
 	public Button shooter_lo = new JoystickButton(copilot, 1);
 	public Button shooter_hi = new JoystickButton(copilot, 4);

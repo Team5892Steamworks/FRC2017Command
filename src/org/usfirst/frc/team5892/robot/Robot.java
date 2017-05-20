@@ -115,7 +115,7 @@ public class Robot extends IterativeRobot {
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!!", chooser);
 		
 		/*
 		posChooser.addDefault("Left", Position.LEFT);
