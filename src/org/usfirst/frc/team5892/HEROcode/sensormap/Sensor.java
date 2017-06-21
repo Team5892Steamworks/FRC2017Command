@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5892.HEROcode.sensormap;
 
 /**
- * A sensor that, if part of a {@link SensorArray}, will automatically be put on the SmartDashboard. Convenient!
+ * A sensor that, if part of a {@link SensorArray}, will automatically be put on the SmartDashboard.
  * 
  * @author Kai Page
  */
