@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5892.robot;
 
-import org.usfirst.frc.team5892.HEROcode.inline.*;
+import org.usfirst.frc.team5892.HEROcode.inline.ICGEntry;
+import org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup;
 import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
 import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
 import org.usfirst.frc.team5892.robot.commands.CancelAllCommands;
@@ -22,6 +23,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+@Deprecated
 public class OI {
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5892.HEROcode.sensormap;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 /**

@@ -1,11 +1,22 @@
 
 package org.usfirst.frc.team5892.robot;
 
-import org.usfirst.frc.team5892.HEROcode.inline.*;
+import org.usfirst.frc.team5892.HEROcode.inline.ICGEntry;
 import org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup;
-import org.usfirst.frc.team5892.robot.commands.*;
-import org.usfirst.frc.team5892.robot.commands.autonomous.*;
+import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
+import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.commands.UltrasonicShoot;
+import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousDriveLeg;
+import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousWaitLeg;
+import org.usfirst.frc.team5892.robot.commands.autonomous.BoringForwardsAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderDriveStraightAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderScoreGearAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.MeasureEncodersAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.PartyAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.Position;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
+import org.usfirst.frc.team5892.robot.oi.*;
 import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
@@ -30,7 +41,7 @@ public class Robot extends IterativeRobot {
 	//public static final boolean INCLUDE_LULZ_AUTONOMI = false;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); 
 
-	public static OI oi;
+	public static org.usfirst.frc.team5892.robot.oi.OI oi;
 	public static RobotMapB map;
 	public static Drive drive;
 	public static Agitator agitator_s;
@@ -87,7 +98,7 @@ public class Robot extends IterativeRobot {
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		
 		// Initialize OI
-		oi = new OI();
+		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new JoyStkCopilot(2));
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();

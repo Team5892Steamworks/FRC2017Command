@@ -73,7 +73,7 @@ public class VisionGearAlignStrafe extends Command {
 	protected boolean isFinished() {
 		return (cpoint > CAMERA_X_CENTER - TOLERANCE &&
 			   cpoint < CAMERA_X_CENTER + TOLERANCE) ||
-			   Robot.oi.pilot.getRawButton(5);
+			   Robot.oi.pilot.loSpeed();
 	}
 
 	// Called once after isFinished returns true

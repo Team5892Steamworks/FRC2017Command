@@ -21,7 +21,7 @@ public class mecanumDrive extends Command {
 	protected void initialize() {
 	}
 	
-	private int port(RobotMapB.ControlSetup config) {
+	/*private int port(RobotMapB.ControlSetup config) {
 		if (config == RobotMapB.ControlSetup.xAxis) return 0;
 		else if (config == RobotMapB.ControlSetup.yAxis) return 1;
 		else return 4;
@@ -29,19 +29,17 @@ public class mecanumDrive extends Command {
 	
 	private int inv(RobotMapB.ControlSetup config) {
 		return config.inverted ? -1 : 1;
-	}
+	}*/
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
 		/*double base = Robot.drive.get_base();
 		SmartDashboard.putNumber("Drive Base Multiplier", base);*/
-		double mult = Robot.oi.pilot.getRawButton(5) ? 0.65 : 1;
+		double mult = Robot.oi.pilot.loSpeed() ? 0.65 : 1;
 		// TODO Reverse 4 and 0 before competition and un-negate
 		//Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(4)*mult, -Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
-		Robot.drive.mecanumDrive(Robot.oi.pilot.getRawAxis(port(Robot.map.controlSetup[0])) * inv(Robot.map.controlSetup[0]) * mult,
-				                 Robot.oi.pilot.getRawAxis(port(Robot.map.controlSetup[1])) * inv(Robot.map.controlSetup[1]) * mult,
-				                 Robot.oi.pilot.getRawAxis(port(Robot.map.controlSetup[2])) * inv(Robot.map.controlSetup[2]) * mult);
+		Robot.drive.mecanumDrive(Robot.oi.pilot.xAxis(), Robot.oi.pilot.yAxis(), Robot.oi.pilot.twist());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
