@@ -96,7 +96,7 @@ public class OI {
 		shooter.whileActive(new UltrasonicShoot());
 		shooter_lo.whileActive(new shooter(0.6));
 		shooter_hi.whileActive(new shooter(0.75));
-		shooter_lower.whileActive(new shooter(0.5));
+		shooter_lower.whileActive(new shooter(0.35));
 		
 		//shooter.whileActive(new PControlShoot());
 		
