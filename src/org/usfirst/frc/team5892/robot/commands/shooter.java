@@ -28,6 +28,7 @@ public class shooter extends Command {
 	@Override
 	protected void initialize() {
 		Robot.flywheel.set(-power);
+		Robot.agitator.set(-1);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -56,6 +57,7 @@ public class shooter extends Command {
 	protected void end() {
 		//feeder.set(0);
 		Robot.flywheel.set(0);
+		Robot.agitator.set(0);
 	}
   
 	// Called when another command which requires one or more of the same

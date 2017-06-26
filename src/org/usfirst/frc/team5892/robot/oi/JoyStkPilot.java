@@ -22,7 +22,12 @@ public class JoyStkPilot extends Controller implements Pilot {
 
 	@Override
 	public boolean loSpeed() {
-		return stick.getRawAxis(2) > 0.7 || stick.getRawAxis(3) > 0.7;
+		return stick.getRawAxis(2) > 0.7;
+	}
+	
+	@Override
+	public boolean gearPneum() {
+		return stick.getRawAxis(3) > 0.7;
 	}
 
 }

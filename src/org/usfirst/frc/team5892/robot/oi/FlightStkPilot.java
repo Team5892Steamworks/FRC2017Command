@@ -24,5 +24,10 @@ public class FlightStkPilot extends Controller implements Pilot {
 	public boolean loSpeed() {
 		return stick.getRawButton(2);
 	}
+	
+	@Override
+	public boolean gearPneum() {
+		return stick.getRawButton(1);
+	}
 
 }

@@ -6,4 +6,5 @@ public interface Pilot {
     public double twist();
     
     public boolean loSpeed();
+    public boolean gearPneum();
 }

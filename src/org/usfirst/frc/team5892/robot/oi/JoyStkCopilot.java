@@ -9,6 +9,11 @@ public class JoyStkCopilot extends Controller implements Copilot {
 	public boolean shooter() {
 		return stick.getRawButton(2);
 	}
+	
+	@Override
+	public boolean shooter_lo() {
+		return stick.getRawButton(4);
+	}
 
 	@Override
 	public boolean feeder() {

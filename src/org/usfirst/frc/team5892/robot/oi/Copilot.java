@@ -2,6 +2,7 @@ package org.usfirst.frc.team5892.robot.oi;
 
 public interface Copilot {
     public boolean shooter();
+    public boolean shooter_lo();
     public boolean feeder();
     
     public boolean winch_fwd();
