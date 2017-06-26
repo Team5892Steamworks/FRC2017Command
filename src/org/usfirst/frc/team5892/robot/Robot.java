@@ -13,6 +13,7 @@ import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAu
 import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderDriveStraightAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderScoreGearAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.MeasureEncodersAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.MiddleGearAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.PartyAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.Position;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
