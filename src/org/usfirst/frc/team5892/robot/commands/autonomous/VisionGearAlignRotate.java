@@ -88,7 +88,7 @@ public class VisionGearAlignRotate extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return (diff > TARGET_DIFF - TOLERANCE && diff < TARGET_DIFF + TOLERANCE) || Robot.oi.pilot.getRawButton(5);
+		return (diff > TARGET_DIFF - TOLERANCE && diff < TARGET_DIFF + TOLERANCE) || Robot.oi.pilot.loSpeed();
 	}
 
 	// Called once after isFinished returns true

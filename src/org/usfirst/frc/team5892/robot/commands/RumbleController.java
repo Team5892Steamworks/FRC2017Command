@@ -47,7 +47,7 @@ public class RumbleController extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-	    Robot.oi.pilot.setRumble(type, power);
+	    //Robot.oi.pilot.getStick().setRumble(type, power);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -64,13 +64,13 @@ public class RumbleController extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.oi.pilot.setRumble(type, 0);
+		//Robot.oi.pilot.setRumble(type, 0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.oi.pilot.setRumble(type, 0);
+		//Robot.oi.pilot.setRumble(type, 0);
 	}
 }

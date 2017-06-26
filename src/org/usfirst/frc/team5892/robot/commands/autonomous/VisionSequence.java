@@ -8,6 +8,6 @@ public abstract class VisionSequence extends CommandGroup {
 	
     @Override
     protected boolean isFinished() {
-    	return super.isFinished() || Robot.oi.pilot.getRawButton(5);
+    	return super.isFinished() || Robot.oi.pilot.loSpeed();
     }
 }

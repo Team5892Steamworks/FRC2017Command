@@ -2,14 +2,26 @@
 package org.usfirst.frc.team5892.robot;
 
 import org.usfirst.frc.team5892.HEROcode.inline.ICGEntry;
-import org.usfirst.frc.team5892.robot.commands.*;
-import org.usfirst.frc.team5892.robot.commands.autonomous.*;
+import org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup;
+import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
+import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5892.robot.commands.UltrasonicShoot;
+import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousDriveLeg;
+import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousWaitLeg;
+import org.usfirst.frc.team5892.robot.commands.autonomous.BoringForwardsAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderDriveStraightAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderScoreGearAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.MeasureEncodersAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.PartyAuto;
+import org.usfirst.frc.team5892.robot.commands.autonomous.Position;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
+import org.usfirst.frc.team5892.robot.oi.*;
 import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator;
 import org.usfirst.frc.team5892.robot.subsystems.Drive;
 import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5892.robot.subsystems.sensors.SensorArray;
+import org.usfirst.frc.team5892.robot.subsystems.sensors.HEROicSensorArray;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -29,13 +41,13 @@ public class Robot extends IterativeRobot {
 	//public static final boolean INCLUDE_LULZ_AUTONOMI = false;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem(); 
 
-	public static OI oi;
+	public static org.usfirst.frc.team5892.robot.oi.OI oi;
 	public static RobotMapB map;
 	public static Drive drive;
 	public static Agitator agitator_s;
 	//public static Shooter shooterSpeedSubsystem;
 	public static Accelerometer accelerometer;
-	public static SensorArray sensors;
+	public static HEROicSensorArray sensors;
 	//public static SDOutputSubsystem sdout;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
@@ -80,13 +92,13 @@ public class Robot extends IterativeRobot {
 		// Initialize subsystems
 		agitator_s = new Agitator();
 		drive = new Drive();
-		sensors = new SensorArray();
+		sensors = new HEROicSensorArray();
 		//sdout = new SDOutputSubsystem();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		
 		// Initialize OI
-		oi = new OI();
+		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new FlightStkCopilot(3));
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
@@ -104,10 +116,12 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 		//chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
-		chooser.addObject("Gear spike visoin", new InlineCommandGroup(new Command[]{new HEROicGearAlignCommand(7), new AutonomousDriveLeg(0, 0.2, 0, 0.5)}));
+		chooser.addObject("Gear spike visoin", new InlineCommandGroup(
+				new ICGEntry(new HEROicGearAlignCommand(7), false),
+				new ICGEntry(new AutonomousDriveLeg(0, 0.2, 0, 0.5), false)));
 		chooser.addObject("Party", new PartyAuto());
 		
-		chooser.addObject("Vision boiler shoote test", new org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup(
+		chooser.addObject("Vision boiler shoote test", new InlineCommandGroup(
 				new ICGEntry(new UltrasonicShoot(), true),
 				new ICGEntry(new AutonomousWaitLeg(6), false),
 				new ICGEntry(new ActivateFeeder(), true)));

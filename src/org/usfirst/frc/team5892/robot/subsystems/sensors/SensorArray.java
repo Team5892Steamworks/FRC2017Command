@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+@Deprecated
 public class SensorArray extends Subsystem {
     
 	Counter r_encoderLeft = new Counter(Robot.map.encoderLeft);

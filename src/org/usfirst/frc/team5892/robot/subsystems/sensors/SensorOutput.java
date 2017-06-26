@@ -5,6 +5,7 @@ import org.usfirst.frc.team5892.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+@Deprecated
 class SensorOutput extends Command {
     
 	Sensor[] sensors;
