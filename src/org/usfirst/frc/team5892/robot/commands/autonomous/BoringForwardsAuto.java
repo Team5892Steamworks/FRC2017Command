@@ -1,7 +1,5 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
-import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
-
 public class BoringForwardsAuto extends EncoderAuto {
     public BoringForwardsAuto() {
     	addSequential(new EncoderAutonomousDriveLeg(0, 0.3, 0, 700));

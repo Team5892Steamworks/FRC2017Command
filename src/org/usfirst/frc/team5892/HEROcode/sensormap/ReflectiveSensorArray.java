@@ -5,11 +5,16 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 /**
- * Uses reflections to automate writing {@link getAllSensors}. While easier to maintain, it may use more memory and/or processing power. I don't really know how reflections work.
+ * Uses reflections to automate writing {@link getAllSensors}. While easier to maintain, it may use more memory and/or processing power.
+ * <br><br>
+ * Also it doesn't work yet because I have no idea how to use reflections. :(
  * 
  * @author Kai Page
+ * @deprecated Crashes the freaking robot. Nope.
  */
-public class ReflectiveSensorArray extends SensorArray {
+// TODO make it work????????
+@Deprecated
+public abstract class ReflectiveSensorArray extends SensorArray {
 	
 	Sensor[] sensors;
 	

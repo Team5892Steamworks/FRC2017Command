@@ -1,7 +1,5 @@
 package org.usfirst.frc.team5892.robot.commands;
 
-import org.usfirst.frc.team5892.robot.Robot;
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 

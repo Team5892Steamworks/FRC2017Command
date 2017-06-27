@@ -4,13 +4,13 @@ package org.usfirst.frc.team5892.robot;
 import org.usfirst.frc.team5892.HEROcode.inline.ICGEntry;
 import org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup;
 import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
+import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
 import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5892.robot.commands.UltrasonicShoot;
 import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousDriveLeg;
 import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousWaitLeg;
 import org.usfirst.frc.team5892.robot.commands.autonomous.BoringForwardsAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderDriveStraightAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderScoreGearAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.MeasureEncodersAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.MiddleGearAuto;
@@ -18,10 +18,7 @@ import org.usfirst.frc.team5892.robot.commands.autonomous.PartyAuto;
 import org.usfirst.frc.team5892.robot.commands.autonomous.Position;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
 import org.usfirst.frc.team5892.robot.oi.*;
-import org.usfirst.frc.team5892.robot.subsystems.Accelerometer;
-import org.usfirst.frc.team5892.robot.subsystems.Agitator;
-import org.usfirst.frc.team5892.robot.subsystems.Drive;
-import org.usfirst.frc.team5892.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5892.robot.subsystems.*;
 import org.usfirst.frc.team5892.robot.subsystems.sensors.HEROicSensorArray;
 
 import edu.wpi.cscore.UsbCamera;
@@ -64,6 +61,8 @@ public class Robot extends IterativeRobot {
 	public static Victor agitator;
 	public static Victor intake;
 	
+	public static PneumaticSubsystem pneumatics;
+	
 	//public static AHRS ahrs;
 	
 	public static SendableChooser<Position> posChooser;
@@ -78,7 +77,7 @@ public class Robot extends IterativeRobot {
 		// Initialize NavX
 		//ahrs = new AHRS(SPI.Port.kMXP);
 		
-		// Initialize motors
+		// Initialize actuators
 		frontleft = new Victor(map.driveTrain[0].port); frontleft.setInverted(map.driveTrain[0].inverted);
 		backleft = new Victor(map.driveTrain[1].port); backleft.setInverted(map.driveTrain[1].inverted);
 		frontright = new Victor(map.driveTrain[2].port); frontright.setInverted(map.driveTrain[2].inverted);
@@ -90,6 +89,8 @@ public class Robot extends IterativeRobot {
 		agitator = new Victor(map.agitator.port); agitator.setInverted(map.agitator.inverted);
 		intake = new Victor(map.intake.port); intake.setInverted(map.intake.inverted);
 		
+		pneumatics = new PneumaticSubsystem(0);
+		
 		// Initialize subsystems
 		agitator_s = new Agitator();
 		drive = new Drive();
@@ -99,7 +100,7 @@ public class Robot extends IterativeRobot {
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		
 		// Initialize OI
-		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new FlightStkCopilot(3));
+		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new JoyStkCopilot(2));
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
@@ -156,6 +157,10 @@ public class Robot extends IterativeRobot {
 		
 		//chooser.addObject("My Auto", new MyAutoCommand());
         //SmartDashboard.putData(Scheduler.getInstance());
+        
+        // Initialize SmartDashboard commands
+        SmartDashboard.putData("Emergency Winch Button", new ActivateWinch(1));
+        
 	}
 	@Override
 	public void disabledInit() {

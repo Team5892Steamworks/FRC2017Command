@@ -16,5 +16,6 @@ public class CompetitionBot extends RobotMapB {
     	encoderLeft = 1;
     	encoderRight = 2;
     	ultrasonic = 0;
+    	gearPushPort = 0;
     }
 }

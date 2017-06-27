@@ -12,6 +12,8 @@ public abstract class RobotMapB {
 	public int encoderRight;
 	public int ultrasonic;
 	
+	public int gearPushPort;
+	
     public class MotorMap {
     	public final int port;
     	public final boolean inverted;

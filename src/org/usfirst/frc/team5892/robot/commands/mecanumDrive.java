@@ -2,7 +2,6 @@ package org.usfirst.frc.team5892.robot.commands;
 
 
 import org.usfirst.frc.team5892.robot.Robot;
-import org.usfirst.frc.team5892.robot.RobotMapB;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -37,9 +36,10 @@ public class mecanumDrive extends Command {
 		/*double base = Robot.drive.get_base();
 		SmartDashboard.putNumber("Drive Base Multiplier", base);*/
 		double mult = Robot.oi.pilot.loSpeed() ? 0.65 : 1;
-		// TODO Reverse 4 and 0 before competition and un-negate
 		//Robot.drive.mecanumDrive(-Robot.oi.pilot.getRawAxis(4)*mult, -Robot.oi.pilot.getRawAxis(0)*mult, Robot.oi.pilot.getRawAxis(1)*mult);
-		Robot.drive.mecanumDrive(Robot.oi.pilot.xAxis(), Robot.oi.pilot.yAxis(), Robot.oi.pilot.twist());
+		Robot.drive.mecanumDrive(mult * Robot.oi.pilot.xAxis(), 
+				                 mult * Robot.oi.pilot.yAxis(),
+				                 mult * Robot.oi.pilot.twist());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

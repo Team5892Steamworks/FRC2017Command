@@ -87,7 +87,7 @@ public abstract class HEROicPIDController implements PIDInterface {
 	}
 
 	/**
-	 * Sets the limits on output for the PID function. I hope you know what min and max mean.
+	 * Sets the limits on output for the PID function.
 	 */
 	public void setOutputLimits(double min, double max) {
 		if (min > max)
@@ -132,7 +132,7 @@ public abstract class HEROicPIDController implements PIDInterface {
 	}
 
 	/**
-	 * Clips value between the current minimum and maximum. For whatever reason, the dude whose code this is based on wrote this code like fifty times instead of making it a function. I personally like it better this way.
+	 * Clips value between the current minimum and maximum.
 	 * @param value The value to be clipped.
 	 * @return The current maximum if value was higher, minimum if lower, value otherwise.
 	 */

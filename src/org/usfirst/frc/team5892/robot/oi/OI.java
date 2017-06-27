@@ -12,6 +12,7 @@ public class OI {
     	this.copilot = copilot;
     	
     	// Pilot commands
+    	new InlineTrigger(pilot::gearPneum).whileActive(new PushGear());
     	
     	// Copilot commands
     	new InlineTrigger(copilot::shooter).whileActive(new UltrasonicShoot());

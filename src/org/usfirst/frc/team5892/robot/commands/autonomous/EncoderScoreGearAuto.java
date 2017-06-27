@@ -1,9 +1,8 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
 import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
-import org.usfirst.frc.team5892.robot.commands.SensorRegShoot;
+import org.usfirst.frc.team5892.robot.commands.UltrasonicShoot;
 import org.usfirst.frc.team5892.robot.commands.StartFlywheel;
-import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
 
 public class EncoderScoreGearAuto extends EncoderAuto {
     public EncoderScoreGearAuto(boolean shoot, Position position) {
@@ -20,7 +19,7 @@ public class EncoderScoreGearAuto extends EncoderAuto {
     		addSequential(new AutonomousWaitLeg(4));                                              // Wait for pilot
     		addSequential(new EncoderAutonomousDriveLeg(0, -0.3, 0, linearInch(60)));             // Move off of spike
     		addParallel(new ActivateFeeder());                                                    // And...
-    		addSequential(new SensorRegShoot());                                                  // Shoot!!!
+    		addSequential(new UltrasonicShoot());                                                 // Shoot!!!
     	}
     }
     /*
