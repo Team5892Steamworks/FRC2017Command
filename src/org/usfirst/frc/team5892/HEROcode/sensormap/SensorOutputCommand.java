@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5892.HEROcode.sensormap;
 
+import java.util.Vector;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -9,24 +11,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author Kai Page
  */
 class SensorOutputCommand extends Command {
-    SensorArray parent;
-    Sensor[] sensors;
+    static Vector<Sensor> sensors = new Vector<>();
+    static {
+    	new SensorOutputCommand().start();
+    }
 	
-	SensorOutputCommand(SensorArray parent) {
-		this.parent = parent;
-		requires(parent);
+	SensorOutputCommand() {
 		setRunWhenDisabled(true);
 		setInterruptible(false);
 	}
 	
 	@Override
-	protected void initialize() {
-		sensors = parent.getAllSensors();
-	}
-	
-	@Override
 	protected void execute() {
-		for (Sensor s : parent.getAllSensors()) {
+		for (Sensor s : sensors) {
 			SmartDashboard.putNumber(s.getName(), s.getValue());
 		}
 	}
