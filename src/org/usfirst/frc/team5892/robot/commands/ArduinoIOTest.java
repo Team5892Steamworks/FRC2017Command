@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5892.robot.commands;
 
 import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.SerialPort;
 //import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArduinoIOTest extends Command {
-	static DigitalOutput out = new DigitalOutput(5);
+	static SerialPort serial = new SerialPort(9600, SerialPort.Port.kOnboard);
 	public ArduinoIOTest() {
 		// Use requires() here to declare subsystem dependencies
 		//requires(Robot.exampleSubsystem);
@@ -18,13 +19,13 @@ public class ArduinoIOTest extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		out.set(true);
+		serial.writeString("initialize\n");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		out.set(true);
+		serial.writeString("execute\n");
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -36,6 +37,6 @@ public class ArduinoIOTest extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		out.set(false);
+		serial.writeString("end");
 	}
 }

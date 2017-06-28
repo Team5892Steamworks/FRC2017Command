@@ -12,7 +12,7 @@ public class CompetitionBot extends RobotMapB {
     	intake = new MotorMap(9, false);
     	flywheel = new MotorMap(1, false);
     	feeder = new MotorMap(4, false);
-    	winch = new MotorMap(5, false);
+    	winch = new MotorMap(6, false);
     	encoderLeft = 1;
     	encoderRight = 2;
     	ultrasonic = 0;

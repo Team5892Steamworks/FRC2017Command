@@ -90,7 +90,7 @@ public class Robot extends IterativeRobot {
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		
 		// Initialize OI
-		oi = new org.usfirst.frc.team5892.robot.oi.OI(new FlightStkPilot(3), new FlightStkCopilot(3));
+		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new JoyStkCopilot(2));
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
