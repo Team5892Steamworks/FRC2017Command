@@ -13,7 +13,7 @@ public class HEROicBoilerAlignCommand extends Command {
 	private HEROicBoilerController control;
 	ITable table;
 	
-	static final double CAMERA_X_CENTER = 80;
+	static final double CAMERA_X_CENTER = 75;
 	
 	public HEROicBoilerAlignCommand() {
 		requires(Robot.drive);

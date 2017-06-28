@@ -3,19 +3,8 @@ package org.usfirst.frc.team5892.robot;
 
 import org.usfirst.frc.team5892.HEROcode.inline.ICGEntry;
 import org.usfirst.frc.team5892.HEROcode.inline.InlineCommandGroup;
-import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
-import org.usfirst.frc.team5892.robot.commands.ActivateWinch;
-import org.usfirst.frc.team5892.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5892.robot.commands.UltrasonicShoot;
-import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousDriveLeg;
-import org.usfirst.frc.team5892.robot.commands.autonomous.AutonomousWaitLeg;
-import org.usfirst.frc.team5892.robot.commands.autonomous.BoringForwardsAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous.DriveForwardsAndSpinAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous.EncoderScoreGearAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous.MeasureEncodersAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous.MiddleGearAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous.PartyAuto;
-import org.usfirst.frc.team5892.robot.commands.autonomous.Position;
+import org.usfirst.frc.team5892.robot.commands.*;
+import org.usfirst.frc.team5892.robot.commands.autonomous.*;
 import org.usfirst.frc.team5892.robot.commands.pid.gear.HEROicGearAlignCommand;
 import org.usfirst.frc.team5892.robot.oi.*;
 import org.usfirst.frc.team5892.robot.subsystems.*;
@@ -23,6 +12,7 @@ import org.usfirst.frc.team5892.robot.subsystems.sensors.HEROicSensorArray;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
@@ -42,7 +32,7 @@ public class Robot extends IterativeRobot {
 	public static org.usfirst.frc.team5892.robot.oi.OI oi;
 	public static RobotMapB map;
 	public static Drive drive;
-	public static Agitator agitator_s;
+	//public static Agitator agitator_s;
 	//public static Shooter shooterSpeedSubsystem;
 	public static Accelerometer accelerometer;
 	public static HEROicSensorArray sensors;
@@ -92,7 +82,7 @@ public class Robot extends IterativeRobot {
 		pneumatics = new PneumaticSubsystem(0);
 		
 		// Initialize subsystems
-		agitator_s = new Agitator();
+		//agitator_s = new Agitator();
 		drive = new Drive();
 		sensors = new HEROicSensorArray();
 		//sdout = new SDOutputSubsystem();
@@ -100,7 +90,7 @@ public class Robot extends IterativeRobot {
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
 		
 		// Initialize OI
-		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new JoyStkCopilot(2));
+		oi = new org.usfirst.frc.team5892.robot.oi.OI(new FlightStkPilot(3), new FlightStkCopilot(3));
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
@@ -114,8 +104,10 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear with Encoders (Sit from Right)", new EncoderScoreGearAuto(false, Position.RIGHT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Left)", new EncoderScoreGearAuto(true, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Right)", new EncoderScoreGearAuto(true, Position.RIGHT));
-		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new MiddleGearAuto());
-		chooser.addObject("Score Gear from Middle", new BoringForwardsAuto());
+		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new ExperimentalMiddleGearAuto());
+		chooser.addObject("Score Gear from Middle (Autodetect Alliance)", new MiddleGearAuto());
+		chooser.addObject("Score Gear from Middle (Red Alliance)", new MiddleGearAuto(DriverStation.Alliance.Red));
+		chooser.addObject("Score Gear from Middle (Blue Alliance)", new MiddleGearAuto(DriverStation.Alliance.Blue));
 		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
 		//chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
 		chooser.addObject("Gear spike visoin", new InlineCommandGroup(
@@ -131,7 +123,7 @@ public class Robot extends IterativeRobot {
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!!!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!!!!!!", chooser);
 		
 		/*
 		posChooser.addDefault("Left", Position.LEFT);
@@ -189,9 +181,9 @@ public class Robot extends IterativeRobot {
 	}
 	@Override
 	public void teleopInit() {
-		drive.set_base(1);
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		new ReverseAgitator().start();
 	}
 	@Override
 	public void teleopPeriodic() {

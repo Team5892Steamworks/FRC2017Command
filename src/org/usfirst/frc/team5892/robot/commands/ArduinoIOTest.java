@@ -1,13 +1,14 @@
 package org.usfirst.frc.team5892.robot.commands;
 
 import edu.wpi.first.wpilibj.DigitalOutput;
+//import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class ArduinoIOTest extends Command {
-	static DigitalOutput out = new DigitalOutput(3);
+	static DigitalOutput out = new DigitalOutput(5);
 	public ArduinoIOTest() {
 		// Use requires() here to declare subsystem dependencies
 		//requires(Robot.exampleSubsystem);
@@ -23,6 +24,7 @@ public class ArduinoIOTest extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		out.set(true);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -34,13 +36,6 @@ public class ArduinoIOTest extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		out.set(false);
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	@Override
-	protected void interrupted() {
 		out.set(false);
 	}
 }

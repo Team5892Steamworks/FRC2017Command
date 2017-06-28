@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5892.robot.commands;
 
-import org.usfirst.frc.team5892.robot.Robot;
 import org.usfirst.frc.team5892.robot.subsystems.Agitator.AgitatorState;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,19 +7,20 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
+@Deprecated
 public class DisableAgitator extends Command {
 	
 	AgitatorState prev;
 	public DisableAgitator() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.agitator_s);
+		//requires(Robot.agitator_s);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		prev = Robot.agitator_s.getState();
-		Robot.agitator_s.disable();
+		//prev = Robot.agitator_s.getState();
+		//Robot.agitator_s.disable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -37,13 +37,13 @@ public class DisableAgitator extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.agitator_s.enable();
+		//Robot.agitator_s.enable();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.agitator_s.enable();
+		//Robot.agitator_s.enable();
 	}
 }

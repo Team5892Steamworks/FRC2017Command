@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class PrintSomething extends Command {
 	
-	String message;
+	Object message;
 	
-	public PrintSomething(String message_) {
+	public PrintSomething(Object message_) {
 		// Use requires() here to declare subsystem dependencies
 		//requires(Robot.exampleSubsystem);
 		message = message_;

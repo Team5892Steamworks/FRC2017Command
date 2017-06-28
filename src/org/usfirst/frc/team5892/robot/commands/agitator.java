@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5892.robot.commands;
+/*package org.usfirst.frc.team5892.robot.commands;
 
 import org.usfirst.frc.team5892.robot.Robot;
 
@@ -40,3 +40,4 @@ public class agitator extends Command {
 		Robot.agitator_s.agitator.set(0);
 	}
 }
+*/

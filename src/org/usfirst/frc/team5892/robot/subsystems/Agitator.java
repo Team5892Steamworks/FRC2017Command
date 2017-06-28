@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
+@Deprecated
 public class Agitator extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

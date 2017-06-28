@@ -14,6 +14,11 @@ public class EncoderStraighten extends Command {
 		requires(Robot.drive);
 		twist = speed;
 	}
+	
+	public EncoderStraighten(double speed, double timeout) {
+		this(speed);
+		setTimeout(timeout);
+	}
 
 	// Called just before this Command runs the first time
 	@Override
@@ -35,6 +40,7 @@ public class EncoderStraighten extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
+		if (isTimedOut()) return true;
 		if (delta > 0) return Robot.sensors.encoderLeft.getValue() >= target;
 		else           return Robot.sensors.encoderRight.getValue() >= target;
 	}
@@ -42,11 +48,6 @@ public class EncoderStraighten extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	@Override
-	protected void interrupted() {
+		Robot.drive.mecanumDrive(0, 0, 0);
 	}
 }

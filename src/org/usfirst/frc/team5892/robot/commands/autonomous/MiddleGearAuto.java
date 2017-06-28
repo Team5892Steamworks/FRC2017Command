@@ -1,55 +1,42 @@
 package org.usfirst.frc.team5892.robot.commands.autonomous;
 
-import org.usfirst.frc.team5892.HEROcode.pid.HEROicPIDController;
-import org.usfirst.frc.team5892.robot.Robot;
+import org.usfirst.frc.team5892.robot.commands.ActivateFeeder;
+import org.usfirst.frc.team5892.robot.commands.PrintSomething;
+import org.usfirst.frc.team5892.robot.commands.PushGear;
+import org.usfirst.frc.team5892.robot.commands.shooter;
+import org.usfirst.frc.team5892.robot.commands.pid.boiler.HEROicBoilerAlignCommand;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DriverStation;
 
-public class MiddleGearAuto extends Command {
-	
-	Controller control;
-	
-	public MiddleGearAuto() {
-		control = new Controller();
-	}
-	
-	@Override
-	protected void initialize() {
-		control.enable();
-	}
-
-	@Override
-	protected boolean isFinished() {
-		return Robot.sensors.encoderLeft.getValue() > 700;
-	}
-	
-	@Override
-	protected void end() {
-		control.disable();
-	}
-	
-	private class Controller extends HEROicPIDController {
-		static final double Kp = 0.4;
-		static final double Ki = 0.5;
-		static final double Kd = 0.3;
+public class MiddleGearAuto extends EncoderAuto {
+	private void sequenceStuff(int dir) {
+		addParallel(new shooter(.5));
+		addSequential(new PrintSomething(DriverStation.getInstance().getAlliance()));
+		addSequential(new EncoderAutonomousDriveLeg(0, 0.3, 0, 525));
+		addSequential(new AutonomousWaitLeg(0.5));
+		addSequential(new EncoderStraighten(0.4, 2));
+		addSequential(new EncoderAutonomousDriveLeg(0, 0.25, 0, 10));
+		addSequential(new PushGear(true));
+		addSequential(new EncoderAutonomousDriveLeg(0, -0.3, 0, 200));
 		
-		Controller() {
-			super(Kp, Ki, Kd);
-			setSetpoint(0);
-		}
-
-		@Override
-		public double getPIDInput() {
-			double value = Robot.sensors.encoderLeft.getValue() - Robot.sensors.encoderRight.getValue();
-			SmartDashboard.putNumber("MIddle AUto PID Inpiut", value);
-			return value;
-		}
-
-		@Override
-		public void usePIDOutput(double output) {
-			Robot.drive.mecanumDrive(0, 0.3, output);
-		}
+		// Shooting
+		addSequential(new EncoderAutonomousDriveLeg(0, 0, dir*-.4, 400));
+		//addSequential(new PrintSomething("Pew pew pew"));
+		addParallel(new HEROicBoilerAlignCommand());
+		addSequential(new ActivateFeeder());
 	}
 
+	public MiddleGearAuto() {
+		this(DriverStation.getInstance().getAlliance());
+	}
+	
+    public MiddleGearAuto(DriverStation.Alliance alliance) {
+    	int dir;
+    	switch (alliance) {
+		case Red: dir = -1; break;
+		case Blue: dir = 1; break;
+		default: dir = 0;
+		}
+		sequenceStuff(dir);
+    }
 }
