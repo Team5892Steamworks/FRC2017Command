@@ -7,7 +7,7 @@ public class EncoderScoreGearAuto extends EncoderAuto {
     public EncoderScoreGearAuto(boolean shoot, Position position) {
     	double dir = position == Position.RIGHT ? 1 : -1;
     	
-    	if (shoot) addParallel(new shooter(0.5));                                              // Start up flywheel
+    	if (shoot) addParallel(new shooter(0.75));                                              // Start up flywheel
     	
     	addSequential(new EncoderAutonomousDriveLeg(0, 0.3, 0, 666));                             // Move forwards
     	addSequential(new EncoderAutonomousDriveLeg(0, 0, dir*0.4, 300));                         // Turn
@@ -17,8 +17,7 @@ public class EncoderScoreGearAuto extends EncoderAuto {
     	
     	if (shoot) {                                                                              // If trying to shoot:
     		addSequential(new EncoderAutonomousDriveLeg(0, -0.3, 0, 200));             // Move off of spike
-    		//addParallel(new HEROicBoilerAlignCommand());                                          // Align
-    		addSequential(new SerialWrite());
+    		addParallel(new HEROicBoilerAlignCommand());                                          // Align
     		addParallel(new ActivateFeeder());                                                    // And...
     		//addSequential(new UltrasonicShoot());                                               // Shoot!!! (except we're already shooting)
     	}

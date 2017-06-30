@@ -111,7 +111,7 @@ public class Robot extends IterativeRobot {
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!!!!!!!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!!!!!!!!", chooser);
 		
 		/*
 		posChooser.addDefault("Left", Position.LEFT);
@@ -140,13 +140,13 @@ public class Robot extends IterativeRobot {
         
         // Initialize SmartDashboard commands
         SmartDashboard.putData("Emergency Winch Button", new ActivateWinch(1));
-        SmartDashboard.putData("Write Serial", new SerialWrite());
         
 	}
 	@Override
 	public void disabledInit() {
 		lights.setVision(false);
 		lights.setEndGame(false);
+		lights.setRainbow(false);
 	}
 	@Override
 	public void disabledPeriodic() {
@@ -158,6 +158,7 @@ public class Robot extends IterativeRobot {
 		drive.set_base(1);
 		lights.setVision(false);
 		lights.setEndGame(false);
+		lights.setRainbow(false);
 		autonomousCommand = chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -180,6 +181,7 @@ public class Robot extends IterativeRobot {
 		new ReverseAgitator().start();
 		lights.setVision(false);
 		lights.setEndGame(false);
+		lights.setRainbow(false);
 	}
 	@Override
 	public void teleopPeriodic() {
@@ -189,6 +191,7 @@ public class Robot extends IterativeRobot {
 	public void testInit() {
 		lights.setVision(false);
 		lights.setEndGame(false);
+		lights.setRainbow(false);
 	}
 	@Override
 	public void testPeriodic() {

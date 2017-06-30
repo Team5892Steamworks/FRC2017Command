@@ -11,7 +11,7 @@ public class FlightStkCopilot extends Controller implements Copilot {
 	}
 
 	@Override
-	public boolean shooter_lo() {
+	public boolean shooter_static() {
 		return stick.getRawButton(5);
 	}
 
@@ -28,6 +28,12 @@ public class FlightStkCopilot extends Controller implements Copilot {
 	@Override
 	public boolean winch_rev() {
 		return stick.getPOV(0) == 180;
+	}
+
+	@Override
+	public boolean boiler_align() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

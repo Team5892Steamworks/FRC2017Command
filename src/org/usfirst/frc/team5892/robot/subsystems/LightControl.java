@@ -6,6 +6,7 @@ import org.usfirst.frc.team5892.robot.Robot;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SerialPort.Port;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -23,14 +24,23 @@ public class LightControl extends Subsystem {
 	// Endgame codes
 	public static final byte yesEndgame =   0x15; // (=> 0x75)
 	public static final byte noEndgame =    0x16; // (=> 0x3a)
+	
+	// Rainbow codes
+	public static final byte yesRainbow =   0x17; // (=> 0x74)
+	public static final byte noRainbow =    0x18; // (=> 0xee | 0x0e) for some reason
     
 	private static SerialPort serial = new SerialPort(9600, Port.kOnboard);
+	private DriverStation.Alliance alliance;
+	private boolean vision = false;
+	private boolean endgame = false;
+	private boolean rainbow = false;
 	
 	public LightControl() {
 		new InlineTrigger(() -> DriverStation.getInstance().isOperatorControl() && 
 				DriverStation.getInstance().getMatchTime() < 30).whenActive(new InstantCommand() {
 			@Override protected void execute() {Robot.lights.setEndGame(true);}
 		});
+		//setDefaultCommand(new SerialWrite(this));
 	}
 	
 	@Override protected void initDefaultCommand() {}
@@ -41,8 +51,8 @@ public class LightControl extends Subsystem {
 	
 	public void setAlliance(DriverStation.Alliance alliance) {
 		switch (alliance) {
-		case Red: writeSingleByte(redAlliance); return;
-		case Blue: writeSingleByte(blueAlliance); return;
+		case Red: writeSingleByte(redAlliance); break;
+		case Blue: writeSingleByte(blueAlliance); break;
 		default: writeSingleByte(badAlliance);
 		}
 	}
@@ -53,6 +63,44 @@ public class LightControl extends Subsystem {
 	
 	public void setEndGame(boolean isEnd) {
 		writeSingleByte(isEnd ? yesEndgame : noEndgame);
+	}
+	
+	public void setRainbow(boolean isRainbow) {
+		writeSingleByte(isRainbow ? yesRainbow : noRainbow);
+	}
+	
+	private class SerialWrite extends Command {
+		
+		LightControl parent;
+		
+		SerialWrite(LightControl parent) {
+			this.parent = parent;
+			requires(parent);
+		}
+		
+		@Override
+		protected void execute() {
+			byte[] out = new byte[4];
+			
+			switch (parent.alliance) {
+			case Red: out[0] = redAlliance; break;
+			case Blue: out[0] = blueAlliance; break;
+			default: out[0] = badAlliance;
+			}
+			
+			out[1] = parent.vision ? yesVision : noVision;
+			
+			out[2] = parent.endgame ? yesEndgame : noEndgame;
+			
+			out[3] = parent.rainbow ? yesRainbow : noRainbow;
+			
+			serial.write(out, 4);
+		}
+		
+		@Override
+		protected boolean isFinished() {
+			return false;
+		}
 	}
 
 }

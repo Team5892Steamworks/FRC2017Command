@@ -29,5 +29,10 @@ public class JoyStkPilot extends Controller implements Pilot {
 	public boolean gearPneum() {
 		return stick.getRawAxis(3) > 0.7;
 	}
+	
+	@Override
+	public boolean rainbow() {
+		return stick.getRawButton(4);
+	}
 
 }

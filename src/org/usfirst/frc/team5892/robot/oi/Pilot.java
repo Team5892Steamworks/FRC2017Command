@@ -7,4 +7,6 @@ public interface Pilot {
     
     public boolean loSpeed();
     public boolean gearPneum();
+    
+    public boolean rainbow();
 }

@@ -24,6 +24,7 @@ public class ActivateWinch extends Command {
 	@Override
 	protected void execute() {
 		Robot.winch.set(power);
+		//Robot.lights.setRainbow(true);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -36,12 +37,6 @@ public class ActivateWinch extends Command {
 	@Override
 	protected void end() {
 		Robot.winch.set(0);
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	@Override
-	protected void interrupted() {
-		Robot.winch.set(0);
+		//Robot.lights.setRainbow(false);
 	}
 }

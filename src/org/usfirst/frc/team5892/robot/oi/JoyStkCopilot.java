@@ -11,7 +11,7 @@ public class JoyStkCopilot extends Controller implements Copilot {
 	}
 	
 	@Override
-	public boolean shooter_lo() {
+	public boolean shooter_static() {
 		return stick.getRawButton(4);
 	}
 
@@ -21,13 +21,18 @@ public class JoyStkCopilot extends Controller implements Copilot {
 	}
 
 	@Override
+	public boolean boiler_align() {
+		return stick.getRawButton(3);
+	}
+
+	@Override
 	public boolean winch_fwd() {
-		return stick.getRawButton(5);
+		return stick.getRawAxis(3) > 0.7;
 	}
 
 	@Override
 	public boolean winch_rev() {
-		return stick.getRawButton(6);
+		return stick.getRawAxis(2) > 0.7;
 	}
 
 }

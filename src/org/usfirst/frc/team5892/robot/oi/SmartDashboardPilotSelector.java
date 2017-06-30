@@ -47,6 +47,11 @@ public class SmartDashboardPilotSelector implements Pilot {
 		return selected.gearPneum();
 	}
 	
+	@Override
+	public boolean rainbow() {
+		return selected.rainbow();
+	}
+	
 	private class SetSelected extends Command {
 		
 		SmartDashboardPilotSelector parent;

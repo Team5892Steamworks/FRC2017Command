@@ -37,4 +37,10 @@ public class DualFlightStkPilot implements Pilot {
 		return stick_l.getRawButton(1) || stick_r.getRawButton(1);
 	}
 
+	@Override
+	public boolean rainbow() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

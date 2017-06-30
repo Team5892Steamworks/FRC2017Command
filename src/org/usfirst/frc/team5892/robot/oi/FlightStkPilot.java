@@ -29,5 +29,11 @@ public class FlightStkPilot extends Controller implements Pilot {
 	public boolean gearPneum() {
 		return stick.getRawButton(1);
 	}
+	
+	@Override
+	public boolean rainbow() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
