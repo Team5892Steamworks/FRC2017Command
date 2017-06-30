@@ -52,6 +52,7 @@ public class Robot extends IterativeRobot {
 	public static Victor intake;
 	
 	public static PneumaticSubsystem pneumatics;
+	public static LightControl lights; // i was going to call this "winkyblinky" but decided against it
 	
 	//public static AHRS ahrs;
 	
@@ -88,6 +89,7 @@ public class Robot extends IterativeRobot {
 		//sdout = new SDOutputSubsystem();
 		//shooterSpeedSubsystem = new ShooterSpeedSubsystem();
 		//shooterSpeedSubsystem = new Shooter(1.0, 0.0, 0.0, 0.05, 1.0); // p, i, d, period, feedforward
+		lights = new LightControl();
 		
 		// Initialize OI
 		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new JoyStkCopilot(2));
@@ -95,7 +97,6 @@ public class Robot extends IterativeRobot {
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
 		chooser.addDefault("Do Nothing", new ExampleCommand());
-		chooser.addObject("Test Movement", new DriveForwardsAndSpinAuto());
 		/*chooser.addObject("Score a Gear (Sit from Right)", new ScoreGearAuto(false, Position.RIGHT));
 		chooser.addObject("Score a Gear (Continue from Right)", new ScoreGearAuto(true, Position.RIGHT));
 		chooser.addObject("Score a Gear (Sit from Left)", new ScoreGearAuto(false, Position.LEFT));
@@ -104,26 +105,13 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Score Gear with Encoders (Sit from Right)", new EncoderScoreGearAuto(false, Position.RIGHT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Left)", new EncoderScoreGearAuto(true, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Right)", new EncoderScoreGearAuto(true, Position.RIGHT));
-		chooser.addObject("Score Gear from Middle (Experimental Ver.)", new ExperimentalMiddleGearAuto());
-		chooser.addObject("Score Gear from Middle (Autodetect Alliance)", new MiddleGearAuto());
 		chooser.addObject("Score Gear from Middle (Red Alliance)", new MiddleGearAuto(DriverStation.Alliance.Red));
 		chooser.addObject("Score Gear from Middle (Blue Alliance)", new MiddleGearAuto(DriverStation.Alliance.Blue));
-		chooser.addObject("Measure Encoders", new MeasureEncodersAuto());
-		//chooser.addObject("Try out vision!!!", new DoubleBoilerAlign());
-		chooser.addObject("Gear spike visoin", new InlineCommandGroup(
-				new ICGEntry(new HEROicGearAlignCommand(7), false),
-				new ICGEntry(new AutonomousDriveLeg(0, 0.2, 0, 0.5), false)));
-		chooser.addObject("Party", new PartyAuto());
-		
-		chooser.addObject("Vision boiler shoote test", new InlineCommandGroup(
-				new ICGEntry(new UltrasonicShoot(), true),
-				new ICGEntry(new AutonomousWaitLeg(6), false),
-				new ICGEntry(new ActivateFeeder(), true)));
 //		chooser.addObject("Test Encoders", new EncoderAuto());
 		/*if (INCLUDE_LULZ_AUTONOMI) {
 			chooser.addObject("360 No Scope (Lulz)", new _360NoScopeAuto());
 		}*/
-		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!!!!!!", chooser);
+		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!!!!!!!", chooser);
 		
 		/*
 		posChooser.addDefault("Left", Position.LEFT);
@@ -152,18 +140,24 @@ public class Robot extends IterativeRobot {
         
         // Initialize SmartDashboard commands
         SmartDashboard.putData("Emergency Winch Button", new ActivateWinch(1));
+        SmartDashboard.putData("Write Serial", new SerialWrite());
         
 	}
 	@Override
 	public void disabledInit() {
+		lights.setVision(false);
+		lights.setEndGame(false);
 	}
 	@Override
 	public void disabledPeriodic() {
+		lights.setAlliance(DriverStation.getInstance().getAlliance());
 		Scheduler.getInstance().run();
 	}
 	@Override
 	public void autonomousInit() {
 		drive.set_base(1);
+		lights.setVision(false);
+		lights.setEndGame(false);
 		autonomousCommand = chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -184,10 +178,17 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		new ReverseAgitator().start();
+		lights.setVision(false);
+		lights.setEndGame(false);
 	}
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+	}
+	@Override
+	public void testInit() {
+		lights.setVision(false);
+		lights.setEndGame(false);
 	}
 	@Override
 	public void testPeriodic() {

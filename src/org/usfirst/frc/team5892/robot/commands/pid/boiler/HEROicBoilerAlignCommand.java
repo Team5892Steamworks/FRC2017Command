@@ -17,6 +17,7 @@ public class HEROicBoilerAlignCommand extends Command {
 	
 	public HEROicBoilerAlignCommand() {
 		requires(Robot.drive);
+		requires(Robot.lights);
 		control = new HEROicBoilerController();
 		table = NetworkTable.getTable("GRIP").getSubTable("boilerContours");
 	}
@@ -24,6 +25,7 @@ public class HEROicBoilerAlignCommand extends Command {
 	@Override
 	protected void initialize() {
 		control.enable();
+		Robot.lights.setVision(true);
 	}
 
 	@Override
@@ -35,6 +37,12 @@ public class HEROicBoilerAlignCommand extends Command {
 	@Override
 	protected void end() {
 		control.disable();
+		Robot.lights.setVision(false);
+	}
+	
+	@Override
+	protected void interrupted() {
+		end();
 	}
 	
 	private class HEROicBoilerController extends HEROicPIDController {
