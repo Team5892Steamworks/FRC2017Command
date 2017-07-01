@@ -4,6 +4,7 @@ import org.usfirst.frc.team5892.HEROcode.inline.InlineTrigger;
 import org.usfirst.frc.team5892.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.command.Command;
@@ -29,7 +30,7 @@ public class LightControl extends Subsystem {
 	public static final byte yesRainbow =   0x17; // (=> 0x74)
 	public static final byte noRainbow =    0x18; // (=> 0xee | 0x0e) for some reason
     
-	private static SerialPort serial = new SerialPort(9600, Port.kOnboard);
+	//private static I2C i2c = new I2C(I2C.Port.kOnboard, 5);
 	private DriverStation.Alliance alliance;
 	private boolean vision = false;
 	private boolean endgame = false;
@@ -40,13 +41,14 @@ public class LightControl extends Subsystem {
 				DriverStation.getInstance().getMatchTime() < 30).whenActive(new InstantCommand() {
 			@Override protected void execute() {Robot.lights.setEndGame(true);}
 		});
-		//setDefaultCommand(new SerialWrite(this));
 	}
 	
-	@Override protected void initDefaultCommand() {}
+	@Override protected void initDefaultCommand() {
+		//setDefaultCommand(new I2CWrite(this));
+	}
 	
 	public static void writeSingleByte(byte b) {
-		serial.write(new byte[]{b}, 1);
+		//i2c.transaction(new byte[]{b}, 1, null, 0);
 	}
 	
 	public void setAlliance(DriverStation.Alliance alliance) {
@@ -69,11 +71,11 @@ public class LightControl extends Subsystem {
 		writeSingleByte(isRainbow ? yesRainbow : noRainbow);
 	}
 	
-	private class SerialWrite extends Command {
+	private class I2CWrite extends Command {
 		
 		LightControl parent;
 		
-		SerialWrite(LightControl parent) {
+		I2CWrite(LightControl parent) {
 			this.parent = parent;
 			requires(parent);
 		}
@@ -94,7 +96,7 @@ public class LightControl extends Subsystem {
 			
 			out[3] = parent.rainbow ? yesRainbow : noRainbow;
 			
-			serial.write(out, 4);
+			//i2c.transaction(out, 4, null, 0);
 		}
 		
 		@Override

@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 
 public class MiddleGearAuto extends EncoderAuto {
 	private void sequenceStuff(int dir) {
-		addParallel(new shooter(.5));
+		addParallel(new shooter(.90));
 		addSequential(new PrintSomething(DriverStation.getInstance().getAlliance()));
 		addSequential(new EncoderAutonomousDriveLeg(0, 0.3, 0, 525));
 		addSequential(new AutonomousWaitLeg(0.5));
