@@ -92,7 +92,7 @@ public class Robot extends IterativeRobot {
 		lights = new LightControl();
 		
 		// Initialize OI
-		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new JoyStkCopilot(2));
+		oi = new org.usfirst.frc.team5892.robot.oi.OI(new JoyStkPilot(1), new GuitarHeroCopilot(5));
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
