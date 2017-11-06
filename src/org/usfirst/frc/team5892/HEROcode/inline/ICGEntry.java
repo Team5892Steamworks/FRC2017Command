@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Kai Page
  */
 public class ICGEntry {
-	Command command;
-	boolean parallel;
+	final Command command;
+	final boolean parallel;
 	
 	/**
 	 * @param command The command to be run.

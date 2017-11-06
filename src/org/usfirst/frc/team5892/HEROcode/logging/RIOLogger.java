@@ -8,7 +8,7 @@ import java.util.logging.SimpleFormatter;
 
 /**
  * A simple logging implementation that outputs to a file on the RoboRIO. Retrieve the log using an SSH application such as PuTTY.
- * I have yet to figure out where the file will be (because I am writing this at home without access to the robot) but will add that asap.
+ * I have yet to figure out where the file will be (because I am a lazy piece of trash who still has not tested this after how many months) but will add that asap.
  * Based on <a href="http://www.vogella.com/tutorials/Logging/article.html">http://www.vogella.com/tutorials/Logging/article.html</a>.
  * <br><br>
  * Note that as of now, it is still completely untested and I have no excuse.

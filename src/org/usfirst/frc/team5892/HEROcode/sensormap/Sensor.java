@@ -1,11 +1,10 @@
 package org.usfirst.frc.team5892.HEROcode.sensormap;
 
 /**
- * A sensor that will automatically put its output on the {@link SmartDashboard}.
+ * A sensor that will automatically put its output on the {@link SmartDashboard}. I think this is the same thing LiveWindow is supposed to do, but this works when running the robot regularly.
  * 
  * @author Kai Page
  */
-// TODO add LiveWindow support
 public class Sensor {
     protected String name;
     protected SensorGetter getter;
