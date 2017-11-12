@@ -31,8 +31,16 @@ public class EncoderAutonomousDriveLeg extends AutonomousDriveLeg {
 	
 	@Override
 	protected boolean isFinished() {
-		return (Robot.sensors.encoderLeft.getValue() > leftTarget ||
-			    Robot.sensors.encoderRight.getValue() > rightTarget) ||
+		if (Robot.sensors.encoderLeft.getValue() > leftTarget) {
+			System.out.println("Encoders finished: left encoder triggered!");
+			return true;
+		}
+		if (Robot.sensors.encoderRight.getValue() > rightTarget) {
+			System.out.println("Encoders finished: right encoder triggered!");
+			return true;
+		}
+		return //(Robot.sensors.encoderLeft.getValue() > leftTarget ||
+			    //Robot.sensors.encoderRight.getValue() > rightTarget) ||
 			   (duration > 0 && timeSinceInitialized() > duration);
 	}
     

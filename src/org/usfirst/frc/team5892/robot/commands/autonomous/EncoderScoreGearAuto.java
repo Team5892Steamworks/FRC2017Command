@@ -9,9 +9,12 @@ public class EncoderScoreGearAuto extends EncoderAuto {
     	
     	if (shoot) addParallel(new shooter(0.90));                                              // Start up flywheel
     	
-    	addSequential(new EncoderAutonomousDriveLeg(0, 0.3, 0, 666));                             // Move forwards
+    	addSequential(new PrintSomething("Starting to move forwards"));
+    	addSequential(new EncoderAutonomousDriveLeg(0, 0.3, 0, 665), 3);                             // Move forwards
+    	addSequential(new PrintSomething("Starting to turn"));
     	addSequential(new EncoderAutonomousDriveLeg(0, 0, dir*0.4, 350));                         // Turn
-    	//addSequential(new HEROicGearAlignCommand());                                            // Align      
+    	//addSequential(new HEROicGearAlignCommand());                                            // Align
+    	addSequential(new PrintSomething("Starting to move onto spike"));
     	addSequential(new EncoderAutonomousDriveLeg(0, 0.2, 0, 75, 20));               // Move onto spike
     	addSequential(new PushGear(true));                                                        // ACTIVE GEAR MECHANISM
     	

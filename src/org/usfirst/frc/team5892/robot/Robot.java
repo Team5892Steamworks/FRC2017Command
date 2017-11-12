@@ -85,14 +85,15 @@ public class Robot extends IterativeRobot {
 		
 		// Initialize autonomi <- totally a word
 		chooser = new SendableChooser<>();
-		chooser.addDefault("Do Nothing", new ExampleCommand());
+		chooser.addObject("Do Nothing", new ExampleCommand());
 		chooser.addObject("Score Gear with Encoders (Sit from Left)", new EncoderScoreGearAuto(false, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Sit from Right)", new EncoderScoreGearAuto(false, Position.RIGHT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Left)", new EncoderScoreGearAuto(true, Position.LEFT));
 		chooser.addObject("Score Gear with Encoders (Shoot from Right)", new EncoderScoreGearAuto(true, Position.RIGHT));
 		chooser.addObject("Score Gear from Middle (Red Alliance)", new MiddleGearAuto(DriverStation.Alliance.Red));
 		chooser.addObject("Score Gear from Middle (Blue Alliance)", new MiddleGearAuto(DriverStation.Alliance.Blue));
-		SmartDashboard.putData("Autonomous mode!!!!!!!!!!!!!!!!!!!", chooser);
+		chooser.addDefault("The Final Auto", new TheFinalAuto());
+		SmartDashboard.putData("Autonomous mode.", chooser);
 		
 		// Initialize CameraServer
 		UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);

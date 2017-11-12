@@ -1,16 +1,18 @@
 package org.usfirst.frc.team5892.robot.subsystems;
 
-import org.usfirst.frc.team5892.HEROcode.inline.InlineTrigger;
-import org.usfirst.frc.team5892.robot.Robot;
+//import org.usfirst.frc.team5892.HEROcode.inline.InlineTrigger;
+//import org.usfirst.frc.team5892.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.SerialPort;
-import edu.wpi.first.wpilibj.SerialPort.Port;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.InstantCommand;
+//import edu.wpi.first.wpilibj.I2C;
+//import edu.wpi.first.wpilibj.SerialPort;
+//import edu.wpi.first.wpilibj.SerialPort.Port;
+//import edu.wpi.first.wpilibj.command.Command;
+//import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/// Next year: just use freaking NetworkTables.
+/// We're sticking a Pi on anyway.
 public class LightControl extends Subsystem {
 	
 	// Alliance codes
@@ -31,19 +33,20 @@ public class LightControl extends Subsystem {
 	public static final byte noRainbow =    0x18; // (=> 0xee | 0x0e) for some reason
     
 	//private static I2C i2c = new I2C(I2C.Port.kOnboard, 5);
-	private DriverStation.Alliance alliance;
+	/*private DriverStation.Alliance alliance;
 	private boolean vision = false;
 	private boolean endgame = false;
-	private boolean rainbow = false;
+	private boolean rainbow = false;*/
 	
 	public LightControl() {
-		new InlineTrigger(() -> DriverStation.getInstance().isOperatorControl() && 
+		/*new InlineTrigger(() -> DriverStation.getInstance().isOperatorControl() && 
 				DriverStation.getInstance().getMatchTime() < 30).whenActive(new InstantCommand() {
 			@Override protected void execute() {Robot.lights.setEndGame(true);}
-		});
+		});*/
 	}
 	
-	@Override protected void initDefaultCommand() {
+	@Override
+	protected void initDefaultCommand() {
 		//setDefaultCommand(new I2CWrite(this));
 	}
 	
@@ -52,26 +55,26 @@ public class LightControl extends Subsystem {
 	}
 	
 	public void setAlliance(DriverStation.Alliance alliance) {
-		switch (alliance) {
+		/*switch (alliance) {
 		case Red: writeSingleByte(redAlliance); break;
 		case Blue: writeSingleByte(blueAlliance); break;
 		default: writeSingleByte(badAlliance);
-		}
+		}*/
 	}
 	
 	public void setVision(boolean isVision) {
-		writeSingleByte(isVision ? yesVision : noVision);
+		//writeSingleByte(isVision ? yesVision : noVision);
 	}
 	
 	public void setEndGame(boolean isEnd) {
-		writeSingleByte(isEnd ? yesEndgame : noEndgame);
+		//writeSingleByte(isEnd ? yesEndgame : noEndgame);
 	}
 	
 	public void setRainbow(boolean isRainbow) {
-		writeSingleByte(isRainbow ? yesRainbow : noRainbow);
+		//writeSingleByte(isRainbow ? yesRainbow : noRainbow);
 	}
 	
-	private class I2CWrite extends Command {
+	/*private class I2CWrite extends Command {
 		
 		LightControl parent;
 		
@@ -103,6 +106,6 @@ public class LightControl extends Subsystem {
 		protected boolean isFinished() {
 			return false;
 		}
-	}
+	}*/
 
 }
